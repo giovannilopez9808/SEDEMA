@@ -1,0 +1,4 @@
+Ratio ANUAL 2016 UVA nan
+Ratio ANUAL 2016 Erythemal nan
+Ratio ANUAL 2018 UVA 0.8197
+Ratio ANUAL 2018 Erythemal 0.6656
