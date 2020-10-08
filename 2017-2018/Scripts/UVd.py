@@ -5,13 +5,13 @@ from os import listdir
 dir="../Stations/"
 stations=listdir(dir)
 #<------------------------Parametros de los datos------------------------------>
-title,dates,color,phototype=["Winter","Summer"],["180202","180604"],["#5e60ce","#56cfe1"],["Fototipo III","Fototipo IV"]
+title,dates,color,phototype=["Winter","Summer"],["180202","180604"],["red","orange"],["Phototype III","Phototype IV"]
 med=[300,450];t_i,t_f,t_lim=8,15,21
 t=np.zeros([2,2,(t_f-t_i)*60,2])
 #<-----------------------------Parametros de las graficas---------------------->
 x=np.arange(8,15,1/60)
-plt.xlabel("Tiempo local (h)",fontsize="large")
-plt.ylabel("TES (min)",fontsize="large")
+plt.xlabel("CST (UTC - 6h)",fontsize="large")
+plt.ylabel("Exposure Time (min)",fontsize="large")
 plt.ylim(0,175);plt.xlim(8,16)
 #<-----------------------------Inicio del calculo------------------------------>
 for n_med in range(2):

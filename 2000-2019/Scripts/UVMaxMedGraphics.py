@@ -5,7 +5,7 @@ from matplotlib.colors import LinearSegmentedColormap
 def graf(resul,levels,cm,title,name,label,daysnum,Meses):
     plt.subplots_adjust(left=0.097,right=0.977,bottom=0.205,top=0.890)
     plt.title(title)
-    plt.ylabel("Local Time (h)")
+    plt.ylabel("CST (UTC - 6h)")
     plt.xticks(daysnum,Meses,rotation=60)
     plt.ylim(6,18)
     plt.contourf(resul,levels=levels,cmap=cm)
