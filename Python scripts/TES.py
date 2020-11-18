@@ -43,10 +43,17 @@ def cont(type_d,n_dosis,hour,num,Dosis,n_uva,cloud,time_uva,type_c,data_uva):
             time_uva[hour,num,type_d,type_c,1]+=1
     return time_uva[hour,num,type_d,type_c,0],time_uva[hour,num,type_d,type_c,1]
 #<-----Funcion que calcula el promedio de los TES y los asigna a donde hay ceros----->
-def prom(type_c,n_dosis,time_uva,time_uva_mean,car,i,medication):
+def prom(type_c,n_dosis,time_uva,time_uva_mean,car,i,medication,hour_i,hour_f):
     for type_d in range(n_dosis):
-        file=open(car+name[i]+"-"+medication[type_d]+"-"+str(type_c)+".txt","w")
+        file=open(car+name[i]+"-"+medication[type_d]+"-"+str(type_c)+".csv","w");file.write(",")
+        for day in range(365):
+            date_name=datetime.date(2019,1,1)+datetime.timedelta(days=day)
+            date_num=str(date_name.day);date_name=date_name.strftime("%b")
+            file.write(date_num+"-"+date_name+",")
+        file.write("\n")
         for hour in range(n_hour):
+            hour_name=str(round(hour_i+hour/60,4))
+            file.write(hour_name+",")
             for day in range(365):
                 month=n_month(day)
                 if time_uva[hour,day,type_d,type_c,0]!=0:
@@ -58,7 +65,7 @@ def prom(type_c,n_dosis,time_uva,time_uva_mean,car,i,medication):
                 if time_uva[hour,day,type_d,type_c,0]==0:
                     month=n_month(day)
                     time_uva[hour,day,type_d,type_c,0]=time_uva_mean[hour,month,type_d,type_c,0]
-                file.write(str(round(time_uva[hour,day,type_d,type_c,0],2))+" ")
+                file.write(str(round(time_uva[hour,day,type_d,type_c,0],2))+",")
             file.write("\n")
         file.close()
 #<---------------------------------------------------------------------------------->
@@ -118,5 +125,5 @@ for car in carp:
 car="Data/"
 print("Escribiendo archivos")
 for type_c in range(n_cloud):
-    prom(type_c,n_dosis,time_uva,time_uva_mean,car,0,medication)
-    prom(type_c,n_MED,time_uvb,time_uvb_mean,car,1,n_rom)
+    prom(type_c,n_dosis,time_uva,time_uva_mean,car,0,medication,hour_i,hour_f)
+    prom(type_c,n_MED,time_uvb,time_uvb_mean,car,1,n_rom,hour_i,hour_f)
