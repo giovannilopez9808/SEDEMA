@@ -231,14 +231,8 @@ c      OPEN(UNIT=kout,FILE='tuvlog',STATUS='UNKNOWN')
 
 * ___ SECTION 1: SIMPLE INPUT VARIABLES --------------------------------
 ******* Read simple input variables from a file:
-
-* can read interactively (intrct = .TRUE.) 
-* or in batch mode (intrct = .FALSE.)
-
-      intrct = .TRUE.
-c      intrct = .FALSE.
-      IF ( .NOT. intrct) inpfil = 'usrinp'
-      inpfil="CDMX"
+      open(13,file="datos.txt")
+      read(13,*) inpfil 
       CALL rdinp(intrct, 
      $     inpfil, outfil, nstr,   lat,    lon,    tmzone,
      $     iyear,  imonth, iday,   zstart, zstop,  nz,
@@ -256,16 +250,14 @@ c      intrct = .FALSE.
       ELSE
          iout = 30
       ENDIF
-!Se llama al archivo que contiene todos los par�metros de cada d�a
-      open(13,file="../datos.txt")
-      read(13,*) narc
-      do  archivo=1,narc
-      read(13,*) outfil,o3_tc,iyear,imonth,iday
-      tauaer=0.15
-      write(*,*) "Escribiendo dia ",outfil
-      if(o3_tc.ne.0) then
+!Se llama al archivo que contiene todos los parametros de cada disa
+        read(13,*) narc
+       do  archivo=1,narc
+       read(13,*) outfil,tauaer,o3_tc,iyear,imonth,iday
+       write(*,*) "Escribiendo dia ",outfil
+       if(o3_tc.ne.0) then
 !Ciclo para calcular la irradiancia para cada minuto cada hora
-       do ciclohora=1,24
+       do ciclohora=5,20
            tstart=ciclohora-1
            tstop=ciclohora
 * ___ SECTION 2: SET GRIDS _________________________________________________
@@ -721,12 +713,13 @@ c 444  format(1pe11.4,1x,a50)
 
  30   continue
  !Cierre del do para la irradincia para cada minuto
-       end do
-       end if
+      end do
+      end if
 !Cierre del do el cual hace que se lean todos los par�metros de todos los d�as
-       end do
-       close(13)
+      end do
+      close(13)
 *_______________________________________________________________________
+
       CLOSE(iout)
       CLOSE(kout)
       END

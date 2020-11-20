@@ -18,19 +18,19 @@ medication=["Pso1","Pso1_5","Pso2","Pso3"]          #Tratamiento
 def consecutive_days(year,month,day):
     num=(datetime.date(year,month,day)-datetime.date(year,1,1)).days
     if num>364:
-        num=num-x1
+        num=num-1
     return num
 #<---Funcion para obtener el numero de mes de una fecha en dias consecutivos------->
 def n_month(day):
     month=(datetime.date(2000,1,1)+datetime.timedelta(day)).month-1
     return month
 # <--------Funcion para llevar el conteo de los minutos y el promedio------------->
-def cont(type_d,n_dosis,hour,num,Dosis,n_uva,cloud,time_uva,type_c,data_uva):
+def cont(type_d,n_dosis,hour,num,Dosis,n_uva,cloud,time_uva,type_c,data):
     dosis_uva=0
     i=hour
     while dosis_uva<Dosis[type_d] and i<n_uva-1:
-        if data_uva[i]!=0:
-            dosis_uva+=data_uva[i]*60*cloud[type_c]
+        if data[i]!=0:
+            dosis_uva+=data[i]*60*cloud[type_c]
         i+=+1
     if dosis_uva!=0:
         if i<n_uva-1:
