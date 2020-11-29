@@ -6,7 +6,7 @@ color,title=["#A25715","purple"],["$\mu g/m^3$","ppm"]
 dir,arc="../Archivos/","CDMX.txt"
 lw=4
 #<-----Parametros para los limites de altura, los espacios y martriz de promedios--------->
-label,x,lim,delta,mean=np.arange(2000,2020),np.arange(20),[80,4],[20,1],np.zeros([20,2])
+label=np.arange(2000,2020);x=np.arange(20);lim=[75,4];delta=[15,1];mean=np.zeros([20,2])
 for i in range(2):
     file=dir+parameters[i]+arc
     data=np.loadtxt(file)
@@ -33,7 +33,7 @@ yticks2=np.arange(0,lim[1]+delta[1],delta[1])
 ax2.set_yticks(yticks2);ax2.set_ylabel(title[1],rotation=-90,va="bottom")
 ax1.set_yticks(yticks1)
 #<---------------------------Localizacion de las legendas de cada compuesto------------------------>
-ax1.legend(frameon=False,ncol=2,loc=2);ax2.legend(frameon=False,ncol=2,loc=1)
+ax1.legend(frameon=False,ncol=2,loc="best",bbox_to_anchor=(0.895, 1));ax2.legend(frameon=False,ncol=2,loc="best")
 #<-----------------------Inicio de la grafica inferior---------------------------->
 parameters,title,color,tick=["NO2","O3"],"ppb",["blue","green"],["NO$_2$","O$_3$"]
 label,x=np.arange(2000,2020),np.arange(20)
@@ -49,12 +49,12 @@ for i in range(np.size(parameters)):
     print(fit)
     #<------------------------------------Graficas de O3 y NO2-------------------------------------->
     ax3.plot(label,mean,ls="-",label=tick[i],color=color[i],linewidth=lw)
-ax3.set_ylim(0,120)
-ax3.set_yticks(np.arange(0,120+30,30))
+ax3.set_ylim(0,80)
+ax3.set_yticks(np.arange(0,90+15,15))
 ax3.set_ylabel(title)
 ax3.set_xticks([])
 #<---------------------Leyendas de las graficas---------------------->
-ax3.legend(frameon=False,ncol=2,mode="expand")
+ax3.legend(frameon=False,ncol=2,loc="upper right")
 label=np.arange(2000,2020);data=np.loadtxt("../Archivos/AOD.txt",skiprows=1)
 fit=np.poly1d(fit);pd=fit(data[:,0])
 ax4.plot(data[:,0],data[:,1],ls="-",label="AOD$_{340}$",color="#CB258C",linewidth=lw)
@@ -62,7 +62,8 @@ ax4.set_xticks(label)
 ax4.set_xticklabels(label,rotation=60)
 ax4.set_xlim(1999,2020)
 ax4.set_yticks(np.arange(0,1+0.25,0.25))
-ax4.set_ylim(0,1)   
-ax4.legend(frameon=False,mode="expand",ncol=2)
-#plt.show()
-plt.savefig("../Graficas/contCDMX.png")
+ax4.set_ylim(0,1)  
+ax4.set_ylabel("AERONET AOD") 
+ax4.legend(frameon=False,loc="upper right")
+plt.savefig("../Graficas/contCDMX.png",dpi=300)
+plt.show()

@@ -35,6 +35,7 @@ for n_med in range(2):
     plt.fill_between(x,t[n_med,0,:,0],t[n_med,0,:,1],color=color[n_med])
     #<--------------------------Grafica del minimo----------------------------->
     plt.fill_between(x,t[n_med,1,:,0],t[n_med,1,:,1],color=color[n_med],label=phototype[n_med])
+    print(np.min(t[n_med,1,:,0]),np.min(t[n_med,0,:,0]))
     #<------------------------Grafica del intermedio--------------------------->
     plt.fill_between(x,t[n_med,0,:,1],t[n_med,1,:,0],color=color[n_med],alpha=0.5)
 plt.plot([15,15],[0,175],ls="--",color="black")

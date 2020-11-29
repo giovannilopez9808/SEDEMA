@@ -1,16 +1,9 @@
-#<-------------Programa que realiza lo siguiente-------------->
-#<----1)Del archivo MaxEry.txt realiza una interpolacion y el metodo---------->
-#<---------moving average y los grafica en UVyearlyError---------------------->
-#<----2)
 import numpy as np 
 import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 from os import listdir
 from scipy.interpolate import interp1d
-#<-------------------------------Datos constantes----------------------------->
-Meses=["January","February","March","April","May","June","July","August"
-            ,"September","October","November","December"]
 years=np.arange(2000,2020,1)
 X=np.arange(0,20*12,12)
 X1=np.arange(0,12*20)
@@ -32,8 +25,8 @@ pd2=fit(UVmax[:,0])
 #<------------Moving average para 6 meses------------->
 df["SMA_6"]=df.iloc[:,1].rolling(window=3).mean()
 #<--------------------Inicio de la grafica UVyearlyError----------------------------------->
-plt.xticks(X,years,rotation=60,fontsize="large")
-plt.yticks(fontsize="large")
+plt.xticks(X,years,rotation=60,fontsize=12)
+plt.yticks(fontsize=12)
 plt.title("Period 2000-2019",fontsize="large")
 plt.ylabel("UV Index",fontsize="large")
 plt.xlim(0,20*12)
@@ -45,10 +38,10 @@ plt.errorbar(df["Date"],df["UVindex"],yerr=df["std"],marker="o",linewidth=1
 plt.plot(df["Date"],df["SMA_6"],label="Quarterly Moving average",linewidth=3,color="grey")
 #<-----------Ploteo de linear fit------------------>
 plt.plot(UVmax[:,0],pd2,label="Linear regression",color="red",linewidth=3)
-plt.subplots_adjust(left=0.1,right=0.97,bottom=0.17,top=0.95)
+plt.subplots_adjust(left=0.102,right=0.979,bottom=0.16,top=0.917)
 plt.legend(ncol=3,mode="expand",frameon=False,fontsize="small")
 #<---------------Guardado de la grafica-------------->
-plt.savefig("../Graficas/UVyearlyError.png")
+plt.savefig("../Graficas/UVyearlyError.png",dpi=300)
 plt.clf()
 mean_y=np.zeros([20,2])
 for i in range(np.size(UVmax[:,0])):
