@@ -5,7 +5,7 @@ parameters,tick=["PM10","CO"],["PM$_{10}$","CO"]
 color,title=["#A25715","purple"],["$\mu g/m^3$","ppm"]
 dir,arc="../Archivos/","CDMX.txt"
 lw=4
-font_size=11
+font_size=12
 #<-----Parametros para los limites de altura, los espacios y martriz de promedios--------->
 label=np.arange(2000,2020);x=np.arange(20);lim=[75,4];delta=[15,1];mean=np.zeros([20,2])
 for i in range(2):
@@ -18,6 +18,9 @@ for i in range(2):
     print(parameters[i],prom,round(fit[0]*100/prom,3))
     print(fit)
 #<------------------------------ax1 - PM10 y CO, ax3 - O3 y NO2------------------------------------->
+plt.rc('font', size=font_size) 
+plt.rc('xtick', labelsize=font_size)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=font_size) 
 fig,(ax1,ax3,ax4)=plt.subplots(3,figsize=(9,7))
 plt.subplots_adjust(top=0.9,bottom=0.14,left=0.11,right=0.9)
 ax2=ax1.twinx()
@@ -34,7 +37,7 @@ yticks2=np.arange(0,lim[1]+delta[1],delta[1])
 ax2.set_yticks(yticks2);ax2.set_ylabel(title[1],rotation=-90,va="bottom")
 ax1.set_yticks(yticks1)
 #<---------------------------Localizacion de las legendas de cada compuesto------------------------>
-ax1.legend(frameon=False,ncol=2,loc="best",bbox_to_anchor=(0.895, 1));ax2.legend(frameon=False,ncol=2,loc="best")
+ax1.legend(frameon=False,ncol=2,loc="best",bbox_to_anchor=(0.88, 1));ax2.legend(frameon=False,ncol=2,loc="best")
 #<-----------------------Inicio de la grafica inferior---------------------------->
 parameters,title,color,tick=["NO2","O3"],"ppb",["blue","green"],["NO$_2$","O$_3$"]
 label,x=np.arange(2000,2020),np.arange(20)
@@ -66,5 +69,4 @@ ax4.set_yticks(np.arange(0,1+0.25,0.25))
 ax4.set_ylim(0,1)  
 ax4.set_ylabel("AERONET AOD") 
 ax4.legend(frameon=False,loc="upper right")
-plt.savefig("../Graficas/contCDMX.png",dpi=300)
-plt.show()
+plt.savefig("../Graficas/contCDMX.eps",dpi=300)
