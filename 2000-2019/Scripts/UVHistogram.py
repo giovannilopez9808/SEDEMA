@@ -12,19 +12,21 @@ def autolabel(rects):
                     xy=(rect.get_x() + rect.get_width() / 2, height),
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
-                    ha='center', va='bottom')
+                    ha='center', va='bottom',fontsize=11)
 #<-------Valores predefinidos-------->
 UV_min,UV_max,d_UV=1,15,1
 #<------Direccion de los datos------>
 carp="../Datos/"
 #<-------Nombres de estaciones------>
 stations=listdir(carp)
-label,d_UV,X=np.arange(UV_min,UV_max+d_UV,d_UV),int((UV_max-UV_min)/d_UV),np.arange(d_UV)
+label,d_UV=np.arange(UV_min,UV_max,d_UV),int((UV_max-UV_min)/d_UV)
+X=np.arange(d_UV)
 UV_count_t,n_total=np.zeros(d_UV),0
 #<----Numeros pares------>
 even=np.arange(2,24+2,2)
 #<----Numeros impares----->
 odd=np.arange(1,24+2+1,2)
+font_size=13
 #<-------Ciclo para variar las estaciones---------->
 for station in stations:
     #<-----------n_ind: variable que guarda la cantidad de dias----------------->
@@ -49,15 +51,19 @@ for station in stations:
 Y=np.arange(0,20+2,2)
 UV_count_t=np.around(UV_count_t*100/n_total,2)
 fig, ax = plt.subplots(figsize=(9,7))
-plt.xticks(X,label,fontsize="large");plt.yticks(Y,fontsize="large")
+plt.xticks(X,label,fontsize=font_size)
+plt.yticks(Y,fontsize=font_size)
 plt.ylim(0,20);plt.xlim(-1,X.max()+1)
-plt.xlabel("UV Index daily maximum",fontsize="large");plt.ylabel("Frequency (%) of Days",fontsize="large")
-plt.title("Period 2000-2019",fontsize="large")
+plt.xlabel("UV Index daily maximum",fontsize=font_size);plt.ylabel("Frequency (%) of Days",fontsize=font_size)
+plt.title("Period 2000-2019",fontsize=font_size)
 #<--------Grafica de las grillas---------->
 for i in range(np.size(even)):
     plt.plot([-4,UV_max+1],[even[i],even[i]],color="black",ls="--",alpha=0.5)
     plt.plot([-4,UV_max+1],[odd[i],odd[i]],color="gray",ls="--",alpha=0.3)
-rect=ax.bar(X,UV_count_t,color="#00838a");autolabel(rect)
+rect=ax.bar(X,UV_count_t,color="#00838a")
+autolabel(rect)
 #<--------Guardado de la grafica-------------->
-plt.savefig("../Graficas/HistTotal.png")
+plt.subplots_adjust(left=0.102,bottom=0.093,right=0.962,top=0.936)
+plt.savefig("../Graficas/HistTotal.png",dpi=400)
+plt.show()
 plt.clf()

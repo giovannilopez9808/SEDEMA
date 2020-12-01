@@ -5,6 +5,7 @@ parameters,tick=["PM10","CO"],["PM$_{10}$","CO"]
 color,title=["#A25715","purple"],["$\mu g/m^3$","ppm"]
 dir,arc="../Archivos/","CDMX.txt"
 lw=4
+font_size=11
 #<-----Parametros para los limites de altura, los espacios y martriz de promedios--------->
 label=np.arange(2000,2020);x=np.arange(20);lim=[75,4];delta=[15,1];mean=np.zeros([20,2])
 for i in range(2):

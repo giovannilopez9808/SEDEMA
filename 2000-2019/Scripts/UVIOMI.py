@@ -42,16 +42,17 @@ colors=[(58/255,156/255,43/255),(152/255,196/255,8/255),
 (118/255,46/255,159/255),(150/255,53/255,188/255),
 (184/255,150/255,235/255),(198/255,198/255,248/255)]
 n_bin=15
+font_size=12
 cmap_name="UV_Index"
 cm=LinearSegmentedColormap.from_list(cmap_name,colors,N=n_bin)
 print("Graficando UV Index")
 plt.subplots_adjust(left=0.094,right=0.977,bottom=0.205,top=0.89)
 plt.title("UV Index satellite-derived in Mexico City \n Period 2005-2019")
-plt.yticks(np.arange(np.size(numyear)),numyear)
-plt.xticks(daysnum,Meses,rotation=60)
+plt.yticks(np.arange(np.size(numyear)),numyear,fontsize=font_size)
+plt.xticks(daysnum,Meses,rotation=60,fontsize=font_size)
 levels=np.arange(1,16,1)
 plt.contourf(resul,levels=levels,cmap=cm)
 plt.grid(linewidth=1,color="black",linestyle="--")
 cbar=plt.colorbar(ticks=np.arange(1,16,1))
-cbar.ax.set_ylabel("UV Index",rotation=-90,va="bottom")
-plt.savefig("../Graficas/UVI-OMI.png",dpi=200)
+cbar.ax.set_ylabel("UV Index",rotation=-90,va="bottom",fontsize=11)
+plt.savefig("../Graficas/UVI-OMI.png",dpi=300)
