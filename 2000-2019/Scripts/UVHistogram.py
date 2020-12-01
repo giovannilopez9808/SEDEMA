@@ -64,6 +64,6 @@ rect=ax.bar(X,UV_count_t,color="#00838a")
 autolabel(rect)
 #<--------Guardado de la grafica-------------->
 plt.subplots_adjust(left=0.102,bottom=0.093,right=0.962,top=0.936)
-plt.savefig("../Graficas/HistTotal.png",dpi=400)
+plt.savefig("../Graficas/HistTotal.eps",dpi=400)
 plt.show()
 plt.clf()

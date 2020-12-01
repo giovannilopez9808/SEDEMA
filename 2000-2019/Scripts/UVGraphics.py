@@ -41,7 +41,7 @@ plt.plot(UVmax[:,0],pd2,label="Linear regression",color="red",linewidth=3)
 plt.subplots_adjust(left=0.102,right=0.979,bottom=0.16,top=0.917)
 plt.legend(ncol=3,mode="expand",frameon=False,fontsize="small")
 #<---------------Guardado de la grafica-------------->
-plt.savefig("../Graficas/UVyearlyError.png",dpi=300)
+plt.savefig("../Graficas/UVyearlyError.eps",dpi=300)
 plt.clf()
 mean_y=np.zeros([20,2])
 for i in range(np.size(UVmax[:,0])):
