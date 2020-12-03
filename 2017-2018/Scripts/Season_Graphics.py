@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 colors=["Blue","Red","Green","black","purple","pink","#f89edf","orange","Green","cyan"]
-dates=["180420","180604","171113","180202"]
+dates=["180420","170623","171113","180202"]
 titles=["Spring","Summer","Autumn","Winter"]
 dir_stations="../Stations/"
 stations=np.sort(os.listdir(dir_stations))
@@ -15,8 +15,8 @@ for date,title,ax in zip(dates,titles,axs):
     if ax in [axs[2],axs[-1]]:
         ax.set_xlabel("CST (UTC - 6h)",fontsize=font_size)
     ax.set_title(title,fontsize=font_size)
-    ax.set_ylim(0,14)
-    ax.set_yticks(np.arange(0,14+2,2))
+    ax.set_ylim(0,15)
+    ax.set_yticks(np.arange(0,15+3,3))
     ax.set_xlim(6,20)
     ax.set_xticks(np.arange(6,19+2,2))
     ax.tick_params(labelsize=font_size) 
@@ -28,4 +28,4 @@ for date,title,ax in zip(dates,titles,axs):
             ax.plot(hour,data,label=station,c=color,marker=".",ls="none",ms=3,alpha=0.7)
     ax.legend(ncol=5,mode="expand",loc="upper center",markerscale=4, scatterpoints=1,frameon=False,fontsize=11)
 plt.subplots_adjust(left=0.079,bottom=0.09,right=0.955,top=0.921,wspace=0.155,hspace=0.2)
-plt.savefig("../SeasonGraphic/season.eps",dpi=400)
+plt.savefig("../SeasonGraphic/season.png",dpi=400)
