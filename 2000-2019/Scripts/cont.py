@@ -5,11 +5,10 @@ import datetime
 hour_i,hour_f=11,14
 parameters=np.array(["CO","O3","NO2","PM10","SO2"],dtype=str)
 dir,sta_dir,arc="../Contaminantes/","../Datos/","CDMX.csv"
-stations,files=np.array(listdir(sta_dir),dtype=str),np.sort(listdir(dir))
-n_sta,n_param=np.size(stations),np.size(parameters)
+stations=np.array(listdir(sta_dir),dtype=str);files=np.sort(listdir(dir))
+n_param=np.size(parameters)
 info=np.zeros([n_param,365,20,2])
 for file in files:
-    print("Leyendo "+file)
     dates,stations_name,parameters_name,data_list=np.loadtxt(dir+file,skiprows=11,usecols=[0,1,2,3],delimiter=",",dtype=str,unpack=True)
     print("Analizando "+file)
     for date,station_name,parameter_name,data in zip(dates,stations_name,parameters_name,data_list):
