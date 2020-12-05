@@ -1,72 +1,61 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#<------------------------------Inicio de la grafica superior----------------------------->
-parameters,tick=["PM10","CO"],["PM$_{10}$","CO"]
-color,title=["#A25715","purple"],["$\mu g/m^3$","ppm"]
-dir,arc="../Archivos/","CDMX.txt"
-lw=4
-font_size=12
-#<-----Parametros para los limites de altura, los espacios y martriz de promedios--------->
-label=np.arange(2000,2020);x=np.arange(20);lim=[75,4];delta=[15,1];mean=np.zeros([20,2])
-for i in range(2):
-    file=dir+parameters[i]+arc
-    data=np.loadtxt(file)
-    for year in range(20):
-        mean[year,i]=np.mean(data[:,year])
-    fit=np.polyfit(x,mean[:,i],1)
-    prom=round(np.mean(mean[:,i]),3)
-    print(parameters[i],prom,round(fit[0]*100/prom,3))
-    print(fit)
-#<------------------------------ax1 - PM10 y CO, ax3 - O3 y NO2------------------------------------->
-plt.rc('font', size=font_size) 
-plt.rc('xtick', labelsize=font_size)    # fontsize of the tick labels
-plt.rc('ytick', labelsize=font_size) 
-fig,(ax1,ax3,ax4)=plt.subplots(3,figsize=(9,7))
-plt.subplots_adjust(top=0.9,bottom=0.14,left=0.11,right=0.9)
-ax2=ax1.twinx()
-#<-----------------------------------Grafica del PM10------------------------------------->
-ax1.plot(label,mean[:,0],ls="-",label=tick[0],color=color[0],linewidth=lw)
-ax1.set_ylim(0,lim[0]);ax1.set_ylabel(title[0])
-#<--------------------------------Eliminacion del eje x------------------------------------------>
-ax1.set_xticks([])
-#<-----------------------------------Grafica del CO------------------------------------->
-ax2.plot(label,mean[:,1],ls="-",label=tick[1],color=color[1],linewidth=lw)
-ax2.set_ylim(0,lim[1])
-yticks1=np.arange(0,lim[0]+delta[0],delta[0])
-yticks2=np.arange(0,lim[1]+delta[1],delta[1])
-ax2.set_yticks(yticks2);ax2.set_ylabel(title[1],rotation=-90,va="bottom")
-ax1.set_yticks(yticks1)
-#<---------------------------Localizacion de las legendas de cada compuesto------------------------>
-ax1.legend(frameon=False,ncol=2,loc="best",bbox_to_anchor=(0.88, 1));ax2.legend(frameon=False,ncol=2,loc="best")
-#<-----------------------Inicio de la grafica inferior---------------------------->
-parameters,title,color,tick=["NO2","O3"],"ppb",["blue","green"],["NO$_2$","O$_3$"]
-label,x=np.arange(2000,2020),np.arange(20)
-for i in range(np.size(parameters)):
-    file=dir+parameters[i]+arc
-    data=np.loadtxt(file)
+def promedio(data):
     mean=np.zeros(20)
     for year in range(20):
         mean[year]=np.mean(data[:,year])
+    return mean
+parameters=["PM10","CO","NO2","O3","AOD","SO2"]
+ticks=["PM$_{10}$","CO","NO$_2$","O$_3$","AOD$_{340}$","SO$_2$"]
+colors=["#A25715","purple","blue","green","#CB258C","black"]
+titles=["$\mu g/m^3$","ppm","ppb","ppb","AERONET AOD","ppb"]
+lim_list_sup=[75,4,50,90,0.8,50]
+lim_list_inf=[0,0,0,50,0,0]
+delta_list=[15,1,10,10,0.15,10]
+#lim_list_sup=[75,4,90,90,1,25]
+#delta_list=[15,1,15,15,0.25,5]
+dir,arc="../Archivos/","CDMX.csv"
+lw=4;font_size=12
+plt.rc('font', size=font_size) 
+plt.rc('xtick', labelsize=font_size)  
+plt.rc('ytick', labelsize=font_size-1) 
+fig,(ax1,ax3,ax4)=plt.subplots(3,figsize=(9,9))
+plt.subplots_adjust(top=0.97,bottom=0.1,left=0.09,right=0.9,hspace=0.15)
+ax2=ax1.twinx()
+ax5=ax4.twinx()
+axs=np.array([ax1,ax2,ax3,ax4,ax5,ax3])
+for parameter,ax,tick,color,title,lim_inf,lim_sup,delta in zip(parameters,axs,ticks,colors,titles,lim_list_inf,lim_list_sup,delta_list):
+    label=np.arange(2000,2020);x=np.arange(20)
+    if ax!=ax5:
+        file=dir+parameter+"_"+arc
+        data=np.loadtxt(file,delimiter=",")
+        mean=promedio(data)
+    else:
+        year_list,data=np.loadtxt(dir+parameter+".txt",skiprows=1,unpack=True)
+        x=year_list-2000
+        label=year_list
+        mean=data
     fit=np.polyfit(x,mean,1)
     prom=round(np.mean(mean),3)
-    print(parameters[i],prom,round(fit[0]*100/prom,3))
-    print(fit)
-    #<------------------------------------Graficas de O3 y NO2-------------------------------------->
-    ax3.plot(label,mean,ls="-",label=tick[i],color=color[i],linewidth=lw)
-ax3.set_ylim(0,80)
-ax3.set_yticks(np.arange(0,90+15,15))
-ax3.set_ylabel(title)
-ax3.set_xticks([])
-#<---------------------Leyendas de las graficas---------------------->
-ax3.legend(frameon=False,ncol=2,loc="upper right")
-label=np.arange(2000,2020);data=np.loadtxt("../Archivos/AOD.txt",skiprows=1)
-fit=np.poly1d(fit);pd=fit(data[:,0])
-ax4.plot(data[:,0],data[:,1],ls="-",label="AOD$_{340}$",color="#CB258C",linewidth=lw)
-ax4.set_xticks(label)
-ax4.set_xticklabels(label,rotation=60)
-ax4.set_xlim(1999,2020)
-ax4.set_yticks(np.arange(0,1+0.25,0.25))
-ax4.set_ylim(0,1)  
-ax4.set_ylabel("AERONET AOD") 
-ax4.legend(frameon=False,loc="upper right")
-plt.savefig("../Graficas/contCDMX.eps",dpi=300)
+    print(parameter,round(prom,1),round(fit[0]*100/prom,1),np.round(fit,2))
+    ax.plot(label,mean,ls="-",label=tick,color=color,linewidth=lw)
+    ax.set_xlim(2000,2019)
+    ax.set_ylim(lim_inf,lim_sup)
+    yticks=np.arange(lim_inf,lim_sup+delta,delta)
+    ax.set_yticks(yticks)
+    if not(ax in [ax4,ax5]):
+        ax.set_xticks([])
+    else:
+        if ax==ax4:
+            ax.set_xticks(label)
+            ax.set_xticklabels(label,rotation=60)
+    if ax in [ax2,ax5]:
+        ax.set_ylabel(title,rotation=-90,va="bottom")
+    else:
+        ax.set_ylabel(title)
+    if ax in [ax2,ax4]:
+        ax.legend(frameon=False,ncol=2,loc="best",bbox_to_anchor=(0.84, 1))
+    else:
+        ax.legend(frameon=False,ncol=2,loc="upper right")
+plt.savefig("../Graficas/contCDMX.png",dpi=300)
+#plt.show()
