@@ -35,13 +35,13 @@ plt.ylim(0,16)
 plt.errorbar(df["Date"],df["UVindex"],yerr=df["std"],marker="o",linewidth=1
 ,ls="--",alpha=0.6,color="black",capsize=5,markersize=2,label="Monthly average and SD")
 #<--------Ploteo del moving average para 3 meses----------->
-plt.plot(df["Date"],df["SMA_6"],label="Quarterly Moving average",linewidth=3,color="grey")
+plt.plot(df["Date"],df["SMA_6"],label="Moving average",linewidth=3,color="grey")
 #<-----------Ploteo de linear fit------------------>
-plt.plot(UVmax[:,0],pd2,label="Linear regression",color="red",linewidth=3)
+plt.plot(UVmax[:,0],pd2,label="Linear fit",color="red",linewidth=3)
 plt.subplots_adjust(left=0.102,right=0.979,bottom=0.16,top=0.917)
 plt.legend(ncol=3,mode="expand",frameon=False,fontsize="small")
 #<---------------Guardado de la grafica-------------->
-plt.savefig("../Graficas/UVyearlyError.eps",dpi=300)
+plt.savefig("../Graficas/UVyearlyError.png",dpi=300)
 plt.clf()
 mean_y=np.zeros([20,2])
 for i in range(np.size(UVmax[:,0])):
