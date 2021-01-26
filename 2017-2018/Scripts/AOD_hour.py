@@ -1,8 +1,11 @@
-# Este programa lee los archivos bajados de AERONET y crea un archivo en el cual
-# recompila el AOD medido a diferentes horas y diferentes dias, el formato es
-# 1 col - dia con el formato yymmdd
-# 2 col - hora
-# 3 col - AOD
+"""
+Este programa lee los archivos bajados de AERONET y crea un archivo en el cual
+recompila el AOD medido a diferentes horas y diferentes dias, el formato es
+1 col - dia con el formato yymmdd
+2 col - hora
+3 col - AOD 340
+4 col - AOD 500
+"""
 import numpy as np
 
 
@@ -35,6 +38,13 @@ def prom_AOD(sum, n):
     return str(round(prom, 4))
 
 
+def date_format(date):
+    day = date[0:2]
+    month = date[3:5]
+    year = date[6:11]
+    return year+month+day
+
+
 dir = "../Archivos/"
 # Archivos de Aeronet
 file_years = ["2017", "2018"]
@@ -65,7 +75,7 @@ for file_year in file_years:
             AOD_sum_340, n_340 = Count_AOD(data_AOD_340[i], AOD_sum_340, n_340)
             AOD_sum_500, n_500 = Count_AOD(data_AOD_500[i], AOD_sum_500, n_500)
         else:
-            AOD_file.write(dates[i-1]+","+obtain_hour(hours[i-1])
+            AOD_file.write(date_format(dates[i-1])+","+obtain_hour(hours[i-1])
                            + ","+prom_AOD(AOD_sum_340, n_340)
                            + ","+prom_AOD(AOD_sum_500, n_500)+"\n")
             AOD_sum_340, n_340 = init_AOD(data_AOD_340[i])

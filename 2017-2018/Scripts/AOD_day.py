@@ -28,6 +28,13 @@ def prom_AOD(sum, n):
     return str(round(prom, 4))
 
 
+def date_format(date):
+    day = date[0:2]
+    month = date[3:5]
+    year = date[6:11]
+    return year+month+day
+
+
 dir = "../Archivos/"
 # Archivos de Aeronet
 file_years = ["2017", "2018"]
@@ -58,7 +65,7 @@ for file_year in file_years:
             AOD_sum_340, n_340 = Count_AOD(data_AOD_340[i], AOD_sum_340, n_340)
             AOD_sum_500, n_500 = Count_AOD(data_AOD_500[i], AOD_sum_500, n_500)
         else:
-            AOD_file.write(dates[i-1]+","+prom_AOD(AOD_sum_340, n_340)
+            AOD_file.write(date_format(dates[i-1])+","+prom_AOD(AOD_sum_340, n_340)
                            + ","+prom_AOD(AOD_sum_500, n_500)+"\n")
             AOD_sum_340, n_340 = init_AOD(data_AOD_340[i])
             AOD_sum_500, n_500 = init_AOD(data_AOD_500[i])
