@@ -1,4 +1,0 @@
- DR Anual 2017 UVA          19.013994    
- DR Anual 2017 Erythermal   13.932257    
- DR Anual 2018 UVA                    NaN
- DR Anual 2018 Erythermal             NaN
