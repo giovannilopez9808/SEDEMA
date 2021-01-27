@@ -66,12 +66,10 @@ def write_data(file, date, aod, ozono, hour):
                   ozono, year, month, day, hour)
 
 
-def write_hours_number(file, n):
-    if n == 1:
-        if aod_values != [-1]:
-            n = str(n)
-            file.write(n+"\n")
-    else:
+def write_hours_number(file, ozono, aod_values):
+    if float(ozono) > 0:
+        aod_list=np.array(aod_values,dtype=float)
+        n = np.size(aod_list[aod_list > 0])
         n = str(n)
         file.write(n+"\n")
 
@@ -102,8 +100,7 @@ for nm, nm_col in zip(nm_list, nm_col_list):
             ozono = ozono[0]
             aod_values = search_values(aod_dates, aod_list, day_select)
             hour_values = search_values(aod_dates, hours, day_select)
-            n = np.size(aod_values)
-            write_hours_number(file, n)
+            write_hours_number(file, ozono, aod_values)
             for hour, aod in zip(hour_values, aod_values):
                 write_data(file, day_select, aod, ozono, hour)
         file.close()

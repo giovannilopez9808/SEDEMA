@@ -1,7 +1,7 @@
 import os
-name="tuv500DM.out"
+name="tuv500HM.out"
 files = {
-    "tuv": "tuv500DM.f",
+    "tuv": "tuvHM.f",
     "savout": "savout.f",
     "setaer": "setaer.f",
     "functs": "functs.f",
