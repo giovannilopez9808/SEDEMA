@@ -1,7 +1,7 @@
 import os
-name = "tuvEryDR.out"
+name = "tuvUVADR.out"
 files = {
-    "tuv": "tuvDR.f",
+    "tuv": "tuv_DR.f",
     "savout": "savout_local.f",
     "setaer": "setaer.f",
     "functs": "functs.f",
