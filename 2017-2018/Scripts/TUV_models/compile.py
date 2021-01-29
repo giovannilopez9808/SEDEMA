@@ -1,8 +1,8 @@
 import os
-name="tuv500HM.out"
+name = "tuvDR.out"
 files = {
-    "tuv": "tuvHM.f",
-    "savout": "savout.f",
+    "tuv": "tuvDR.f",
+    "savout": "savout_local.f",
     "setaer": "setaer.f",
     "functs": "functs.f",
     "grids": "grids.f",
@@ -37,8 +37,8 @@ files = {
     "wrflut": "wrflut.f",
     "wshift": "wshift.f"
 }
-comand="gfortran "
+comand = "gfortran "
 for key in files:
-    comand+=files[key]+" "
-comand+="-o "+name
+    comand += files[key]+" "
+comand += "-o "+name
 os.system(comand)

@@ -85,13 +85,13 @@
 
 * read headers and help file
          
-      OPEN(UNIT=kin,FILE='helpin', STATUS='OLD')
-      READ(kin,*) nhead, nhelp
-      DO i = 1, nhelp-1
-         READ(kin,110) ahline(i)
-      ENDDO
- 110  FORMAT(a70)
-      CLOSE(kin)
+!       OPEN(UNIT=kin,FILE='helpin', STATUS='OLD')
+!       READ(kin,*) nhead, nhelp
+!       DO i = 1, nhelp-1
+!          READ(kin,110) ahline(i)
+!       ENDDO
+!  110  FORMAT(a70)
+!       CLOSE(kin)
 
       DO i = 1, nhead
          WRITE(*,*) ahline(i)
@@ -144,8 +144,8 @@ CSM         PAUSE
          GO TO 10
       ENDIF
 
-      WRITE(*,*)
-      WRITE(*,*)
+      ! WRITE(*,*)
+      ! WRITE(*,*)
 
 * read input file:
 
@@ -383,25 +383,25 @@ c      finame = tmpfil(1:nlen)
       ENDDO
 
       IF(iout .EQ. 6) then
-         WRITE(*,100)
-         WRITE(*,1000)
-         WRITE(*,105) inpf, outf, nstr
-         WRITE(*,110) lat, lon, tmzone
-         WRITE(*,115) iyear, imonth, iday
-         WRITE(*,120) zstart, zstop, nz
-         WRITE(*,125) wstart, wstop, nwint
-         WRITE(*,130) tstart, tstop, nt
-         WRITE(*,135) lzenit, alsurf, psurf
-         WRITE(*,140) o3col, so2col, no2col
-         WRITE(*,145) taucld, zbase, ztop
-         WRITE(*,150) tauaer, ssaaer, alpha
-         WRITE(*,155) dirsun, difdn, difup
-         WRITE(*,160) zout, zaird, ztemp
-         WRITE(*,165) lirrad, laflux, lmmech
-         WRITE(*,170) lrates, isfix, nms
-         WRITE(*,175) ljvals, ijfix, nmj
-         WRITE(*,180) iwfix, itfix, izfix
-         WRITE(*,1000)
+         ! WRITE(*,100)
+         ! WRITE(*,1000)
+         ! WRITE(*,105) inpf, outf, nstr
+         ! WRITE(*,110) lat, lon, tmzone
+         ! WRITE(*,115) iyear, imonth, iday
+         ! WRITE(*,120) zstart, zstop, nz
+         ! WRITE(*,125) wstart, wstop, nwint
+         ! WRITE(*,130) tstart, tstop, nt
+         ! WRITE(*,135) lzenit, alsurf, psurf
+         ! WRITE(*,140) o3col, so2col, no2col
+         ! WRITE(*,145) taucld, zbase, ztop
+         ! WRITE(*,150) tauaer, ssaaer, alpha
+         ! WRITE(*,155) dirsun, difdn, difup
+         ! WRITE(*,160) zout, zaird, ztemp
+         ! WRITE(*,165) lirrad, laflux, lmmech
+         ! WRITE(*,170) lrates, isfix, nms
+         ! WRITE(*,175) ljvals, ijfix, nmj
+         ! WRITE(*,180) iwfix, itfix, izfix
+         ! WRITE(*,1000)
       ELSE
          WRITE(iout,100) 
          WRITE(iout,1000)

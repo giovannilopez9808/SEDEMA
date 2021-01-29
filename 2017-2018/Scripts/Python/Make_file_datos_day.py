@@ -9,7 +9,8 @@ def obtain_factor(nm):
 
 
 def folder_name_AOD(nm):
-    return "AOD"+nm+"DM/"
+    #return "AOD"+nm+"DM/"
+    return "AOD_DR_Ery/"
 
 
 def search_values(date_list, data_list, date):
@@ -22,7 +23,7 @@ def search_values(date_list, data_list, date):
 
 
 def format_date(date):
-    year = str(int("20"+date[0:2]))
+    year = str(int(date[0:2]))
     month = str(int(date[2:4]))
     day = str(int(date[4:6]))
     return year, month, day
