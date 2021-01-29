@@ -30,9 +30,9 @@ dir_stations = "../../Stations/"
 minutes_per_day = int(60*24)
 files_data = ["UVA_clean.csv", "UVB_clean.csv"]
 files_types = ["UVA", "Ery"]
-factors=[10,0.05774715]
+factors = [10, 0.05774715]
 hours = np.round(np.linspace(0, 24, 1440), 6)
-for file_data, files_type,factor in zip(files_data, files_types,factors):
+for file_data, files_type, factor in zip(files_data, files_types, factors):
     stations = np.loadtxt(dir+file_data, delimiter=",",
                           max_rows=1, dtype=str, usecols=np.arange(2, 17))
     dates = np.loadtxt(dir+file_data, delimiter=",",
@@ -43,7 +43,7 @@ for file_data, files_type,factor in zip(files_data, files_types,factors):
         mkdir(station, path=dir_stations)
         mkdir("Mediciones", path=dir_stations+station+"/")
         data = np.loadtxt(dir+file_data, delimiter=",",
-                            usecols=col, skiprows=1)
+                          usecols=col, skiprows=1)*factor
         for i_day in range(n_days):
             min_i = minutes_per_day*i_day
             min_f = minutes_per_day*(i_day+1)

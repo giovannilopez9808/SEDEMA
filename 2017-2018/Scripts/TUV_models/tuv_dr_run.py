@@ -41,9 +41,11 @@ def RD_calculation(data1, data2, aod, delta):
         decision = True
     return decision, aod, str(RD_abs), str(dif_relative)
 
+
 def write_aod(file, date, rd, dif):
     if rd != "-1":
         file.write(date+","+str(aod)+","+rd+","+dif+"\n")
+
 
 dir_stations = "../../Stations/"
 ver = "Ery"
@@ -74,7 +76,7 @@ for station in stations:
             line = date+" "+str(aod)+" "+ozono+" "+year+" "+month+" "+day+"\n"
             file_data.write(line)
             file_data.close()
-            os.system("./tuvDR.out")
+            os.system("./tuv"+ver+"DR.out")
             hour, data_model = read_tuv_results(
                 date, type=ver, hour_number=hour_total)
             isaodfine, aod, RD_abs, dif_relative = RD_calculation(

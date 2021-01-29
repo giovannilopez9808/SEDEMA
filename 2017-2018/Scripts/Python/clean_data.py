@@ -2,8 +2,9 @@ import numpy as np
 
 
 dir_data = "../../Archivos/"
-file = "UVB.csv"
-file_final = "UVB_clean.csv"
+ver = "UVB"
+file = ver+".csv"
+file_final = ver+"_clean.csv"
 data_list = np.loadtxt(dir_data+file, delimiter=",", dtype=str)
 file_clean = open(dir_data+file_final, "w")
 n, m = np.shape(data_list)
