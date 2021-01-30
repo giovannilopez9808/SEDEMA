@@ -221,8 +221,8 @@
        character stafile*3,type*8
 
 * --- END OF DECLARATIONS ---------------------------------------------
-       type="AOD500DM"
-      open(101,file="../station.txt")
+       type="AODDRUVA"
+      open(101,file="../station_dr_uva.txt")
       read(101,*) nsta
       do sta=1,nsta
 * re-entry point
@@ -264,7 +264,8 @@ c      intrct = .FALSE.
          iout = 30
       ENDIF
 !Se llama al archivo que contiene todos los par�metros de cada d�a
-      open(13,file="../../Stations/"//stafile//"/"//type//"/datos.txt")
+      open(13,file="../../Stations/"//stafile
+     $ //"/"//type//"/datos_w_aod.txt")
         read(13,*) narc
        do  archivo=1,narc
        read(13,*) outfil,tauaer,o3_tc,iyear,imonth,iday
