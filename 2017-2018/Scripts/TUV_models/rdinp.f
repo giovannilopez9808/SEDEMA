@@ -253,7 +253,7 @@ CSM         PAUSE
 
       CALL atrim(outfil, tmpfil, nlen)
 c      finame = tmpfil(1:nlen)
-      finame = '../'//tmpfil(1:nlen)//'.txt'
+      finame = '../'//tmpfil//'.txt'
       OPEN(UNIT=20,FILE=finame,STATUS='UNKNOWN',ERR=60)
       CLOSE(20)
       GO TO 65
@@ -282,7 +282,7 @@ c      finame = tmpfil(1:nlen)
 * (cannot overwrite default input files: defin1, defin2, defin3 )
 
       CALL atrim(savfil, tmpfil, nlen)
-      finame = tmpfil(1:nlen)
+      finame = tmpfil
       IF(finame .EQ. 'defin1' .OR. finame .EQ. 'defin2' .OR.
      $     finame .EQ. 'defin3' .OR. finame .EQ. 'defin4') THEN
          WRITE(*,*) '****** Cannot overwrite default input files'
