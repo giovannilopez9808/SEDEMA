@@ -1,7 +1,7 @@
 TUV inputs:
 ==================================================================
 inpfil =         CHO   outfil =        cdmx   nstr =            -2
-lat =         19.532   lon =        -99.030   tmzone =        -6.0
+lat =         19.529   lon =        -99.204   tmzone =        -6.0
 iyear =         2016   imonth =           1   iday =             9
 zstart =       2.245   zstop =       80.000   nz =              81
 wstart =     280.000   wstop =      400.000   nwint =          120

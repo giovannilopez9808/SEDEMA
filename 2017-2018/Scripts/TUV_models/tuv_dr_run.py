@@ -48,7 +48,7 @@ def write_aod(file, date, rd, dif):
 
 
 dir_stations = "../../Stations/"
-ver = "Ery"
+ver = "UVA"
 hour_i = 11
 hour_f = 16
 aod_delta = 0.01

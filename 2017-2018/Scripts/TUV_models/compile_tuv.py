@@ -1,5 +1,5 @@
 import os
-name = "tuvUVADR.out"
+name = "tuvEryDR.out"
 files = {
     "tuv": "tuv_DR.f",
     "savout": "savout_local.f",

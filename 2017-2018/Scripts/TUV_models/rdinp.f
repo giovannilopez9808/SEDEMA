@@ -80,7 +80,7 @@
 
       IF(.NOT. intrct) GO TO 12
 
-      WRITE(*,100) 
+      ! WRITE(*,100) 
  100  FORMAT(66('='))
 
 * read headers and help file
@@ -108,7 +108,7 @@
 CSM         PAUSE
       ENDIF
 
-      WRITE(*,100) 
+      ! WRITE(*,100) 
 
 * choose input file
 
@@ -312,7 +312,7 @@ c      finame = tmpfil(1:nlen)
 
  99   CONTINUE
 
-      WRITE(*,*) 'done: loading inputs'
+      ! WRITE(*,*) 'done: loading inputs'
 
       CALL write1(kout,
      $     inpfil, outfil, nstr,   lat,    lon,    tmzone,
@@ -1451,7 +1451,7 @@ c      ENDIF
          WRITE(*,*) 
      $        '<Enter> = done'
          
-         READ(*,100) ainp
+         ! READ(*,100) ainp
          IF(ainp .EQ. ' ') GO TO 70
          IF(INDEX(ainp,'n') .NE. 0) GO TO 20
          IF(INDEX(ainp,'r') .NE. 0) GO TO 10
