@@ -1,9 +1,9 @@
 import os
-name = "tuv_DRDM.out"
+name = "tuv_DM.out"
 files = {
     "tuv": "tuv_DM.f",
     "savout": "savout.f",
-    "setaer": "setaer.f",
+    "setaer": "setaer_500.f",
     "functs": "functs.f",
     "grids": "grids.f",
     "la_srb": "la_srb.f",

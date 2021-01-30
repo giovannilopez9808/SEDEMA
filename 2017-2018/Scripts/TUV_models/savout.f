@@ -127,7 +127,7 @@
      $     svi_zw, svi_tw, svi_zt,
 * Element aggregate to save in Folder Results TUV
 * Gamaliel Lopez Padilla
-     $     sta,tipo)
+     $     station,aod_type)
 
       IMPLICIT NONE
       INCLUDE 'params'
@@ -175,7 +175,7 @@
       INTEGER nlen
 ! Element aggregate to save de model result in folder "station/Resultados TUV" 
       !sta is going to save de name of the station
-      character sta*3,tipo*8
+      character station*3,aod_type*8
       DO iw = 1, nw - 1
          wu(iw) = wl(iw+1)
          wc(iw) = (wl(iw) + wu(iw))/2.
@@ -185,7 +185,7 @@
          CALL atrim(outfil,finame,nlen)
          OPEN(UNIT=iout,
      $        FILE='../../Stations/'
-     $        //sta//"/"//tipo//"/Resultados/"
+     $        //station//"/"//aod_type//"/Resultados/"
      $        //finame(1:nlen)//'.txt',
      $        STATUS='UNKNOWN')
       ENDIF

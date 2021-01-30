@@ -218,11 +218,11 @@
       
 ! Agregado por Giovanni Gamaliel L�pez Padilla
        integer ciclohora,archivo,narc,nsta,sta
-       character stafile*3,type*8
+       character type*8
 
 * --- END OF DECLARATIONS ---------------------------------------------
-       type="AODDRUVA"
-      open(101,file="../station_dr_uva.txt")
+       type="AODDREry"
+      open(101,file="../station.txt")
       read(101,*) nsta
       do sta=1,nsta
 * re-entry point
@@ -237,14 +237,7 @@ c      OPEN(UNIT=kout,FILE='tuvlog',STATUS='UNKNOWN')
 * ___ SECTION 1: SIMPLE INPUT VARIABLES --------------------------------
 ******* Read simple input variables from a file:
 
-* can read interactively (intrct = .TRUE.) 
-* or in batch mode (intrct = .FALSE.)
-
-      intrct = .TRUE.
-c      intrct = .FALSE.
-      IF ( .NOT. intrct) inpfil = 'usrinp'
-      read(101,*) stafile
-      inpfil=stafile
+      read(101,*) inpfil
       write(*,*) "Calculando la estacion ",inpfil
       CALL rdinp(intrct, 
      $     inpfil, outfil, nstr,   lat,    lon,    tmzone,
@@ -264,13 +257,12 @@ c      intrct = .FALSE.
          iout = 30
       ENDIF
 !Se llama al archivo que contiene todos los par�metros de cada d�a
-      open(13,file="../../Stations/"//stafile
+      open(13,file="../../Stations/"//inpfil
      $ //"/"//type//"/datos_w_aod.txt")
         read(13,*) narc
        do  archivo=1,narc
        read(13,*) outfil,tauaer,o3_tc,iyear,imonth,iday
        write(*,*) "Escribiendo dia ",outfil
-       if(o3_tc.ne.0) then
 !Ciclo para calcular la irradiancia para cada minuto cada hora
        do ciclohora=5,20
            tstart=ciclohora-1
@@ -724,12 +716,11 @@ c 444  format(1pe11.4,1x,a50)
      $     svj_zj, svj_tj, svj_zt,
      $     svr_zs, svr_ts, svr_zt,
      $     svf_zw, svf_tw, svf_zt,
-     $     svi_zw, svi_tw, svi_zt,stafile,type)
+     $     svi_zw, svi_tw, svi_zt,inpfil,type)
 
  30   continue
  !Cierre del do para la irradincia para cada minuto
       end do
-      end if
 !Cierre del do el cual hace que se lean todos los par�metros de todos los d�as
       end do
       close(13)
