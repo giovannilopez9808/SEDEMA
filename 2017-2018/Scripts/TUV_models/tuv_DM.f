@@ -218,7 +218,7 @@
       
 ! Agregado por Giovanni Gamaliel L�pez Padilla
        integer ciclohora,archivo,narc,nsta,sta
-       character type*8
+       character type*8,station*3
 
 * --- END OF DECLARATIONS ---------------------------------------------
        type="AODDREry"
@@ -237,7 +237,8 @@ c      OPEN(UNIT=kout,FILE='tuvlog',STATUS='UNKNOWN')
 * ___ SECTION 1: SIMPLE INPUT VARIABLES --------------------------------
 ******* Read simple input variables from a file:
 
-      read(101,*) inpfil
+      read(101,*) station
+      inpfil=station
       write(*,*) "Calculando la estacion ",inpfil
       CALL rdinp(intrct, 
      $     inpfil, outfil, nstr,   lat,    lon,    tmzone,
@@ -257,7 +258,7 @@ c      OPEN(UNIT=kout,FILE='tuvlog',STATUS='UNKNOWN')
          iout = 30
       ENDIF
 !Se llama al archivo que contiene todos los par�metros de cada d�a
-      open(13,file="../../Stations/"//inpfil
+      open(13,file="../../Stations/"//station
      $ //"/"//type//"/datos_w_aod.txt")
         read(13,*) narc
        do  archivo=1,narc
@@ -716,7 +717,7 @@ c 444  format(1pe11.4,1x,a50)
      $     svj_zj, svj_tj, svj_zt,
      $     svr_zs, svr_ts, svr_zt,
      $     svf_zw, svf_tw, svf_zt,
-     $     svi_zw, svi_tw, svi_zt,inpfil,type)
+     $     svi_zw, svi_tw, svi_zt,station,type)
 
  30   continue
  !Cierre del do para la irradincia para cada minuto

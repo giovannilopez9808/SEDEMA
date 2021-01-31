@@ -1,11 +1,11 @@
 from os import listdir
 import numpy as np
-ver = "UVA"
+ver = "Ery"
 dir_stations = "../../Stations/"
 stations = sorted(listdir(dir_stations))
 for station in stations:
-    if not(station in ["MPA","PED"]):
-        dir_aod_results = dir_stations+station+"/AOD_DR_"+ver+"/"
+    if not(station in []):
+        dir_aod_results = dir_stations+station+"/AODDR"+ver+"/"
         dates_data, ozono, year, month, day = np.loadtxt(
             dir_aod_results+"datos.txt", skiprows=1, unpack=True, usecols=[0, 2, 3, 4, 5], dtype=str)
         dates_aod, aod_list = np.loadtxt(
