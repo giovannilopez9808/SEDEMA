@@ -72,8 +72,9 @@ def prom(type_c, n_dosis, time_uva, time_uva_mean, car, i, medication, hour_i, h
                                   0] += time_uva[hour, day, type_d, type_c, 0]
                     time_uva_mean[hour, month, type_d, type_c, 1] += 1
             for month in range(12):
-                time_uva_mean[hour, month, type_d, type_c, 0] = math.ceil(
-                    time_uva_mean[hour, month, type_d, type_c, 0]/time_uva_mean[hour, month, type_d, type_c, 1])
+                if time_uva_mean[hour, month, type_d, type_c, 1] != 0:
+                    time_uva_mean[hour, month, type_d, type_c, 0] = math.ceil(
+                        time_uva_mean[hour, month, type_d, type_c, 0]/time_uva_mean[hour, month, type_d, type_c, 1])
             for day in range(365):
                 if time_uva[hour, day, type_d, type_c, 0] == 0:
                     month = n_month(day)
@@ -111,10 +112,10 @@ for car in carp:
     # <----Cilco para variar entre estaciones---->
     for station in stations:
         # <-----Carpeta donde se localizan los dias------>
-        dir_med = dirstations+station+"/Resultados/"
+        dir_med = dirstations+station+"/ResultadosTUV/"
         dir_data = dirstations+station+"/AOD500DM/"
         # <-----Lectura de los dias----->
-        dates = np.loadtxt(dir_data+"datos500.txt",
+        dates = np.loadtxt(dir_data+"datos.txt",
                            skiprows=1, usecols=0, dtype=str)
         # <-----Ciclo para variar los dias---->
         for date in dates:
@@ -135,18 +136,18 @@ for car in carp:
                     for hour in range(n_hour):
                         time_uvb[hour, num, type_d, type_c, 0], time_uvb[hour, num, type_d, type_c, 1] = cont(
                             type_d, n_MED, hour, num, MED, n_uv, cloud, time_uvb, type_c, data_uvb)
-    for type_c in range(n_cloud):
-        for hour in range(n_hour):
-            for day in range(365):
-                for type_d in range(n_dosis):
-                    if time_uva[hour, day, type_d, type_c, 1] != 0:
-                        time_uva[hour, day, type_d, type_c, 0] = math.ceil(
-                            time_uva[hour, day, type_d, type_c, 0]/time_uva[hour, day, type_d, type_c, 1])
-                for type_d in range(n_MED):
-                    if time_uvb[hour, day, type_d, type_c, 1] != 0:
-                        time_uvb[hour, day, type_d, type_c, 0] = math.ceil(
-                            time_uvb[hour, day, type_d, type_c, 0]/time_uvb[hour, day, type_d, type_c, 1])
-car = "Data/"
+for type_c in range(n_cloud):
+    for hour in range(n_hour):
+        for day in range(365):
+            for type_d in range(n_dosis):
+                if time_uva[hour, day, type_d, type_c, 1] != 0:
+                    time_uva[hour, day, type_d, type_c, 0] = math.ceil(
+                        time_uva[hour, day, type_d, type_c, 0]/time_uva[hour, day, type_d, type_c, 1])
+            for type_d in range(n_MED):
+                if time_uvb[hour, day, type_d, type_c, 1] != 0:
+                    time_uvb[hour, day, type_d, type_c, 0] = math.ceil(
+                        time_uvb[hour, day, type_d, type_c, 0]/time_uvb[hour, day, type_d, type_c, 1])
+car = "Data3/"
 print("Escribiendo archivos")
 for type_c in range(n_cloud):
     prom(type_c, n_dosis, time_uva, time_uva_mean,
