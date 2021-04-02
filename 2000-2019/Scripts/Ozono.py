@@ -1,6 +1,6 @@
 #<---------------Programa que recopila la informacion del ozono------------>
-import numpy as np
 from os import listdir
+import numpy as np
 car="../Ozono/"
 #<------------Nombre de los archivos-------------->
 files=listdir(car)

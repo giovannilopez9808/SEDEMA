@@ -58,7 +58,9 @@ font_size = 12
 plt.rc('font', size=font_size)
 plt.rc('xtick', labelsize=font_size)
 plt.rc('ytick', labelsize=font_size-1)
-fig, (ax1, ax3, ax4) = plt.subplots(3, figsize=(9, 9))
+fig, (ax1, ax3, ax4) = plt.subplots(3,
+                                    figsize=(9, 9),
+                                    sharex=True)
 plt.subplots_adjust(top=0.97,
                     bottom=0.1,
                     left=0.09,
@@ -100,13 +102,9 @@ for input, ax in zip(inputs, axs):
     ax.set_ylim(lim_inf, lim_sup)
     yticks = np.arange(lim_inf, lim_sup+delta, delta)
     ax.set_yticks(yticks)
-    if not(ax in [ax4, ax5]):
-        ax.set_xticks([])
-    else:
-        if ax == ax4:
-            ax.set_xticks(label)
-            ax.set_xticklabels(label,
-                               rotation=60)
+    ax.set_xticks(label)
+    ax.set_xticklabels(label,
+                       rotation=60)
     if ax in [ax2, ax5]:
         ax.set_ylabel(title,
                       rotation=-90,
