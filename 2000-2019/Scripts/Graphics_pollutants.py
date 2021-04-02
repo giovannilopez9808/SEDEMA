@@ -3,14 +3,6 @@ import pandas as pd
 import numpy as np
 
 inputs = {
-    "PM10": {
-        "tick": "PM$_{10}$",
-        "color": "#A25715",
-        "title": "PM$_{10}$ ($\mu g/m^3$)",
-        "lim sup": 75,
-        "lim inf": 0,
-        "delta": 15
-    },
     "CO": {
         "tick": "CO",
         "color": "purple",
@@ -18,6 +10,14 @@ inputs = {
         "lim sup": 4,
         "lim inf": 0,
         "delta": 1
+    },
+    "PM10": {
+        "tick": "PM$_{10}$",
+        "color": "#A25715",
+        "title": "PM$_{10}$ ($\mu g/m^3$)",
+        "lim sup": 75,
+        "lim inf": 0,
+        "delta": 15
     },
     "NO2": {
         "tick": "NO$_2$",
@@ -38,7 +38,7 @@ inputs = {
     "AOD": {
         "tick": "AOD$_{340}$",
         "color": "#CB258C",
-        "title": "AERONET AOD",
+        "title": "AERONET AOD$_{340}$",
         "lim sup": 0.8,
         "lim inf": 0,
         "delta": 0.15
@@ -68,7 +68,8 @@ plt.subplots_adjust(top=0.97,
                     hspace=0.15)
 ax2 = ax1.twinx()
 ax5 = ax4.twinx()
-axs = np.array([ax1, ax2, ax3, ax4, ax5, ax3])
+axs = np.array([ax2, ax1, ax3, ax4, ax5, ax3])
+print("Pollutant\t Mean\t  e\t  m\t   b")
 for input, ax in zip(inputs, axs):
     tick = inputs[input]["tick"]
     color = inputs[input]["color"]
@@ -91,7 +92,7 @@ for input, ax in zip(inputs, axs):
         mean = data
     fit = np.polyfit(x, mean, 1)
     prom = round(np.mean(mean), 3)
-    print("{} {:.1f} {:.1f} {:.2f} {:.2f}".format(
+    print("{}\t\t {:.1f}\t {:.1f}\t {:.2f}\t {:.2f}".format(
         input, prom, fit[0]*100/prom, fit[0], fit[1]))
     ax.plot(label, mean,
             ls="-",
@@ -111,7 +112,7 @@ for input, ax in zip(inputs, axs):
                       va="bottom")
     else:
         ax.set_ylabel(title)
-    if ax in [ax2, ax4]:
+    if ax in [ax1, ax4]:
         ax.legend(frameon=False,
                   ncol=2, loc="best",
                   bbox_to_anchor=(0.84, 1))
