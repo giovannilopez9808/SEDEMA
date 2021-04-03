@@ -1,4 +1,12 @@
 import datetime
+import os
+
+
+def mkdir(name, path=""):
+    try:
+        os.mkdir(path+name)
+    except FileExistsError:
+        pass
 
 
 def obtain_month_names():
@@ -39,3 +47,9 @@ def find_location(name, data_list):
     for loc, elements in enumerate(data_list):
         if name == elements:
             return loc
+
+
+def date2yymmdd(date):
+    year, month, day = str(date).split("-")
+    year = year[2:4]
+    return year+month+day
