@@ -52,12 +52,16 @@ inputs = {
         "delta": 10
     },
 }
-dir, arc = "../Archivos/", "CDMX.csv"
-lw = 4
-font_size = 12
-plt.rc('font', size=font_size)
-plt.rc('xtick', labelsize=font_size)
-plt.rc('ytick', labelsize=font_size-1)
+parameters = {
+    "path data": "../Archivos/",
+    "file data": "CDMX.csv",
+    "path graphics": "../Graphics/",
+    "linewidth": 4,
+    "fontsize": 12
+}
+plt.rc('font', size=parameters["fontsize"])
+plt.rc('xtick', labelsize=parameters["fontsize"])
+plt.rc('ytick', labelsize=parameters["fontsize"]-1)
 fig, (ax1, ax3, ax4) = plt.subplots(3,
                                     figsize=(9, 9),
                                     sharex=True)
@@ -80,11 +84,11 @@ for input, ax in zip(inputs, axs):
     label = np.arange(2000, 2020)
     x = np.arange(20)
     if ax != ax5:
-        file = dir+input+"_"+arc
+        file = parameters["path data"]+input+"_"+parameters["file data"]
         data = pd.read_csv(file)
         mean = list(data.mean())
     else:
-        year_list, data = np.loadtxt(dir+input+".txt",
+        year_list, data = np.loadtxt(parameters["path data"]+input+".txt",
                                      skiprows=1,
                                      unpack=True)
         x = year_list-2000
@@ -98,7 +102,7 @@ for input, ax in zip(inputs, axs):
             ls="-",
             label=tick,
             color=color,
-            linewidth=lw)
+            linewidth=parameters["linewidth"])
     ax.set_xlim(2000, 2019)
     ax.set_ylim(lim_inf, lim_sup)
     yticks = np.arange(lim_inf, lim_sup+delta, delta)
@@ -120,5 +124,4 @@ for input, ax in zip(inputs, axs):
         ax.legend(frameon=False,
                   ncol=2,
                   loc="upper right")
-# plt.savefig("../Graficas/contCDMX.png",dpi=300)
-plt.show()
+plt.savefig(parameters["path graphics"]+"pollutants.png", dpi=400)

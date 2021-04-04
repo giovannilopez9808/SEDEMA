@@ -1,5 +1,6 @@
 from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.pyplot as plt
+from functions import *
 import pandas as pd
 import numpy as np
 import datetime
@@ -9,14 +10,6 @@ def forceAspect(ax, aspect):
     im = ax.get_images()
     extent = im[0].get_extent()
     ax.set_aspect(abs((extent[1]-extent[0])/(extent[3]-extent[2]))/aspect)
-
-
-def obtain_month_names():
-    names = []
-    for i in range(1, 13):
-        date = datetime.date(2000, i, 1)
-        names.append(date.strftime("%B"))
-    return names
 
 
 numyear = ["2005",
