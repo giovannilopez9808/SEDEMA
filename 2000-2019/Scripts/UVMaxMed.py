@@ -32,7 +32,6 @@ for i in range(np.size(lon)):
                 data = np.loadtxt(car+file, usecols=1)
                 # <--------Ciclo que varia en las horas--------->
                 for hour in range(np.size(data)):
-                    print(hour)
                     if data[hour] > 0:
                         # <----------If para obtener el mayor en la base de datos anual--------------->
                         if annual[year, day, hour] < data[hour]:
