@@ -1,60 +1,75 @@
 # <------Programa que calcula los maximos diarios anuales de la base de datos----->
-import numpy as np
+from functions import *
 from os import listdir
+import numpy as np
 import datetime
-carp = "../Stations/"
+inputs = {
+    "path stations": "../Stations/",
+    "path data": "../Archivos/",
+    "wavelength": {
+        "UVA": {
+            "filename": "UVA"
+        },
+        "Erythemal": {
+            "filename": "Ery"
+        },
+    },
+}
 # <-------Lista de estaciones en la base de datos------->
-station = listdir(carp)
-carplon = ["UVA", "Erythemal"]
-lon = ["UVA", "Ery"]
+stations = sorted(listdir(inputs["path stations"]))
 # <----Ciclo que varia en eritemica y UVA---->
-for i in range(np.size(lon)):
-    print("Analizando "+carplon[i])
-    annual = np.zeros([20, 365, 24])
-    daily = np.zeros([24, 365])
+for wavelength in inputs["wavelength"]:
+    print("Analizando {}".format(wavelength))
+    max_annual = np.zeros([20, 365, 24])
+    max_daily = np.zeros([24, 365])
     # <------Ciclo que varia las estaciones------->
-    for namestation in station:
-        if len(namestation) == 3:
-            car = carp+namestation+"/"+carplon[i]+"/"
+    for station in stations:
+        if len(station) == 3:
+            dir_station = inputs["path stations"]+station+"/"+wavelength+"/"
             # <----Lista de archivos que hay en la estacion----->
-            files = listdir(car)
+            files = sorted(listdir(dir_station))
             # <----Ciclo que varia en los archivos---->
             for file in files:
-                year, month, day = int(
-                    "20"+file[0:2]), int(file[2:4]), int(file[4:6])
-                day = (datetime.date(year, month, day) -
-                       datetime.date(year, 1, 1)).days
-                # <----------If que funciona para los dias bisiestos------------>
-                if day > 364:
-                    day = 364
-                year = year-2000
+                date = obtain_date_from_filename(file)
+                day = obtain_day_consecutive(date)
+                year = date.year-2000
                 # <--------Lectura de la información----------->
-                data = np.loadtxt(car+file, usecols=1)
+                data = np.loadtxt(dir_station+file, usecols=1)
                 # <--------Ciclo que varia en las horas--------->
                 for hour in range(np.size(data)):
                     if data[hour] > 0:
                         # <----------If para obtener el mayor en la base de datos anual--------------->
-                        if annual[year, day, hour] < data[hour]:
-                            annual[year, day, hour] = data[hour]
+                        if max_annual[year, day, hour] < data[hour]:
+                            max_annual[year, day, hour] = data[hour]
     print("Calculando maximos diarios")
     # <----------Apertura del archivo resultante que contendra el maximo diario por hora------->
-    file = open("../Archivos/MaxMe"+lon[i]+".2txt", "w")
+    file = open(inputs["path data"]+"Max_daily_" +
+                inputs["wavelength"][wavelength]["filename"]+".csv", "w")
+
     # <-------Ciclo que varia en las horas--------->
+    file.write("Hour")
+    for day in range(365):
+        date = conseday_to_date(day, 2001)
+        date = date_formtat_mmdd(date)
+        file.write(",{}".format(date))
+    file.write("\n")
     for hour in range(24):
+        file.write("{}".format(hour))
         # <------------Ciclo que varia en los dias------------>
         for day in range(365):
             # <----------Ciclo que varia en los años------------->
             for year in range(20):
-                if daily[hour, day] < annual[year, day, hour]:
-                    daily[hour, day] = annual[year, day, hour]
+                if max_daily[hour, day] < max_annual[year, day, hour]:
+                    max_daily[hour, day] = max_annual[year, day, hour]
             # <-----Escritura del archivo-------->
-            file.write(str(daily[hour, day])+" ")
+            file.write(",{:.4f}".format(max_daily[hour, day]))
         file.write("\n")
     file.close()
     UVmax = np.zeros([20, 12, 2])
     # <---------Apertura del archivo que contendra el maximo mensual-------->
-    file = open("../Archivos/Max"+lon[i]+".2txt", "w")
-    n = 0
+    file = open(inputs["path data"]+"Max_Monthly_" +
+                inputs["wavelength"][wavelength]["filename"]+".csv", "w")
+    file.write("Date,Max Data,std\n")
     UVdata = np.zeros([20, 365])
     prom_UV = np.zeros([20, 12, 2])
     std = np.zeros([20, 12, 2])
@@ -66,8 +81,8 @@ for i in range(np.size(lon)):
         for day in range(365):
             max = 0
             for hour in range(11, 15):
-                if max < annual[year, day, hour]:
-                    max = annual[year, day, hour]
+                if max < max_annual[year, day, hour]:
+                    max = max_annual[year, day, hour]
             # <-----------Calculo del mes------------->
             if max > 0:
                 month = (datetime.date(2000+year, 1, 1) +
@@ -112,12 +127,12 @@ for i in range(np.size(lon)):
                 std[year, month, 0] = prom_std[0]
         # <--------Ciclo que varia en el mes--------->
         for month in range(12):
+            date = datetime.date(year+2000, month+1, 1)
             if UVmax[year, month, 1] != 0:
                 UVmax[year, month, 0] = round(
                     UVmax[year, month, 0]/UVmax[year, month, 1], 2)
             if UVmax[year, month, 0] != 0:
                 # <---------Escritura del archivo---------->
-                file.write(
-                    str(n)+" "+str(UVmax[year, month, 0])+" "+str(std[year, month, 0])+"\n")
-            n += 1
+                file.write("{},{:.4f},{:.4f}\n".format(
+                    date, UVmax[year, month, 0], std[year, month, 0]))
     file.close()

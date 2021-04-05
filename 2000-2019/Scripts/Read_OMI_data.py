@@ -14,7 +14,7 @@ inputs = {
     "file data": "Data_OMI_",
     "product": "OMUVB",
     "skiprows": 50,
-    "column": "CSUVindex",
+    "column": "OPUVindex",
     "file results": "UVI_"
 }
 data = pd.read_fwf(inputs["path data"]+inputs["file data"]+inputs["product"]+".dat",

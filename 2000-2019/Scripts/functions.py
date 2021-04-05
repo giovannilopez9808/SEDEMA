@@ -1,4 +1,5 @@
 import datetime
+import locale
 import os
 
 
@@ -53,6 +54,14 @@ def date2yymmdd(date):
     year, month, day = str(date).split("-")
     year = year[2:4]
     return year+month+day
+
+
+def obtain_date_from_filename(name):
+    year = int("20"+name[0:2])
+    month = int(name[2:4])
+    day = int(name[4:6])
+    date = datetime.date(year, month, day)
+    return date
 
 
 def forceAspect(ax, aspect):
