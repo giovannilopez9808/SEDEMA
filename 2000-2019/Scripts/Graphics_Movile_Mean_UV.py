@@ -1,9 +1,9 @@
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
+from os import listdir
 import pandas as pd
 import numpy as np
 import datetime
-from os import listdir
 inputs = {
     "year initial": 2000,
     "year final": 2019,
@@ -25,7 +25,7 @@ data["Max Data"] = data["Max Data"]*40
 data["std"] = data["std"]*40
 # <-----------------Linear fit---------------------->
 fit = np.polyfit(data.index, data["Max Data"], 1)
-print(fit)
+m = fit[0]
 fit = np.poly1d(fit)
 pd2 = fit(data.index)
 # <------------Moving average para 6 meses------------->
@@ -73,13 +73,12 @@ plt.legend(ncol=3,
 # <---------------Guardado de la grafica-------------->
 plt.show()
 #plt.savefig("../Graficas/UVyearlyError.png", dpi=300)
-plt.clf()
-mean_y = np.zeros([20, 2])
-# for i in data.index:
-#     year = int(UVmax[i, 0]/12)
-#     mean_y[year, 0] += UVmax[i, 1]
-#     mean_y[year, 1] += 1
-# for year in range(20):
-#     mean_y[year, 0] = mean_y[year, 0]/mean_y[year, 1]
-# fit = np.polyfit(np.arange(20), mean_y[:, 0], 1)
-# print(fit)
+# Tendencia
+data.index = pd.to_datetime(data["Date"])
+yearly_mean = data["Max Data"].resample("YS").mean()
+mean_data = yearly_mean.mean()
+fit = np.polyfit(np.arange(inputs["year final"]-inputs["year initial"]+1),
+                 list(yearly_mean), 1)
+print("Parameter\tm\tMean\tTendency")
+print("UVI:\t   \t{:.2f}\t{:.1f}\t{:.1f}".format(
+    fit[0], mean_data, fit[0]*100/mean_data))
