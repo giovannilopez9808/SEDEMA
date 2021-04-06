@@ -29,13 +29,16 @@ numyear = ["2005",
            "2019"]
 inputs = {
     "path data": "../Archivos/",
-    "column": "CSUVindex",
+    "column": "OPUVindex",
     "year initial": 2005,
     "year final": 2019,
+    "UV minium": 1,
+    "UV maximum": 17,
 }
 month_days = np.arange(0, 365, 30.2)
 month_names = obtain_month_names()
-print(month_names)
+UV_values = np.arange(inputs["UV minium"],
+                      inputs["UV maximum"])
 UVI_map = np.zeros((inputs["year final"]-inputs["year initial"]+1,
                     365))
 data = pd.read_csv(inputs["path data"]+"UVI_"+inputs["column"]+"_clean.csv",
@@ -71,7 +74,7 @@ colors = [(0, 0, 0),
           (156/255, 92/255, 188/255),
           (184/255, 150/255, 235/255),
           (198/255, 198/255, 248/255)]
-n_bin = 18
+n_bin = len(colors)
 font_size = 12
 cmap_name = "UV_Index"
 cm = LinearSegmentedColormap.from_list(cmap_name, colors, N=n_bin)
@@ -91,18 +94,15 @@ ax.set_xticklabels(month_names,
                    fontsize=font_size)
 map = ax.imshow(UVI_map,
                 cmap=cm,
-                vmin=0,
-                vmax=17,
                 origin="lower")
-forceAspect(ax, 1.5)
+forceAspect(ax, 1.35)
 cbar = fig.colorbar(map,
-                    values=np.arange(1, 18))
+                    values=UV_values+0.5)
 cbar.ax.set_ylabel("UV Index",
                    rotation=-90,
                    va="bottom",
                    fontsize=11)
-cbar.set_ticks(np.arange(1, 18, 1)-0.5)
-cbar.set_ticklabels(np.arange(1, 18, 1))
+cbar.set_ticks(UV_values)
 ax.set_title("UV Index satellite-derived in Mexico City \n Period 2005-2019")
 plt.show()
 # plt.savefig("../Graficas/UVI-OMI.png", dpi=300)
