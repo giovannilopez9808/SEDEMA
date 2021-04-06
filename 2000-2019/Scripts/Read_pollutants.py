@@ -12,8 +12,8 @@ inputs = {
                    "NO2",
                    "PM10",
                    "SO2"],
-    "path data": "../Contaminantes/",
-    "path stations": "../Datos/",
+    "path data": "../Archivos/SEDEMA_Data/Pollutants/",
+    "path stations": "../Stations/",
     "file": "CDMX.csv"
 }
 stations = sorted(listdir(inputs["path stations"]))

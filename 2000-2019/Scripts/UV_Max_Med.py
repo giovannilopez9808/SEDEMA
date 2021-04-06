@@ -1,87 +1,138 @@
+# <------Programa que calcula los maximos diarios anuales de la base de datos----->
 from functions import *
-import pandas as pd
+from os import listdir
+import numpy as np
 import datetime
-import os
-
-
-def create_index_yearly_hour(hour_initial, hour_final):
-    index_hourly = []
-    index_daily = []
-    for day in range(365):
-        date = conseday_to_date(day, 2001)
-        index_daily.append(date)
-        day = date.day
-        month = date.month
-        for hour in range(hour_initial, hour_final+1):
-            date = datetime.datetime(2001, month, day, hour)
-            index_hourly.append(date)
-    return index_daily, index_hourly
-
-
-def ls(path, wavelenght):
-    return [file for file in sorted(os.listdir(path)) if wavelenght in file]
-
-
 inputs = {
-    "path data": "../Archivos/SEDEMA_Data/Radiation/",
-    "path results": "../Archivos/",
     "path stations": "../Stations/",
-    "year initial": 2000,
-    "year final": 2018,
-    "hour initial": 6,
-    "hour final": 18,
-    "wavelenght": {
+    "path data": "../Archivos/",
+    "wavelength": {
         "UVA": {
-            "name": "UVA",
-            "scale": 10,
+            "filename": "UVA"
         },
-        "UVB": {
-            "name": "UVB",
-            "scale": 0.05774715
-        }
+        "Erythemal": {
+            "filename": "Ery"
+        },
     },
 }
-lon = "UVA"
-pd.set_option('mode.chained_assignment', None)
-stations = sorted(os.listdir(inputs["path stations"]))
-hours = [hour for hour in range(inputs["hour initial"],
-                                inputs["hour final"]+1)]
-files = ls(inputs["path data"],
-           inputs["wavelenght"][lon]["name"])
-index_daily, index_hourly = create_index_yearly_hour(inputs["hour initial"],
-                                                     inputs["hour final"])
-data_max_station = pd.DataFrame(columns=stations,
-                                index=index_hourly).fillna(0.0)
-data_max = pd.DataFrame(columns=hours,
-                        index=index_daily).fillna(0.0)
-for file in files:
-    print("Analizando archivo {}".format(file))
-    data = pd.read_csv(inputs["path data"]+file,
-                       index_col=0)
-    data.index = pd.to_datetime(data.index)
+# <-------Lista de estaciones en la base de datos------->
+stations = sorted(listdir(inputs["path stations"]))
+# <----Ciclo que varia en eritemica y UVA---->
+for wavelength in inputs["wavelength"]:
+    print("Analizando {}".format(wavelength))
+    max_annual = np.zeros([20, 365, 24])
+    max_daily = np.zeros([24, 365])
+    # <------Ciclo que varia las estaciones------->
     for station in stations:
-        data_station = data[data["cve_station"] == station]
-        for hour in range(inputs["hour initial"],
-                          inputs["hour final"]+1):
-            data_hour = data_station[data_station.index.hour == hour]
-            for data_i in data_hour.index:
-                month = data_i.month
-                day = data_i.day
-                if month == 2 and day == 29:
-                    day = 28
-                value = data_hour["value"][data_i]
-                index = datetime.datetime(2001, month, day, hour)
-                if data_max_station[station][index] <= value:
-                    data_max_station[station][index] = value
-data_max_station.to_csv(inputs["path results"]+"data_hour.csv",
-                        float_format='%.4f')
-for index in data_max_station.index:
-    index_date = index.date()
-    hour = index.hour
-    for station in stations:
-        value = data_max_station[station][index]
-        if data_max[hour][index_date] <= value:
-            data_max[hour][index_date] = value * \
-                inputs["wavelenght"][lon]["scale"]
-data_max.to_csv(inputs["path results"]+"data.csv",
-                float_format='%.4f')
+        if len(station) == 3:
+            dir_station = inputs["path stations"]+station+"/"+wavelength+"/"
+            # <----Lista de archivos que hay en la estacion----->
+            files = sorted(listdir(dir_station))
+            # <----Ciclo que varia en los archivos---->
+            for file in files:
+                date = obtain_date_from_filename(file)
+                day = obtain_day_consecutive(date)
+                year = date.year-2000
+                # <--------Lectura de la información----------->
+                data = np.loadtxt(dir_station+file, usecols=1)
+                # <--------Ciclo que varia en las horas--------->
+                for hour in range(np.size(data)):
+                    if data[hour] > 0:
+                        # <----------If para obtener el mayor en la base de datos anual--------------->
+                        if max_annual[year, day, hour] < data[hour]:
+                            max_annual[year, day, hour] = data[hour]
+    print("Calculando maximos diarios")
+    # <----------Apertura del archivo resultante que contendra el maximo diario por hora------->
+    file = open(inputs["path data"]+"Max_daily_" +
+                inputs["wavelength"][wavelength]["filename"]+".csv", "w")
+
+    # <-------Ciclo que varia en las horas--------->
+    file.write("Hour")
+    for day in range(365):
+        date = conseday_to_date(day, 2001)
+        date = date_formtat_mmdd(date)
+        file.write(",{}".format(date))
+    file.write("\n")
+    for hour in range(24):
+        file.write("{}".format(hour))
+        # <------------Ciclo que varia en los dias------------>
+        for day in range(365):
+            # <----------Ciclo que varia en los años------------->
+            for year in range(20):
+                if max_daily[hour, day] < max_annual[year, day, hour]:
+                    max_daily[hour, day] = max_annual[year, day, hour]
+            # <-----Escritura del archivo-------->
+            file.write(",{:.4f}".format(max_daily[hour, day]))
+        file.write("\n")
+    file.close()
+    UVmax = np.zeros([20, 12, 2])
+    # <---------Apertura del archivo que contendra el maximo mensual-------->
+    file = open(inputs["path data"]+"Max_Monthly_" +
+                inputs["wavelength"][wavelength]["filename"]+".csv", "w")
+    file.write("Date,Max Data,std\n")
+    UVdata = np.zeros([20, 365])
+    prom_UV = np.zeros([20, 12, 2])
+    std = np.zeros([20, 12, 2])
+    prom_std = np.zeros(2)
+    # <------------Proceso para calcular la desviacion estandar mensual--------------->
+    # <-----------Ciclo que varia en los años------------>
+    for year in range(20):
+        # <---------Ciclo que varia en los dias------------>
+        for day in range(365):
+            max = 0
+            for hour in range(11, 15):
+                if max < max_annual[year, day, hour]:
+                    max = max_annual[year, day, hour]
+            # <-----------Calculo del mes------------->
+            if max > 0:
+                month = (datetime.date(2000+year, 1, 1) +
+                         datetime.timedelta(days=day)).month-1
+                UVdata[year, day] = max
+                UVmax[year, month, 0] += max
+                UVmax[year, month, 1] += 1
+        # <---------Ciclo que varia en los dias------------>
+        for day in range(365):
+            # <----------Calculo del numero del mes------------->
+            month = (datetime.date(2000+year, 1, 1) +
+                     datetime.timedelta(days=day)).month-1
+            if UVdata[year, day] > 0:
+                prom_UV[year, month, 0] += UVdata[year, day]
+                prom_UV[year, month, 1] += 1
+        # <--------Ciclo que varia en el mes----------->
+        for month in range(12):
+            if prom_UV[year, month, 1] > 0:
+                prom_UV[year, month, 0] = round(
+                    prom_UV[year, month, 0]/prom_UV[year, month, 1], 2)
+        # <-------Ciclo que varia en el dia----------->
+        for day in range(365):
+            # <---------Calculo del numero del mes------------>
+            month = (datetime.date(2000+year, 1, 1) +
+                     datetime.timedelta(days=day)).month-1
+            if UVdata[year, day] > 0:
+                std[year, month, 0] += (prom_UV[year,
+                                                month, 0]-UVdata[year, day])**2
+                std[year, month, 1] += 1
+        # <--------Ciclo que varia en los meses----------->
+        for month in range(12):
+            if std[year, month, 1] > 0:
+                std[year, month, 0] = np.sqrt(
+                    std[year, month, 0]/std[year, month, 1])
+                prom_std[0] += std[year, month, 0]
+                prom_std[1] += 1
+        prom_std[0] = round(prom_std[0]/prom_std[1], 2)
+        # <-----------Ciclo que varia en el mes--------->
+        for month in range(12):
+            if std[year, month, 1] == 0:
+                # <-------Si la SD en un mes es igual a cero, tomara el valor de la sd general------->
+                std[year, month, 0] = prom_std[0]
+        # <--------Ciclo que varia en el mes--------->
+        for month in range(12):
+            date = datetime.date(year+2000, month+1, 1)
+            if UVmax[year, month, 1] != 0:
+                UVmax[year, month, 0] = round(
+                    UVmax[year, month, 0]/UVmax[year, month, 1], 2)
+            if UVmax[year, month, 0] != 0:
+                # <---------Escritura del archivo---------->
+                file.write("{},{:.4f},{:.4f}\n".format(
+                    date, UVmax[year, month, 0], std[year, month, 0]))
+    file.close()
