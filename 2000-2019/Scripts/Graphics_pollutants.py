@@ -83,17 +83,14 @@ for input, ax in zip(inputs, axs):
     delta = inputs[input]["delta"]
     label = np.arange(2000, 2020)
     x = np.arange(20)
+    file = parameters["path data"]+input+"_"+parameters["file data"]
+    data = pd.read_csv(file)
     if ax != ax5:
-        file = parameters["path data"]+input+"_"+parameters["file data"]
-        data = pd.read_csv(file)
         mean = list(data.mean())
     else:
-        year_list, data = np.loadtxt(parameters["path data"]+input+".txt",
-                                     skiprows=1,
-                                     unpack=True)
-        x = year_list-2000
-        label = year_list
-        mean = data
+        x = list(data["Year"]-2000)
+        label = list(data["Year"])
+        mean = list(data["AOD 340nm"])
     fit = np.polyfit(x, mean, 1)
     prom = round(np.mean(mean), 3)
     print("{}\t\t {:.1f}\t {:.1f}\t {:.2f}\t {:.2f}".format(
@@ -124,4 +121,5 @@ for input, ax in zip(inputs, axs):
         ax.legend(frameon=False,
                   ncol=2,
                   loc="upper right")
-plt.savefig(parameters["path graphics"]+"pollutants.png", dpi=400)
+#plt.savefig(parameters["path graphics"]+"pollutants.png", dpi=400)
+plt.show()
