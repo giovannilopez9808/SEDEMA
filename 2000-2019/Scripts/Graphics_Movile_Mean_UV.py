@@ -8,30 +8,34 @@ inputs = {
     "year initial": 2000,
     "year final": 2019,
     "path data": "../Archivos/",
+    "path graphics": "../Graphics/",
     "file data": "Max_Monthly_Ery.csv",
 }
 years = np.arange(inputs["year initial"],
                   inputs["year final"]+1)
-X = np.arange(0,
-              (inputs["year final"]-inputs["year initial"]+1)*12,
-              12)
-X1 = np.arange(0,
-               12*(inputs["year final"]-inputs["year initial"]+1))
-maxi = np.zeros(12)
-mini = np.zeros(12)+1000
-
+X = years-inputs["year initial"]
+# <-------------Lectura de los datos------------------>
 data = pd.read_csv(inputs["path data"]+inputs["file data"])
+# <---------Erythemal a UVI-------------->
 data["Max Data"] = data["Max Data"]*40
 data["std"] = data["std"]*40
-# <-----------------Linear fit---------------------->
-fit = np.polyfit(data.index, data["Max Data"], 1)
-m = fit[0]
+# <------------Moving average------------->
+data["SMA"] = data.iloc[:, 1].rolling(window=3).mean()
+# <--------------Tendencia----------------->
+data.index = pd.to_datetime(data["Date"])
+yearly_mean = data["Max Data"].resample("YS").mean()
+mean_data = yearly_mean.mean()
+fit = np.polyfit(X,
+                 list(yearly_mean), 1)
+
+print("Parameter\tm\tMean\tTendency")
+print("UVI:\t   \t{:.2f}\t{:.1f}\t{:.1f}".format(
+    fit[0], mean_data, fit[0]*100/mean_data))
+
 fit = np.poly1d(fit)
-pd2 = fit(data.index)
-# <------------Moving average para 6 meses------------->
-data["SMA_6"] = data.iloc[:, 1].rolling(window=12).mean()
+pd2 = fit(np.append(X, 20))
 # <--------------------Inicio de la grafica UVyearlyError----------------------------------->
-plt.xticks(X, years,
+plt.xticks(X*12, years,
            rotation=60,
            fontsize=12)
 plt.yticks(fontsize=12)
@@ -53,12 +57,12 @@ plt.errorbar(list(data["Date"]), list(data["Max Data"]),
              markersize=2,
              label="Monthly average and SD")
 # <--------Ploteo del moving average para 3 meses----------->
-plt.plot(list(data["Date"]), list(data["SMA_6"]),
+plt.plot(list(data["Date"]), list(data["SMA"]),
          label="Moving average",
          linewidth=3,
          color="grey")
 # <-----------Ploteo de linear fit------------------>
-plt.plot(list(data.index), pd2,
+plt.plot(np.append(X, 20)*12, pd2,
          label="Linear fit",
          color="red",
          linewidth=3)
@@ -71,14 +75,5 @@ plt.legend(ncol=3,
            frameon=False,
            fontsize="small")
 # <---------------Guardado de la grafica-------------->
-plt.show()
-#plt.savefig("../Graficas/UVyearlyError.png", dpi=300)
-# Tendencia
-data.index = pd.to_datetime(data["Date"])
-yearly_mean = data["Max Data"].resample("YS").mean()
-mean_data = yearly_mean.mean()
-fit = np.polyfit(np.arange(inputs["year final"]-inputs["year initial"]+1),
-                 list(yearly_mean), 1)
-print("Parameter\tm\tMean\tTendency")
-print("UVI:\t   \t{:.2f}\t{:.1f}\t{:.1f}".format(
-    fit[0], mean_data, fit[0]*100/mean_data))
+plt.savefig(inputs["path graphics"]+"UV_Moving_Average.png",
+            dpi=400)
