@@ -8,9 +8,13 @@ from os import listdir
 
 def autolabel(rects):
     """Attach a text UV_list above each bar in *rects*, displaying its height."""
-    for rect in rects:
+    for rect, i in zip(rects, range(len(rects))):
+        if i == 14:
+            round_i = "{:.3f}"
+        else:
+            round_i = "{:.2f}"
         height = rect.get_height()
-        ax.annotate('{:.2f}'.format(height),
+        ax.annotate(round_i.format(height),
                     xy=(rect.get_x() + rect.get_width() / 2, height),
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
@@ -23,12 +27,12 @@ inputs = {
     "folder erythemal": "/Erythemal/",
     "path graphics": "../Graphics/",
     "UV minium": 1,
-    "UV maximum": 15,
+    "UV maximum": 16,
 }
 # <-------Nombres de estaciones------>
 stations = sorted(listdir(inputs["path stations"]))
 UV_list = np.arange(inputs["UV minium"],
-                    inputs["UV maximum"]+1)
+                    inputs["UV maximum"])
 X = UV_list-1
 UV_count = np.zeros(inputs["UV maximum"]-inputs["UV minium"])
 n_total = 0
@@ -52,7 +56,15 @@ for station in stations:
                 UV_count[UV] += 1
 # <------------Inicio del ploteo del histograma general---------------->
 Y = np.arange(0, 20+2, 2)
-UV_count = np.around(UV_count*100/n_total, 2)
+sum = 0
+for uv in range(-inputs["UV minium"] +
+                inputs["UV maximum"]):
+    sum += UV_count[uv]/n_total
+    print("{}\t{}\t{}".format(
+        uv+inputs["UV minium"], UV_count[uv], UV_count[uv]/n_total))
+    print(sum)
+print(n_total)
+UV_count = UV_count*100/n_total
 fig, ax = plt.subplots(figsize=(9, 7))
 plt.xticks(X-0.5, UV_list, fontsize=font_size)
 plt.yticks(Y, fontsize=font_size)
@@ -71,7 +83,7 @@ for i in range(np.size(even)):
              color="black", ls="--", alpha=0.5)
     plt.plot([-4, inputs["UV maximum"]+1], [odd[i], odd[i]],
              color="gray", ls="--", alpha=0.3)
-rect = ax.bar(np.arange(inputs["UV maximum"]-inputs["UV minium"]), UV_count,
+rect = ax.bar(X, UV_count,
               color="#00838a", width=1, edgecolor="black")
 autolabel(rect)
 # <--------Guardado de la grafica-------------->
