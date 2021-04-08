@@ -14,7 +14,7 @@ inputs = {
         "UVB": {
             "folder": "Erythemal",
             "name": "Ery",
-            "change units": 0.05774715,
+            "change units": 0.0583,
         }
     }
 }
