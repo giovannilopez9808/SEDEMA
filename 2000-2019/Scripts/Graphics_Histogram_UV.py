@@ -54,7 +54,9 @@ for station in stations:
 Y = np.arange(0, 20+2, 2)
 UV_count = UV_count*100/n_total
 fig, ax = plt.subplots(figsize=(9, 7))
-plt.xticks(X-0.5, UV_list, fontsize=font_size)
+plt.xticks(np.append(X, inputs["UV maximum"]-1)-0.5,
+           np.append(UV_list, inputs["UV maximum"]),
+           fontsize=font_size)
 plt.yticks(Y, fontsize=font_size)
 plt.ylim(0, 20)
 plt.xlim(-1, X.max()+1)
