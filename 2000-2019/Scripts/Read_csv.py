@@ -28,15 +28,15 @@ for file in files:
     name = inputs["Wave"][lon]["name"]
     resize = inputs["Wave"][lon]["change units"]
     data = pd.read_csv(inputs["path data"]+file).fillna(0)
-    data["Date"] = pd.to_datetime(data["Date"])
-    data_len = data["Date"].count()
+    data["Dates"] = pd.to_datetime(data["Dates"])
+    data_len = data["Dates"].count()
     # Ciclo para leer las columnas
     for i in range(data_len):
         # Lectura del nombre de la estacion
         station = data["cve_station"][i]
         value = data["value"][i]
-        hour = data["Date"][i].hour
-        date = date2yymmdd(data["Date"][i].date())
+        hour = data["Dates"][i].hour
+        date = date2yymmdd(data["Dates"][i].date())
         mkdir(station, path=inputs["path stations"])
         mkdir(folder, path=inputs["path stations"]+station+"/")
         path_station = inputs["path stations"]+station+"/"+folder+"/"

@@ -43,7 +43,10 @@ delta = [5, 0.035/2]
 # <-------------------------Graficas de UVA y Eritemica------------------------>
 for input in inputs:
     print("Graficando "+inputs[input]["folder"])
-    result = np.loadtxt(folder_names["path data"]+"MaxMe"+input+".2txt")
+    result = np.loadtxt(folder_names["path data"]+"Max_daily_"+input+".csv",
+                        delimiter=",",
+                        skiprows=1,
+                        usecols=np.arange(1, 366))
     print(np.shape(result))
     maxi = result.max()
     title = "Mexico City - Period: 2000-2019"
