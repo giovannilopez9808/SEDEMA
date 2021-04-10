@@ -38,7 +38,7 @@ colors = {
     "PED": "#f89edf",
     "SAG": "orange",
     "SFE": "Green",
-    "TLA": "#52b788",
+    "TLA": "cyan",
 }
 stations = sorted(os.listdir(inputs["path stations"]))
 dates = np.loadtxt(inputs["path data days"] +

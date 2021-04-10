@@ -25,12 +25,13 @@ colors = {
     "PED": "#f89edf",
     "SAG": "orange",
     "SFE": "Green",
-    "TLA": "#52b788",
+    "TLA": "cyan",
 }
 for month in range(1, 13):
     inputs = {
-        "path data": "Radiation/",
-        "path stations": "../../Stations/",
+        "path data": "../Archivos/SEDEMA_Data/Radiation/",
+        "path stations": "../Stations/",
+        "path graphics": "../Graphics/Daily_maximum/",
         "radiation": "UVB",
         "size": 0.0583,
         "year": "2019",
@@ -84,5 +85,5 @@ for month in range(1, 13):
                         hspace=0.2,
                         wspace=0.2,
                         )
-    plt.savefig("{}.png".format(month))
+    plt.savefig(inputs["path graphics"]+"{}.png".format(month))
     plt.clf()
