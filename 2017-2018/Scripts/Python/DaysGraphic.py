@@ -22,6 +22,7 @@ inputs = {
     "path stations": "../../Stations/",
     "path data days": "../../Stations/MON/",
     "path measurements": "/Mediciones/",
+    "path graphics": "../../Graphics/Days/",
     "file data days": "days_select.txt",
     "wavelength": "Ery",
 }
@@ -74,7 +75,10 @@ for date in dates:
     plt.legend(ncol=5,
                frameon=False,
                fontsize=9,
-               bbox_to_anchor=(0.9, 1.05, 0, 0.1))
+               markerscale=4,
+               #bbox_to_anchor=(0.9, 1.05, 0, 0.1)
+               )
     # Borrado de la grafica
-    plt.show()
+    plt.savefig(inputs["path graphics"]+date+".png")
+    # plt.show()
     plt.clf()
