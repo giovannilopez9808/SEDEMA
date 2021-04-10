@@ -1,9 +1,3 @@
-#                           Fecha de creacion
-#                             06 enero 2019
-#                               Creador
-#                       Giovanni Gamaliel Lopez Padilla
-# Este programa realiza graficas en la carpeta DaysGraphic, busca en todas las estaciones
-# los dias en los que hay medicion y grafica una imagen por dia
 import matplotlib.pyplot as plt
 import numpy as np
 import datetime
