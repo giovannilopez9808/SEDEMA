@@ -6,31 +6,20 @@ inputs = {
     "path stations": "../Stations/",
     "date": "190803",
 }
-colors = [
-    "#03071e",
-    "#6a040f",
-    "#dc2f02",
-    "#219ebc",
-    "#06d6a0",
-    "#52b788",
-    "#2d6a4f",
-    "#1b4332",
-    "#b07d62",
-    "#774936",
-    "#99d98c",
-    "#7400b8",
-    "#ff0a54"
-]
 colors = {
     "CHO": "Blue",
-    "CUT": "#219ebc",
-    "LAA": "Red",
-    "FAC":  "#774936",
-    "SFE": "Green",
-    "MON": "Purple",
-    "SAG": "orange",
-    "PED": "#f89edf",
+    "CUA": "#03071e",
+    "CUT": "#6a040f",
+    "FAC":  "#d00000",
+    "HAN": "#b07d62",
+    "LAA": "#7400b8",
     "MER": "black",
+    "MON": "Purple",
+    "MPA": "#0096c7",
+    "PED": "#f89edf",
+    "SAG": "orange",
+    "SFE": "Green",
+    "TLA": "#52b788",
 }
 stations = sorted(os.listdir(inputs["path stations"]))
 for station in stations:
