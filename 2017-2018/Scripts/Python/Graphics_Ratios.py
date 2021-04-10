@@ -5,7 +5,8 @@ import os
 
 
 class stations_object:
-    def __init__(self):
+    def __init__(self, date):
+        self.date = date
         self.stations = []
         self.colors = {
             "CHO": "Blue",
@@ -48,7 +49,7 @@ class stations_object:
                      alpha=0.7)
         # Leyenda del eje X
         plt.xlabel("Local time (h)")
-        plt.title(station.date)
+        plt.title(self.date)
         # # Leyenda de las graficas
         plt.legend(ncol=5,
                    frameon=False,
@@ -63,11 +64,10 @@ class stations_object:
 
 
 class station_object:
-    def __init__(self, hour, data, name, date):
+    def __init__(self, hour, data, name):
         self.hour = hour
         self.data = data
         self.name = name
-        self.date = date
 
     def obtain_ratio(self, mean):
         self.ratio = self.data[self.data != 0]/mean[self.data != 0]
@@ -102,7 +102,7 @@ dates = [
 ]
 for date in dates:
     date_title = yymmdd2date(date)
-    stations_list = stations_object()
+    stations_list = stations_object(date_title)
     for station in stations:
         path = inputs["path stations"]+station+inputs["path measurements"]
         hour, data = np.loadtxt(path+date+inputs["wavelength"]+".csv",
@@ -112,7 +112,7 @@ for date in dates:
             station_data = station_object(hour,
                                           data,
                                           station,
-                                          date_title,)
+                                          )
             stations_list.append_station(station_data)
     stations_list.obtain_mean()
     stations_list.obtain_ratio_each_station()
