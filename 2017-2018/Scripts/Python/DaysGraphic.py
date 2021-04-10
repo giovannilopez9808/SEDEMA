@@ -10,6 +10,76 @@ import datetime
 import os
 
 
+class stations_object:
+    def __init__(self):
+        self.stations = []
+        self.colors = {
+            "CHO": "Blue",
+            "CUA": "#03071e",
+            "CUT": "#83c5be",
+            "FAC":  "#d00000",
+            "HAN": "#b07d62",
+            "LAA": "#f72585",
+            "MER": "black",
+            "MON": "Purple",
+            "MPA": "#0096c7",
+            "PED": "#f89edf",
+            "SAG": "orange",
+            "SFE": "Green",
+            "TLA": "cyan",
+        }
+
+    def append_station(self, station):
+        self.stations.append(station)
+
+    def obtain_mean(self):
+        data = []
+        for station in self.stations:
+            data.append(station.data)
+        self.mean = np.mean(data,
+                            axis=0)
+
+    def obtain_ratio_each_station(self):
+        for station in self.stations:
+            station.obtain_ratio(self.mean)
+
+    def plot_ratios(self, path, name):
+        for station in self.stations:
+            plt.plot(station.hour, station.ratio,
+                     label=station.name,
+                     c=self.colors[station.name],
+                     marker=".",
+                     ls="none",
+                     ms=3,
+                     alpha=0.7)
+        # Leyenda del eje X
+        plt.xlabel("Local time (h)")
+        plt.title(station.date)
+        # # Leyenda de las graficas
+        plt.legend(ncol=5,
+                   frameon=False,
+                   fontsize=9,
+                   markerscale=4,
+                   bbox_to_anchor=(0.9, 1.05, 0, 0.1)
+                   )
+        # Limites de la grafica en el eje X
+        plt.xlim(5, 20)
+        plt.savefig(path+name+".png", dpi=400)
+        plt.clf()
+
+
+class station_object:
+    def __init__(self, hour, data, name, date):
+        self.hour = hour
+        self.data = data
+        self.name = name
+        self.date = date
+
+    def obtain_ratio(self, mean):
+        self.ratio = self.data[self.data != 0]/mean[self.data != 0]
+        self.hour = self.hour[self.data != 0]
+
+
 def yymmdd2date(date):
     year = int("20"+date[0:2])
     month = int(date[2:4])
@@ -26,59 +96,31 @@ inputs = {
     "file data days": "days_select.txt",
     "wavelength": "Ery",
 }
-colors = {
-    "CHO": "Blue",
-    "CUA": "#03071e",
-    "CUT": "#83c5be",
-    "FAC":  "#d00000",
-    "HAN": "#b07d62",
-    "LAA": "#f72585",
-    "MER": "black",
-    "MON": "Purple",
-    "MPA": "#0096c7",
-    "PED": "#f89edf",
-    "SAG": "orange",
-    "SFE": "Green",
-    "TLA": "cyan",
-}
 stations = sorted(os.listdir(inputs["path stations"]))
-dates = np.loadtxt(inputs["path data days"] +
-                   inputs["file data days"],
-                   dtype=str)
+# dates = np.loadtxt(inputs["path data days"] +
+#                    inputs["file data days"],
+#                    dtype=str)
+dates = [
+    "170123",
+    "171113",
+    "171127",
+    "180107",
+]
 for date in dates:
+    date_title = yymmdd2date(date)
+    stations_list = stations_object()
     for station in stations:
         path = inputs["path stations"]+station+inputs["path measurements"]
         hour, data = np.loadtxt(path+date+inputs["wavelength"]+".csv",
                                 delimiter=",",
                                 unpack=True)
         if(data.mean() != 0):
-            # Ploteo de los datos de medicion
-            plt.plot(hour, data*40,
-                     label=station,
-                     c=colors[station],
-                     marker=".",
-                     ls="none",
-                     ms=3,
-                     alpha=0.7)
-    date = yymmdd2date(date)
-    # Leyenda del eje Y
-    plt.ylabel("UV Index")
-    # Leyenda del eje X
-    plt.xlabel("Local time (h)")
-    # Titulo de la grafica
-    plt.title(date)
-    # Limites de la grafica en el eje X
-    plt.xlim(5, 20)
-    # Limites de la grafica en el eje Y
-    plt.ylim(0, 16)
-    # Leyenda de las graficas
-    plt.legend(ncol=5,
-               frameon=False,
-               fontsize=9,
-               markerscale=4,
-               #bbox_to_anchor=(0.9, 1.05, 0, 0.1)
-               )
-    # Borrado de la grafica
-    plt.savefig(inputs["path graphics"]+date+".png")
-    # plt.show()
-    plt.clf()
+            station_data = station_object(hour,
+                                          data,
+                                          station,
+                                          date_title,)
+            stations_list.append_station(station_data)
+    stations_list.obtain_mean()
+    stations_list.obtain_ratio_each_station()
+    stations_list.plot_ratios(inputs["path graphics"],
+                              date_title)
