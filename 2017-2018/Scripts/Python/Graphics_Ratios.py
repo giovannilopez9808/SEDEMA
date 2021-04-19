@@ -31,8 +31,12 @@ class stations_object:
         data = []
         for station in self.stations:
             data.append(station.data)
-        self.mean = np.mean(data,
-                            axis=0)
+        self.mean = np.zeros_like(data[0])
+        for i, values in enumerate(np.transpose(data)):
+            sum = np.sum(values[values != 0])
+            count = np.count_nonzero(values)
+            if count != 0:
+                self.mean[i] = sum/count
 
     def obtain_ratio_each_station(self):
         for station in self.stations:
@@ -57,9 +61,56 @@ class stations_object:
                    markerscale=4,
                    bbox_to_anchor=(0.9, 1.05, 0, 0.1)
                    )
+        plt.plot([7, 19], [1, 1], color="red", ls="--", lw=3)
         # Limites de la grafica en el eje X
-        plt.xlim(5, 20)
-        plt.savefig(path+name+".png", dpi=400)
+        plt.xlim(7, 18)
+        plt.ylim(0.6, 1.4)
+        plt.yticks(np.arange(0.6, 1.6, 0.1))
+        plt.xticks(np.arange(7, 19))
+        plt.grid(ls="--",
+                 color="#000000",
+                 alpha=0.5)
+        #plt.savefig(path+name+".png", dpi=400)
+        plt.show()
+        plt.clf()
+        # plt.close()
+
+    def plot_data(self):
+        for station in self.stations:
+            plt.plot(station.hour, station.data*40,
+                     label=station.name,
+                     c=self.colors[station.name],
+                     marker=".",
+                     ls="none",
+                     ms=3,
+                     alpha=0.7)
+        plt.plot(station.hour, self.mean*40,
+                 label="Hourly mean",
+                 c="red",
+                 marker=".",
+                 ls="none",
+                 ms=3,
+                 alpha=0.7)
+        # Leyenda del eje X
+        plt.xlabel("Local time (h)")
+        plt.title(self.date)
+        # # Leyenda de las graficas
+        plt.legend(ncol=5,
+                   frameon=False,
+                   fontsize=9,
+                   markerscale=4,
+                   bbox_to_anchor=(0.9, 1.05, 0, 0.1)
+                   )
+        # Limites de la grafica en el eje X
+        plt.xlim(7, 18)
+        plt.ylim(0, 16)
+        plt.yticks(np.arange(0, 17))
+        plt.xticks(np.arange(7, 19))
+        plt.grid(ls="--",
+                 color="#000000",
+                 alpha=0.5)
+        #plt.savefig(path+name+".png", dpi=400)
+        plt.show()
         plt.clf()
 
 
@@ -115,6 +166,7 @@ for date in dates:
                                           )
             stations_list.append_station(station_data)
     stations_list.obtain_mean()
+    stations_list.plot_data()
     stations_list.obtain_ratio_each_station()
     stations_list.plot_ratios(inputs["path graphics"],
                               date_title)
