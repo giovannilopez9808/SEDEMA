@@ -29,7 +29,8 @@ numyear = ["2005",
            "2019"]
 inputs = {
     "path data": "../Archivos/",
-    "column": "OPUVindex",
+    "path graphics": "../Graphics/",
+    "column": "CSUVindex",
     "year initial": 2005,
     "year final": 2019,
     "UV minium": 1,
@@ -104,5 +105,6 @@ cbar.ax.set_ylabel("UV Index",
                    fontsize=11)
 cbar.set_ticks(UV_values)
 ax.set_title("UV Index satellite-derived in Mexico City \n Period 2005-2019")
-plt.show()
-# plt.savefig("../Graficas/UVI-OMI.png", dpi=300)
+plt.savefig("{}{}-OMI.png".format(inputs["path graphics"],
+                                  inputs["column"]),
+            dpi=300)

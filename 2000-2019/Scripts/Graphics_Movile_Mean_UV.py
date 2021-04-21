@@ -35,7 +35,7 @@ print("UVI:\t   \t{:.2f}\t{:.1f}\t{:.1f}".format(
 fit = np.poly1d(fit)
 pd2 = fit(np.append(X, 20))
 # <--------------------Inicio de la grafica UVyearlyError----------------------------------->
-plt.xticks(X*12, years,
+plt.xticks(np.append(X, 20)*12, np.append(years, 2020),
            rotation=60,
            fontsize=12)
 plt.yticks(fontsize=12)
@@ -66,10 +66,13 @@ plt.plot(np.append(X, 20)*12, pd2,
          label="Linear fit",
          color="red",
          linewidth=3)
-plt.subplots_adjust(left=0.102,
-                    right=0.979,
-                    bottom=0.16,
-                    top=0.917)
+plt.subplots_adjust(top=0.922,
+                    bottom=0.147,
+                    left=0.109,
+                    right=0.948,
+                    hspace=0.2,
+                    wspace=0.2
+                    )
 plt.legend(ncol=3,
            mode="expand",
            frameon=False,
@@ -77,3 +80,4 @@ plt.legend(ncol=3,
 # <---------------Guardado de la grafica-------------->
 plt.savefig(inputs["path graphics"]+"UV_Moving_Average.png",
             dpi=400)
+# plt.show()

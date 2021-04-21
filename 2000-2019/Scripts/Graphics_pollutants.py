@@ -73,7 +73,7 @@ plt.subplots_adjust(top=0.97,
 ax2 = ax1.twinx()
 ax5 = ax4.twinx()
 axs = np.array([ax2, ax1, ax3, ax4, ax5, ax3])
-print("Pollutant\t Mean\t  e\t  m\t   b")
+print("Pollutant\t  m\tMean\t  e\t     b")
 for input, ax in zip(inputs, axs):
     tick = inputs[input]["tick"]
     color = inputs[input]["color"]
@@ -93,8 +93,8 @@ for input, ax in zip(inputs, axs):
         mean = list(data["AOD 340nm"])
     fit = np.polyfit(x, mean, 1)
     prom = round(np.mean(mean), 3)
-    print("{}\t\t {:.1f}\t {:.1f}\t {:.2f}\t {:.2f}".format(
-        input, prom, fit[0]*100/prom, fit[0], fit[1]))
+    print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t {:.2f}".format(
+        input, fit[0], prom, fit[0]*100/prom,  fit[1]))
     ax.plot(label, mean,
             ls="-",
             label=tick,
