@@ -1,3 +1,5 @@
+from matplotlib.colors import LinearSegmentedColormap
+import matplotlib.pyplot as plt
 import datetime
 import locale
 import os
@@ -68,3 +70,29 @@ def forceAspect(ax, aspect):
     im = ax.get_images()
     extent = im[0].get_extent()
     ax.set_aspect(abs((extent[1]-extent[0])/(extent[3]-extent[2]))/aspect)
+
+
+def colormap_UVI():
+    colors = [(0, 0, 0),
+              (58/255, 156/255, 43/255),
+              (152/255, 196/255, 8/255),
+              (1, 244/255, 0),
+              (1, 211/255, 0),
+              (246/255, 174/255, 0),
+              (239/255, 131/255, 0),
+              (232/255, 97/255, 5/255),
+              (255/255, 34/255, 34/255),
+              (230/255, 42/255, 20/255),
+              (165/255, 0/255, 0/255),
+              (118/255, 8/255, 104/255),
+              (118/255, 46/255, 159/255),
+              (150/255, 53/255, 188/255),
+              (156/255, 92/255, 188/255),
+              (184/255, 150/255, 235/255),
+              (198/255, 198/255, 248/255)]
+    n_bin = len(colors)
+    cmap_name = "UV_Index"
+    cm = LinearSegmentedColormap.from_list(cmap_name,
+                                           colors,
+                                           N=n_bin)
+    return cm
