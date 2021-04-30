@@ -2,6 +2,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
+
+def obtain_mean_and_std(data):
+    mean = data.mean()
+    mean_clean = mean.dropna()
+    std = data.std()
+    x = mean_clean.index.astype(int)-2000
+    return x, mean_clean, mean, std
+
+
 inputs = {
     "CO": {
         "tick": "CO",
@@ -65,47 +74,58 @@ plt.rc('ytick', labelsize=parameters["fontsize"]-1)
 fig, (ax1, ax3, ax4) = plt.subplots(3,
                                     figsize=(9, 9),
                                     sharex=True)
-plt.subplots_adjust(top=0.97,
-                    bottom=0.1,
-                    left=0.09,
-                    right=0.9,
-                    hspace=0.15)
+plt.subplots_adjust(top=0.964,
+                    bottom=0.11,
+                    left=0.085,
+                    right=0.903,
+                    hspace=0.195,
+                    wspace=0.2
+                    )
 ax2 = ax1.twinx()
 ax5 = ax4.twinx()
 axs = np.array([ax2, ax1, ax3, ax4, ax5, ax3])
-print("Pollutant\t  m\tMean\t  e\t     b")
+print("Pollutant\t  m\tMean\t  e\t b")
 for input, ax in zip(inputs, axs):
+    # Parametros para la grafica dependiendo del compuesto
     tick = inputs[input]["tick"]
     color = inputs[input]["color"]
     title = inputs[input]["title"]
     lim_inf = inputs[input]["lim inf"]
     lim_sup = inputs[input]["lim sup"]
     delta = inputs[input]["delta"]
-    label = np.arange(2000, 2020)
-    x = np.arange(20)
+    # Direccion del archivo de datos
     file = parameters["path data"]+input+"_"+parameters["file data"]
-    data = pd.read_csv(file)
-    if ax != ax5:
-        mean = list(data.mean())
-    else:
-        x = list(data["Year"]-2000)
-        label = list(data["Year"])
-        mean = list(data["AOD 340nm"])
-    fit = np.polyfit(x, mean, 1)
+    # Lectura de datos
+    data = pd.read_csv(file,
+                       index_col=0)
+    x, mean_clean, mean, std = obtain_mean_and_std(data)
+    fit = np.polyfit(x, list(mean_clean), 1)
     prom = round(np.mean(mean), 3)
-    print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t {:.2f}".format(
+    # Impresión de los dattos
+    print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t{:.2f}".format(
         input, fit[0], prom, fit[0]*100/prom,  fit[1]))
-    ax.plot(label, mean,
-            ls="-",
-            label=tick,
-            color=color,
-            linewidth=parameters["linewidth"])
-    ax.set_xlim(2000, 2019)
+    # ax.plot(list(mean.index), list(mean),
+    #         ls="-",
+    #         label=tick,
+    #         color=color,
+    #         linewidth=parameters["linewidth"])
+    ax.errorbar(list(mean.index), list(mean),
+                yerr=list(std),
+                marker="o",
+                linewidth=parameters["linewidth"],
+                # ls="--",
+                alpha=0.6,
+                color=color,
+                capsize=5,
+                markersize=2,
+                label=tick,
+                )
+    ax.set_xlim(0, 19)
     ax.set_ylim(lim_inf, lim_sup)
     yticks = np.arange(lim_inf, lim_sup+delta, delta)
     ax.set_yticks(yticks)
-    ax.set_xticks(label)
-    ax.set_xticklabels(label,
+    ax.set_xticks(x)
+    ax.set_xticklabels(x+2000,
                        rotation=60)
     if ax in [ax2, ax5]:
         ax.set_ylabel(title,

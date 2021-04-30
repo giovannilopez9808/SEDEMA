@@ -1,6 +1,22 @@
+from functions import *
 import pandas as pd
 import datetime
 import os
+
+
+def obtain_index_results():
+    days = obtain_days_of_the_year(2019)
+    index = []
+    for day in range(days):
+        date = conseday_to_date(day, 2019)
+        date = str(date)[5:10]
+        index.append(date)
+    return index
+
+
+def obtain_header_results(year_i, year_f):
+    columns = [str(year) for year in range(year_i, year_f+1)]
+    return columns
 
 
 def format_data(data, columns):
@@ -53,18 +69,24 @@ inputs = {
     "year final": 2019
 }
 files = sorted(os.listdir(inputs["path data"]))
-file_result = open(inputs["path results"]+inputs["file results"], "w")
-file_result.write("Year,AOD 340nm\n")
+index = obtain_index_results()
+columns = obtain_header_results(inputs["year initial"],
+                                inputs["year final"])
+results = pd.DataFrame(index=index,
+                       columns=columns,)
 for file in files:
     year, _ = file.split(".")
+    # Obtiene el numero de dias en el año
     days = obtain_days_of_the_year(int(year))
+    # Lectura de los archivos de AERONET
     data = pd.read_csv(inputs["path data"]+file,
                        skiprows=6)
+    # Se eliminan columnas innecesarias y valores donde no exista medición
     data = format_data(data,
                        inputs["columns"])
+    # Calcula el promedio diario
     daily_mean = obtain_daily_mean(data)
-    percentage = daily_mean["AOD_340nm"].count()*100/days
-    write_results(year, percentage)
-    year_mean = daily_mean.mean()
-    file_result.write("{},{:.3f}\n".format(year, year_mean["AOD_340nm"]))
-file_result.close()
+    daily_mean.index = daily_mean.index.astype(str).str[5:10]
+    results[year] = daily_mean["AOD_340nm"]
+results.to_csv(inputs["path results"] +
+               inputs["file results"], float_format="%.3f")
