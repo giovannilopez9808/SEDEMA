@@ -1,14 +1,56 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import datetime
 
 
 def obtain_mean_and_std(data):
-    mean = data.mean()
-    mean_clean = mean.dropna()
-    std = data.std()
-    x = mean_clean.index.astype(int)-2000
-    return x, mean_clean, mean, std
+    data = data.astype(float)
+    mean = data.resample("MS").mean()
+    std = data.resample("MS").std()
+    return mean, std
+
+
+def format_data(data):
+    index = obtain_index(data)
+    data_flat = pd.DataFrame(index=index,
+                             columns=["Data"],)
+    data_flat.index = pd.to_datetime(data_flat.index)
+    for year in data.columns:
+        for date in data.index:
+            index = year+"-"+date
+            value = data[year][date]
+            data_flat["Data"][index] = float(value)
+    return data_flat
+
+
+def obtain_index(data):
+    years = data.columns
+    year_i = int(years[0])
+    year_f = int(years[-1])
+    days = (datetime.date(year_f, 12, 31)-datetime.date(year_i, 1, 1)).days
+    index = []
+    for day in range(days+1):
+        date = datetime.date(year_i, 1, 1)+datetime.timedelta(days=day)
+        index.append(str(date))
+    return index
+
+
+def format_xticks(data):
+    index = data.index
+    tick = []
+    years = []
+    dates = []
+    year_i = int(str(index[0])[0:4])
+    year_f = int(str(index[-1])[0:4])
+    for value in index:
+        value = str(value)[0:10]
+        tick.append(value)
+    for year in range(year_i, year_f+1):
+        date = datetime.date(year, 1, 1)
+        dates.append(str(date))
+        years.append(year)
+    return tick, years, dates
 
 
 inputs = {
@@ -16,7 +58,7 @@ inputs = {
         "tick": "CO",
         "color": "purple",
         "title": "CO (ppm)",
-        "lim sup": 4,
+        "lim sup": 5,
         "lim inf": 0,
         "delta": 1
     },
@@ -24,41 +66,41 @@ inputs = {
         "tick": "PM$_{10}$",
         "color": "#A25715",
         "title": "PM$_{10}$ ($\mu g/m^3$)",
-        "lim sup": 75,
+        "lim sup": 100,
         "lim inf": 0,
-        "delta": 15
+        "delta": 20
     },
     "NO2": {
         "tick": "NO$_2$",
         "color": "blue",
         "title": "NO$_2$, SO$_2$ (ppb)",
-        "lim sup": 50,
+        "lim sup": 80,
         "lim inf": 0,
-        "delta": 10
+        "delta": 20
     },
     "O3": {
         "tick": "O$_3$",
         "color": "green",
         "title": "O$_3$ (ppb)",
-        "lim sup": 90,
-        "lim inf": 50,
-        "delta": 10
+        "lim sup": 130,
+        "lim inf": 10,
+        "delta": 20
     },
     "AOD": {
         "tick": "AOD$_{340}$",
         "color": "#CB258C",
         "title": "AERONET AOD$_{340}$",
-        "lim sup": 0.8,
+        "lim sup": 1.25,
         "lim inf": 0,
-        "delta": 0.15
+        "delta": 0.25
     },
     "SO2": {
         "tick": "SO$_{2}$",
         "color": "black",
         "title": "NO$_2$, SO$_2$ (ppb)",
-        "lim sup": 50,
+        "lim sup": 80,
         "lim inf": 0,
-        "delta": 10
+        "delta": 20
     },
 }
 parameters = {
@@ -68,9 +110,12 @@ parameters = {
     "linewidth": 4,
     "fontsize": 12
 }
-plt.rc('font', size=parameters["fontsize"])
-plt.rc('xtick', labelsize=parameters["fontsize"])
-plt.rc('ytick', labelsize=parameters["fontsize"]-1)
+plt.rc('font',
+       size=parameters["fontsize"])
+plt.rc('xtick',
+       labelsize=parameters["fontsize"])
+plt.rc('ytick',
+       labelsize=parameters["fontsize"]-1)
 fig, (ax1, ax3, ax4) = plt.subplots(3,
                                     figsize=(9, 9),
                                     sharex=True)
@@ -84,8 +129,8 @@ plt.subplots_adjust(top=0.964,
 ax2 = ax1.twinx()
 ax5 = ax4.twinx()
 axs = np.array([ax2, ax1, ax3, ax4, ax5, ax3])
-print("Pollutant\t  m\tMean\t  e\t b")
 for input, ax in zip(inputs, axs):
+    print("Analizando {}".format(input))
     # Parametros para la grafica dependiendo del compuesto
     tick = inputs[input]["tick"]
     color = inputs[input]["color"]
@@ -98,19 +143,16 @@ for input, ax in zip(inputs, axs):
     # Lectura de datos
     data = pd.read_csv(file,
                        index_col=0)
-    x, mean_clean, mean, std = obtain_mean_and_std(data)
-    fit = np.polyfit(x, list(mean_clean), 1)
-    prom = round(np.mean(mean), 3)
-    # Impresión de los dattos
-    print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t{:.2f}".format(
-        input, fit[0], prom, fit[0]*100/prom,  fit[1]))
+    data_flat = format_data(data)
+    mean, std = obtain_mean_and_std(data_flat)
+    x, years, dates = format_xticks(mean)
     # ax.plot(list(mean.index), list(mean),
     #         ls="-",
     #         label=tick,
     #         color=color,
     #         linewidth=parameters["linewidth"])
-    ax.errorbar(list(mean.index), list(mean),
-                yerr=list(std),
+    ax.errorbar(x, mean["Data"],
+                yerr=std["Data"],
                 marker="o",
                 linewidth=parameters["linewidth"],
                 # ls="--",
@@ -120,12 +162,14 @@ for input, ax in zip(inputs, axs):
                 markersize=2,
                 label=tick,
                 )
-    ax.set_xlim(0, 19)
+    ax.set_xlim(x[0],
+                x[-1])
+    ax.set_xticks([])
     ax.set_ylim(lim_inf, lim_sup)
     yticks = np.arange(lim_inf, lim_sup+delta, delta)
     ax.set_yticks(yticks)
-    ax.set_xticks(x)
-    ax.set_xticklabels(x+2000,
+    ax.set_xticks(dates)
+    ax.set_xticklabels(years,
                        rotation=60)
     if ax in [ax2, ax5]:
         ax.set_ylabel(title,
