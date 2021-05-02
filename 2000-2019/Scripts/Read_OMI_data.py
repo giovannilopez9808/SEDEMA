@@ -34,7 +34,7 @@ inputs = {
     "file data": "Data_OMI_",
     "product": "OMUVB",
     "skiprows": 50,
-    "UVI limit": 20,
+    "UVI limit": 18,
     "UVIcolumns": ["OPUVindex", "CSUVindex", "UVindex"],
     "file results": "UVI_"
 }
@@ -45,7 +45,7 @@ data = clean_data(data,
                   inputs["UVIcolumns"])
 data = obtain_data_in_period(data,
                              "2005-01-01",
-                             "2017-12-31")
+                             "2019-12-31")
 data = drop_data_useless(data,
                          inputs["UVIcolumns"],
                          inputs["UVI limit"])

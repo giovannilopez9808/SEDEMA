@@ -21,7 +21,7 @@ numyear = ["2005",
 inputs = {
     "path data": "../Archivos/",
     "path graphics": "../Graphics/",
-    "column": "CSUVindex",
+    "column": "OPUVindex",
     "year initial": 2005,
     "year final": 2019,
     "UV minium": 1,
