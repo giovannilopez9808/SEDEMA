@@ -21,20 +21,21 @@ numyear = ["2005",
 inputs = {
     "path data": "../Archivos/",
     "path graphics": "../Graphics/",
-    "column": "UVindex",
+    "column": "CSUVindex",
     "year initial": 2005,
     "year final": 2019,
     "UV minium": 1,
     "UV maximum": 17,
 }
-month_days = np.arange(0, 365, 30.2)
+month_days = np.arange(0, 365, 30.5)
 month_names = obtain_month_names()
 UV_values = np.arange(inputs["UV minium"],
                       inputs["UV maximum"])
 UVI_map = np.zeros((inputs["year final"]-inputs["year initial"]+1,
                     365))
-data = pd.read_csv(inputs["path data"]+"UVI_"+inputs["column"]+"_clean.csv",
+data = pd.read_csv(inputs["path data"]+"UVI_"+inputs["column"]+".csv",
                    index_col=0)
+print(inputs["column"], data.max())
 data.index = pd.to_datetime(data.index)
 data_mean = data.resample("MS").mean()
 for year in range(inputs["year initial"], inputs["year final"]+1):
@@ -49,8 +50,6 @@ for year in range(inputs["year initial"], inputs["year final"]+1):
             date = datetime.date(year, month, 1)
             value = data_mean[inputs["column"]][str(date)]
             # UVI_map[year_i, day] = value
-
-
 cm = colormap_UVI()
 font_size = 12
 print("Graficando UV Index")
@@ -82,3 +81,4 @@ ax.set_title("UV Index satellite-derived in Mexico City \n Period 2005-2019")
 plt.savefig("{}{}-OMI.png".format(inputs["path graphics"],
                                   inputs["column"]),
             dpi=300)
+plt.show()

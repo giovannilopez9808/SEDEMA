@@ -7,6 +7,26 @@ def date_format(data):
     data["Date"] = pd.to_datetime(data["Date"])
     data.index = data["Date"]
     data = data.drop(["Date", "Datetime"], 1)
+    return data
+
+
+def clean_data(data, columns):
+    for column in data.columns:
+        if not column in columns:
+            data = data.drop(column, 1)
+    return data
+
+
+def obtain_data_in_period(data, date_i, date_f):
+    data = data[data.index >= date_i]
+    data = data[data.index <= date_f]
+    return data
+
+
+def drop_data_useless(data, columns, limit):
+    for column in columns:
+        data = data[data[column] < limit]
+    return data
 
 
 inputs = {
@@ -14,15 +34,26 @@ inputs = {
     "file data": "Data_OMI_",
     "product": "OMUVB",
     "skiprows": 50,
-    "column": "OPUVindex",
+    "UVI limit": 20,
+    "UVIcolumns": ["OPUVindex", "CSUVindex", "UVindex"],
     "file results": "UVI_"
 }
 data = pd.read_fwf(inputs["path data"]+inputs["file data"]+inputs["product"]+".dat",
                    skiprows=inputs["skiprows"])
-date_format(data)
-data_UVI = data[inputs["column"]]
-data_UVI = data_UVI[data_UVI.index >= "2005-01-01"]
-data_UVI = data_UVI[data_UVI.index <= "2019-12-31"]
-data_UVI.to_csv(inputs["path data"] +
-                inputs["file results"]+inputs["column"]+".csv",
-                float_format='%.4f')
+data = date_format(data)
+data = clean_data(data,
+                  inputs["UVIcolumns"])
+data = obtain_data_in_period(data,
+                             "2005-01-01",
+                             "2017-12-31")
+data = drop_data_useless(data,
+                         inputs["UVIcolumns"],
+                         inputs["UVI limit"])
+
+for uvicolumn in inputs["UVIcolumns"]:
+    print("Creando archivo {}".format(uvicolumn))
+    data_UVI = data[uvicolumn]
+    data_UVI.to_csv("{}{}{}.csv".format(inputs["path data"],
+                                        inputs["file results"],
+                                        uvicolumn),
+                    float_format='%.4f')
