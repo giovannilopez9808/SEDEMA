@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -29,6 +30,34 @@ def drop_data_useless(data, columns, limit):
     return data
 
 
+def plot_data(data, column, date_initial, date_final):
+    plt.subplots(figsize=(10, 4))
+    plt.ylabel(column)
+    dates, xtick = obtain_xticks(date_initial,
+                                 date_final)
+    plt.xlim(pd.to_datetime(date_initial),
+             pd.to_datetime(date_final))
+    plt.xticks(dates, xtick)
+    plt.ylim(7, 18)
+    plt.yticks([ytick for ytick in range(7, 19)])
+    plt.scatter(data.index, data)
+    plt.grid(ls="--",
+             color="#000000",
+             alpha=0.5)
+    plt.show()
+
+
+def obtain_xticks(date_initial, date_final):
+    year_i = int(date_initial[0:4])
+    year_f = int(date_final[0:4])
+    xtick = []
+    dates = []
+    for year in range(year_i, year_f+2):
+        xtick.append(year)
+        dates.append(pd.to_datetime("{}-01-01".format(year)))
+    return dates, xtick
+
+
 inputs = {
     "path data": "../Archivos/",
     "file data": "Data_OMI_",
@@ -51,10 +80,13 @@ data = obtain_data_in_period(data,
 data = drop_data_useless(data,
                          inputs["UVIcolumns"],
                          inputs["UVI limit"])
-
 for uvicolumn in inputs["UVIcolumns"]:
     print("Creando archivo {}".format(uvicolumn))
     data_UVI = data[uvicolumn]
+    plot_data(data_UVI,
+              uvicolumn,
+              inputs["day initial"],
+              inputs["day final"])
     data_UVI.to_csv("{}{}{}.csv".format(inputs["path data"],
                                         inputs["file results"],
                                         uvicolumn),

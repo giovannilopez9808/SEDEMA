@@ -107,22 +107,22 @@ for input, ax in zip(inputs, axs):
     # Impresión de los dattos
     print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t{:.2f}".format(
         input, fit[0], prom, fit[0]*100/prom,  fit[1]))
-    # ax.plot(list(mean.index), list(mean),
-    #         ls="-",
-    #         label=tick,
-    #         color=color,
-    #         linewidth=parameters["linewidth"])
-    ax.errorbar(list(mean.index), list(mean),
-                yerr=list(std),
-                marker="o",
-                linewidth=parameters["linewidth"],
-                # ls="--",
-                alpha=0.6,
-                color=color,
-                capsize=5,
-                markersize=2,
-                label=tick,
-                )
+    ax.plot(list(mean.index), list(mean),
+            ls="-",
+            label=tick,
+            color=color,
+            linewidth=parameters["linewidth"])
+    # ax.errorbar(list(mean.index), list(mean),
+    #             yerr=list(std),
+    #             marker="o",
+    #             linewidth=parameters["linewidth"],
+    #             # ls="--",
+    #             alpha=0.6,
+    #             color=color,
+    #             capsize=5,
+    #             markersize=2,
+    #             label=tick,
+    #             )
     ax.set_xlim(0, 19)
     ax.set_ylim(lim_inf, lim_sup)
     yticks = np.arange(lim_inf, lim_sup+delta, delta)

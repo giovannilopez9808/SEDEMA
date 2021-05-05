@@ -66,41 +66,41 @@ inputs = {
         "tick": "PM$_{10}$",
         "color": "#A25715",
         "title": "PM$_{10}$ ($\mu g/m^3$)",
-        "lim sup": 100,
-        "lim inf": 0,
+        "lim sup": 95,
+        "lim inf": 15,
         "delta": 20
     },
     "NO2": {
         "tick": "NO$_2$",
         "color": "blue",
         "title": "NO$_2$, SO$_2$ (ppb)",
-        "lim sup": 80,
+        "lim sup": 70,
         "lim inf": 0,
-        "delta": 20
+        "delta": 10
     },
     "O3": {
         "tick": "O$_3$",
         "color": "green",
         "title": "O$_3$ (ppb)",
-        "lim sup": 130,
-        "lim inf": 10,
+        "lim sup": 120,
+        "lim inf": 20,
         "delta": 20
     },
     "AOD": {
         "tick": "AOD$_{340}$",
         "color": "#CB258C",
         "title": "AERONET AOD$_{340}$",
-        "lim sup": 1.25,
+        "lim sup": 1.4,
         "lim inf": 0,
-        "delta": 0.25
+        "delta": 0.2
     },
     "SO2": {
         "tick": "SO$_{2}$",
         "color": "black",
         "title": "NO$_2$, SO$_2$ (ppb)",
-        "lim sup": 80,
+        "lim sup": 70,
         "lim inf": 0,
-        "delta": 20
+        "delta": 10
     },
 }
 parameters = {
@@ -146,22 +146,22 @@ for input, ax in zip(inputs, axs):
     data_flat = format_data(data)
     mean, std = obtain_mean_and_std(data_flat)
     x, years, dates = format_xticks(mean)
-    # ax.plot(list(mean.index), list(mean),
-    #         ls="-",
-    #         label=tick,
-    #         color=color,
-    #         linewidth=parameters["linewidth"])
-    ax.errorbar(x, mean["Data"],
-                yerr=std["Data"],
-                marker="o",
-                linewidth=parameters["linewidth"],
-                # ls="--",
-                alpha=0.6,
-                color=color,
-                capsize=5,
-                markersize=2,
-                label=tick,
-                )
+    ax.plot(x, mean["Data"],
+            ls="-",
+            label=tick,
+            color=color,
+            linewidth=parameters["linewidth"])
+    # ax.errorbar(x, mean["Data"],
+    #             yerr=std["Data"],
+    #             marker="o",
+    #             linewidth=parameters["linewidth"],
+    #             # ls="--",
+    #             alpha=0.6,
+    #             color=color,
+    #             capsize=5,
+    #             markersize=2,
+    #             label=tick,
+    #             )
     ax.set_xlim(x[0],
                 x[-1])
     ax.set_xticks([])
@@ -179,8 +179,9 @@ for input, ax in zip(inputs, axs):
         ax.set_ylabel(title)
     if ax in [ax1, ax4]:
         ax.legend(frameon=False,
-                  ncol=2, loc="best",
-                  bbox_to_anchor=(0.84, 1))
+                  # ncol=2,  # loc="best",
+                  loc="upper right",
+                  bbox_to_anchor=(0.8, 1))
     else:
         ax.legend(frameon=False,
                   ncol=2,
