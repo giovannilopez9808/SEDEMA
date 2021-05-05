@@ -6,11 +6,11 @@ import datetime
 
 
 def read_data(path, name):
-    data = np.loadtxt(inputs["path data"]+inputs["file data"],
-                      usecols=np.arange(1, 21),
-                      delimiter=",",
-                      skiprows=1,
-                      )
+    data = np.genfromtxt(inputs["path data"]+inputs["file data"],
+                         usecols=np.arange(1, 16),
+                         skip_header=1,
+                         delimiter=",",
+                         )
     data = np.transpose(data)
     return data
 
@@ -50,11 +50,11 @@ def obtain_month_days():
 
 inputs = {
     "path data": "../Archivos/",
-    "file data": "O3_CDMX.csv",
+    "file data": "O3_OMI.csv",
     "path graphics": "../Graphics/",
     "graphic name": "O3",
     "map color": "viridis",
-    "year initial": 2000,
+    "year initial": 2005,
     "year final": 2019
 }
 data = read_data(inputs["path data"],
@@ -66,7 +66,7 @@ plt.subplots_adjust(top=0.922,
                     right=0.977,
                     hspace=0.2,
                     wspace=0.2)
-plt.title("Period 2000-2019",
+plt.title("Period 2005-2019",
           fontsize="large")
 define_xticks(ax)
 define_yticks(ax,
@@ -75,20 +75,18 @@ define_yticks(ax,
 ax.grid(linewidth=1,
         color="#000000",
         linestyle="--")
-levels = np.arange(0,
-                   150,
-                   15)
+levels = np.arange(200,
+                   340,
+                   20)
 map_data = ax.imshow(data,
                      cmap=inputs["map color"],
                      origin="lower",
-                     vmin=0,
-                     vmax=135
                      )
 cbar = fig.colorbar(map_data,
-                    values=np.delete(levels+7.5, -1),
+                    values=np.delete(levels+10, -1),
                     ticks=levels,
                     )
-cbar.ax.set_ylabel("O$_3$ (ppb)",
+cbar.ax.set_ylabel("Total Ozone Column (DU)",
                    rotation=-90,
                    va="bottom",
                    fontsize="large")
