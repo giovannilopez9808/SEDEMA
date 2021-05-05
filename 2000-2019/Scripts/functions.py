@@ -16,7 +16,7 @@ def obtain_month_names():
     names = []
     for i in range(1, 13):
         date = datetime.date(2000, i, 1)
-        names.append(date.strftime("%B"))
+        names.append(date.strftime("%b"))
     return names
 
 
