@@ -49,7 +49,7 @@ for year in range(inputs["year initial"], inputs["year final"]+1):
             month = date.month
             date = datetime.date(year, month, 1)
             value = data_mean[inputs["column"]][str(date)]
-            # UVI_map[year_i, day] = value
+            UVI_map[year_i, day] = value
 cm = colormap_UVI()
 font_size = 12
 print("Graficando UV Index")
@@ -70,15 +70,17 @@ ax.set_xticklabels(month_names,
                    fontsize=font_size)
 map = ax.imshow(UVI_map,
                 cmap=cm,
+                vmin=inputs["UV minium"],
+                vmax=inputs["UV maximum"],
                 origin="lower")
 forceAspect(ax, 1.2)
 cbar = fig.colorbar(map,
-                    values=UV_values+0.5)
+                    values=UV_values+0.5,
+                    ticks=UV_values)
 cbar.ax.set_ylabel("UV Index",
                    rotation=-90,
                    va="bottom",
                    fontsize=11)
-cbar.set_ticks(UV_values)
 ax.set_title("UV Index satellite-derived in Mexico City \n Period 2005-2019")
 plt.savefig("{}{}-OMI.png".format(inputs["path graphics"],
                                   inputs["column"]),

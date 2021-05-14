@@ -52,9 +52,11 @@ data = obtain_data_in_period(data,
 data = drop_data_useless(data,
                          inputs["UVIcolumns"],
                          inputs["UVI limit"])
+print(data.max())
 for uvicolumn in inputs["UVIcolumns"]:
     print("Creando archivo {}".format(uvicolumn))
     data_UVI = data[uvicolumn]
+    print(data_UVI.count())
     data_UVI.to_csv("{}{}{}.csv".format(inputs["path data"],
                                         inputs["file results"],
                                         uvicolumn),
