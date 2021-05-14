@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import datetime
 
 
@@ -31,22 +32,24 @@ def drop_data_useless(data, columns, limit):
     return data
 
 
-def plot_data(data, column, date_initial, date_final):
+def plot_data(data,  date_initial, date_final):
     plt.subplots(figsize=(10, 4))
     plt.subplots_adjust(top=0.963,
-                        bottom=0.097,
+                        bottom=0.13,
                         left=0.062,
                         right=0.967,
                         hspace=0.2,
                         wspace=0.2)
-    plt.ylabel(column)
+    plt.xlabel("year")
+    plt.ylabel("UV Index")
     dates, xtick = obtain_xticks(date_initial,
                                  date_final)
     plt.xlim(pd.to_datetime(date_initial).date(),
              pd.to_datetime(date_final).date())
     plt.xticks(dates, xtick)
     plt.scatter(data.index, data)
-    plt.ylim(0,)
+    plt.ylim(0, 18)
+    plt.yticks(np.arange(0, 20, 2))
     plt.grid(ls="--",
              color="#000000",
              alpha=0.5)
@@ -90,7 +93,6 @@ for uvicolumn in inputs["UVIcolumns"]:
     print("Creando archivo {}".format(uvicolumn))
     data_UVI = data[uvicolumn]
     plot_data(data_UVI,
-              uvicolumn,
               inputs["day initial"],
               inputs["day final"])
     data_UVI.to_csv("{}{}{}.csv".format(inputs["path data"],
