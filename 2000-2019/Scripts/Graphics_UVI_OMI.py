@@ -21,7 +21,7 @@ numyear = ["2005",
 inputs = {
     "path data": "../Archivos/",
     "path graphics": "../Graphics/",
-    "column": "OPUVindex",
+    "column": "CSUVindex",
     "year initial": 2005,
     "year final": 2019,
     "UV minium": 1,
@@ -54,10 +54,12 @@ cm = colormap_UVI()
 font_size = 12
 print("Graficando UV Index")
 fig, ax = plt.subplots(1, 1)
-plt.subplots_adjust(left=0.094,
+plt.subplots_adjust(top=0.879,
+                    bottom=0.132,
+                    left=0.023,
                     right=0.977,
-                    bottom=0.205,
-                    top=0.89)
+                    hspace=0.2,
+                    wspace=0.2)
 year = np.arange(inputs["year final"]-inputs["year initial"]+1)
 ax.set_yticks(year-0.5)
 ax.set_yticklabels(numyear,
@@ -69,7 +71,7 @@ ax.set_xticklabels(month_names,
 map = ax.imshow(UVI_map,
                 cmap=cm,
                 origin="lower")
-forceAspect(ax, 1.35)
+forceAspect(ax, 1.2)
 cbar = fig.colorbar(map,
                     values=UV_values+0.5)
 cbar.ax.set_ylabel("UV Index",
@@ -80,5 +82,5 @@ cbar.set_ticks(UV_values)
 ax.set_title("UV Index satellite-derived in Mexico City \n Period 2005-2019")
 plt.savefig("{}{}-OMI.png".format(inputs["path graphics"],
                                   inputs["column"]),
-            dpi=300)
+            dpi=400)
 plt.show()
