@@ -32,7 +32,7 @@ def drop_data_useless(data, columns, limit):
     return data
 
 
-def plot_data(data,  date_initial, date_final):
+def plot_data(data,  date_initial, date_final, path, name):
     plt.subplots(figsize=(10, 4))
     plt.subplots_adjust(top=0.963,
                         bottom=0.13,
@@ -47,12 +47,16 @@ def plot_data(data,  date_initial, date_final):
     plt.xlim(pd.to_datetime(date_initial).date(),
              pd.to_datetime(date_final).date())
     plt.xticks(dates, xtick)
-    plt.scatter(data.index, data)
+    plt.scatter(data.index, data,
+                c="#023e8a",
+                marker=".")
     plt.ylim(0, 18)
     plt.yticks(np.arange(0, 20, 2))
     plt.grid(ls="--",
              color="#000000",
              alpha=0.5)
+    plt.savefig("{}{}.png".format(path,
+                                  name))
     plt.show()
 
 
@@ -70,6 +74,7 @@ def obtain_xticks(date_initial, date_final):
 inputs = {
     "path data": "../Archivos/",
     "file data": "Data_OMI_",
+    "path graphics": "../Graphics/",
     "product": "OMUVB",
     "skiprows": 50,
     "UVI limit": 18,
@@ -94,7 +99,9 @@ for uvicolumn in inputs["UVIcolumns"]:
     data_UVI = data[uvicolumn]
     plot_data(data_UVI,
               inputs["day initial"],
-              inputs["day final"])
+              inputs["day final"],
+              inputs["path graphics"],
+              uvicolumn)
     data_UVI.to_csv("{}{}{}.csv".format(inputs["path data"],
                                         inputs["file results"],
                                         uvicolumn),

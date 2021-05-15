@@ -107,28 +107,17 @@ for input, ax in zip(inputs, axs):
     # Impresión de los dattos
     print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t{:.2f}".format(
         input, fit[0], prom, fit[0]*100/prom,  fit[1]))
-    ax.plot(list(mean.index), list(mean),
+    ax.plot(list(mean_clean.index.astype(int)-2000), list(mean_clean),
             ls="-",
             label=tick,
             color=color,
             linewidth=parameters["linewidth"])
-    # ax.errorbar(list(mean.index), list(mean),
-    #             yerr=list(std),
-    #             marker="o",
-    #             linewidth=parameters["linewidth"],
-    #             # ls="--",
-    #             alpha=0.6,
-    #             color=color,
-    #             capsize=5,
-    #             markersize=2,
-    #             label=tick,
-    #             )
     ax.set_xlim(0, 19)
     ax.set_ylim(lim_inf, lim_sup)
     yticks = np.arange(lim_inf, lim_sup+delta, delta)
     ax.set_yticks(yticks)
     ax.set_xticks(x)
-    ax.set_xticklabels(x+2000,
+    ax.set_xticklabels(mean.index,
                        rotation=60)
     if ax in [ax2, ax5]:
         ax.set_ylabel(title,
@@ -144,5 +133,5 @@ for input, ax in zip(inputs, axs):
         ax.legend(frameon=False,
                   ncol=2,
                   loc="upper right")
-#plt.savefig(parameters["path graphics"]+"pollutants.png", dpi=400)
+plt.savefig(parameters["path graphics"]+"pollutants.png", dpi=400)
 plt.show()
