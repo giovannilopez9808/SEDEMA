@@ -23,7 +23,7 @@ inputs = {
         },
     },
     "year initial": 2000,
-    "year final": 2019,
+    "year final": 2020,
     "hour initial": 11,
     "hour final": 15
 }
@@ -37,7 +37,9 @@ for wavelength in inputs["wavelength"]:
     max_daily = np.zeros([24, 365])
     # <------Ciclo que varia las estaciones------->
     for station in stations:
-        dir_station = inputs["path stations"]+station+"/"+wavelength+"/"
+        dir_station = "{}{}/{}/".format(inputs["path stations"],
+                                        station,
+                                        wavelength)
         # <----Lista de archivos que hay en la estacion----->
         files = sorted(listdir(dir_station))
         # <----Ciclo que varia en los archivos---->

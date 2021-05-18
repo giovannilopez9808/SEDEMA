@@ -1,18 +1,37 @@
-
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 from functions import *
+import pandas as pd
 import numpy as np
 import datetime
 
 
 def read_data(path, name):
-    data = np.genfromtxt(inputs["path data"]+inputs["file data"],
-                         usecols=np.arange(1, 16),
-                         skip_header=1,
-                         delimiter=",",
-                         )
-    data = np.transpose(data)
-    return data
+    data = pd.read_csv(inputs["path data"]+inputs["file data"],
+                       index_col=0)
+    data.index = pd.to_datetime(data.index,
+                                format="%m-%d")
+    data_monthly_mean = obtain_monthly_mean(data)
+    data = data.fillna(-1)
+    return data, data_monthly_mean
+
+
+def obtain_monthly_mean(data):
+    return data.resample("MS").mean()
+
+
+def write_data_on_matrix(data, data_monthly_mean, year_i, year_f):
+    data_matrix = np.zeros((year_f-year_i+1, 365))
+    for day, date in enumerate(data.index):
+        for year in range(year_i, year_f+1):
+            value = data[str(year)][date]
+            if value != -1:
+                data_matrix[year-year_i, day] = value
+            else:
+                date_month = pd.to_datetime(
+                    "1900-{}-01".format(str(date.month).zfill(2)))
+                data_matrix[year-year_i,
+                            day] = data_monthly_mean[str(year)][date_month]
+    return data_matrix
 
 
 def define_yticks(ax, year_initial, year_final):
@@ -57,8 +76,12 @@ inputs = {
     "year initial": 2005,
     "year final": 2019
 }
-data = read_data(inputs["path data"],
-                 inputs["file data"])
+data, data_monthly_mean = read_data(inputs["path data"],
+                                    inputs["file data"])
+data_matrix = write_data_on_matrix(data,
+                                   data_monthly_mean,
+                                   inputs["year initial"],
+                                   inputs["year final"])
 fig, ax = plt.subplots()
 plt.subplots_adjust(top=0.922,
                     bottom=0.081,
@@ -78,7 +101,7 @@ ax.grid(linewidth=1,
 levels = np.arange(200,
                    340,
                    20)
-map_data = ax.imshow(data,
+map_data = ax.imshow(data_matrix,
                      cmap=inputs["map color"],
                      origin="lower",
                      )

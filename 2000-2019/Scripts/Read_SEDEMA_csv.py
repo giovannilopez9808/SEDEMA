@@ -27,7 +27,8 @@ for file in files:
     folder = inputs["Wave"][lon]["folder"]
     name = inputs["Wave"][lon]["name"]
     resize = inputs["Wave"][lon]["change units"]
-    data = pd.read_csv(inputs["path data"]+file).fillna(0)
+    data = pd.read_csv("{}{}".format(inputs["path data"],
+                                     file)).fillna(0)
     data["Dates"] = pd.to_datetime(data["Dates"])
     data_len = data["Dates"].count()
     # Ciclo para leer las columnas
@@ -38,8 +39,11 @@ for file in files:
         hour = data["Dates"][i].hour
         date = date2yymmdd(data["Dates"][i].date())
         mkdir(station, path=inputs["path stations"])
-        mkdir(folder, path=inputs["path stations"]+station+"/")
+        mkdir(folder, path="{}{}/".format(inputs["path stations"],
+                                          station))
         path_station = inputs["path stations"]+station+"/"+folder+"/"
-        file = open(path_station+date+".txt", "a")
+        file = open("{}{}.txt".format(path_station,
+                                      date),
+                    "a")
         file.write("{} {:.5f}\n".format(hour, value*resize))
         file.close()
