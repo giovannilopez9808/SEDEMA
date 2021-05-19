@@ -28,7 +28,7 @@ for file in files:
     name = inputs["Wave"][lon]["name"]
     resize = inputs["Wave"][lon]["change units"]
     data = pd.read_csv("{}{}".format(inputs["path data"],
-                                     file)).fillna(0)
+                                     file)).fillna(0.0)
     data["Dates"] = pd.to_datetime(data["Dates"])
     data_len = data["Dates"].count()
     # Ciclo para leer las columnas
@@ -45,5 +45,5 @@ for file in files:
         file = open("{}{}.txt".format(path_station,
                                       date),
                     "a")
-        file.write("{} {:.5f}\n".format(hour, value*resize))
+        file.write("{} {:.5f}\n".format(hour, float(value)*resize))
         file.close()

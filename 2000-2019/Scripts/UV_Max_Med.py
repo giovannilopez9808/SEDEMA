@@ -150,6 +150,7 @@ for wavelength in inputs["wavelength"]:
                     UVmax[year, month, 0]/UVmax[year, month, 1], 2)
             if UVmax[year, month, 0] != 0:
                 # <---------Escritura del archivo---------->
-                file.write("{},{:.4f},{:.4f}\n".format(
-                    date, UVmax[year, month, 0], std[year, month, 0]))
+                file.write("{},{:.4f},{:.4f}\n".format(date,
+                                                       UVmax[year, month, 0],
+                                                       std[year, month, 0]))
     file.close()
