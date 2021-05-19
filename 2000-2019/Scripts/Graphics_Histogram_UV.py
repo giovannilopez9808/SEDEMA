@@ -1,9 +1,47 @@
-# <------Programa que genera histogramas a partir de la base de datos------>
-import matplotlib
-import numpy as np
 import matplotlib.pyplot as plt
-from os import listdir
-# <-------Funcion para señalar los valores arriba de los histogramas---------->
+import pandas as pd
+import numpy as np
+import os
+
+
+def select_files(files, type_name):
+    files_type = []
+    for file in files:
+        if type_name in file:
+            files_type.append(file)
+    return files_type
+
+
+def read_data(path, name):
+    data = pd.read_csv("{}{}".format(path,
+                                     name),
+                       index_col=0)
+    data = format_date_data(data)
+    return data
+
+
+def format_date_data(data):
+    data.index = pd.to_datetime(data.index)
+    data = data.drop(["parameter",
+                      "unit", ],
+                     1)
+    return data
+
+
+def clean_data(data, hour_i, hour_f):
+    data = data[data.index.hour >= hour_i]
+    data = data[data.index.hour <= hour_f]
+    return data
+
+
+def obtain_daily_maximum_per_stations(data):
+    return data.groupby("cve_station").resample("D").max()
+
+
+def format_data(data, resize):
+    data["value"] = data["value"]*40*resize
+    data = data.dropna()
+    return data
 
 
 def autolabel(rects):
@@ -17,40 +55,44 @@ def autolabel(rects):
                     ha='center', va='bottom', fontsize=9)
 
 
-# <-------Valores predefinidos-------->
 inputs = {
-    "path stations": "../Stations/",
-    "folder erythemal": "/Erythemal/",
+    "path data": "../Archivos/SEDEMA_Data/Radiation/",
     "path graphics": "../Graphics/",
+    "wavelength": {  # "UVA": 10,
+        "UVB": 0.0583, },
+    "hour initial": 11,
+    "hour final": 16,
     "UV minium": 1,
     "UV maximum": 16,
 }
-# <-------Nombres de estaciones------>
-stations = sorted(listdir(inputs["path stations"]))
+UV_count = np.zeros(inputs["UV maximum"]-inputs["UV minium"])
 UV_list = np.arange(inputs["UV minium"],
                     inputs["UV maximum"])
 X = UV_list-1
-UV_count = np.zeros(inputs["UV maximum"]-inputs["UV minium"])
-n_total = 0
 font_size = 13
-# <-------Ciclo para variar las estaciones---------->
-for station in stations:
-    # <-----------n_ind: variable que guarda la cantidad de dias----------------->
-    print("Analizando estacion "+station)
-    path_station = inputs["path stations"]+station+inputs["folder erythemal"]
-    files = listdir(path_station)
-    # <--------Ciclo para varias las fechas----------->
-    for file in files:
-        med = np.loadtxt(path_station+file,
-                         usecols=1)
-        UV = med.max()*40
-        # <-----------Conteo de los UV----------->
-        if inputs["UV maximum"] >= UV >= inputs["UV minium"]:
-            if UV != 0:
-                n_total += 1
-                UV = int(UV-inputs["UV minium"])
-                UV_count[UV] += 1
-# <------------Inicio del ploteo del histograma general---------------->
+files = sorted(os.listdir(inputs["path data"]))
+n_total = 0
+for wavelength in inputs["wavelength"]:
+    resize = inputs["wavelength"][wavelength]
+    files_type = select_files(files,
+                              wavelength)
+    for file in files_type:
+        if not "2020" in file:
+            print("Analizando archivo {}".format(file))
+            data = read_data(inputs["path data"],
+                             file)
+            # data = clean_data(data,
+            #                   inputs["hour initial"],
+            #                   inputs["hour final"])
+            data = obtain_daily_maximum_per_stations(data)
+            data = format_data(data,
+                               resize)
+            for index in data.index:
+                UV = data["value"][index]
+                if inputs["UV maximum"] >= UV >= inputs["UV minium"]:
+                    UV = int(UV-inputs["UV minium"])
+                    UV_count[UV] += 1
+                    n_total += 1
 Y = np.arange(0, 20+2, 2)
 UV_count = UV_count*100/n_total
 fig, ax = plt.subplots(figsize=(9, 7))
@@ -78,6 +120,6 @@ rect = ax.bar(X, UV_count,
 autolabel(rect)
 # <--------Guardado de la grafica-------------->
 plt.subplots_adjust(left=0.102, bottom=0.093, right=0.962, top=0.936)
-plt.savefig(inputs["path graphics"]+"Histogram_UVI.png", dpi=400)
+#plt.savefig(inputs["path graphics"]+"Histogram_UVI.png", dpi=400)
 plt.show()
 plt.clf()
