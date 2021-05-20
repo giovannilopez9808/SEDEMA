@@ -9,12 +9,12 @@ import datetime
 def read_data(path, file):
     # <-------------Lectura de los datos------------------>
     data = pd.read_csv("{}{}".format(path,
-                                     file))
+                                     file),
+                       index_col=0)
     # <---------Erythemal a UVI-------------->
-    data["Max Data"] = data["Max Data"]*40
+    data["Max"] = data["Max"]*40
     data["std"] = data["std"]*40
-    data.index = pd.to_datetime(data["Date"])
-    data = data.drop("Date", 1)
+    data.index = pd.to_datetime(data.index)
     return data
 
 
@@ -37,33 +37,31 @@ inputs = {
     "year final": 2019,
     "path data": "../Archivos/",
     "path graphics": "../Graphics/",
-    "file data": "Max_Monthly_Ery.csv",
+    "file data": "Max_Monthly_UVB.csv",
 }
 data = read_data(inputs["path data"],
                  inputs["file data"])
 # <------------Moving average------------->
-moving_average_data = obtain_moving_average_monthly(data["Max Data"], 3)
-print(data[data.index >= "2020-01-01"])
+moving_average_data = obtain_moving_average_monthly(data["Max"], 3)
 data = cut_data(data,
                 "2000-01-01",
                 "2019-12-01",)
-print(data)
 # <--------------Tendencia----------------->
 yearly_mean = obtain_yearly_mean(data)
 mean_data = yearly_mean.mean()
 fit = np.polyfit(list(yearly_mean.index.year),
-                 list(yearly_mean["Max Data"]), 1)
+                 list(yearly_mean["Max"]), 1)
 
 print("Parameter\tm\tMean\tTendency")
 print("UVI:\t   \t{:.2f}\t{:.1f}\t{:.1f}".format(fit[0],
-                                                 mean_data["Max Data"],
-                                                 fit[0]*100/mean_data["Max Data"]))
+                                                 mean_data["Max"],
+                                                 fit[0]*100/mean_data["Max"]))
 
 fit = np.poly1d(fit)
 years = list(yearly_mean.index.year)
 years.append(2020)
 years = np.array(years)
-pd2 = fit(years)
+Fit_line = fit(years)
 # <-------Inicio de la grafica UVyearlyError-------->
 plt.xticks((years-inputs["year initial"])*12,
            years,
@@ -74,27 +72,32 @@ plt.title("Period 2000-2019",
           fontsize="large")
 plt.ylabel("UV Index",
            fontsize="large")
-plt.xlim(0, 20*12)
-plt.ylim(0, 16)
+plt.xlim(0,
+         (inputs["year final"]-inputs["year initial"]+1)*12)
+plt.ylim(0,
+         16)
 # # <------------Barras de error--------------->
-plt.errorbar(range(data["Max Data"].count()), list(data["Max Data"]),
+plt.errorbar(range(len(data["Max"])),
+             list(data["Max"]),
              yerr=data["std"],
              marker="o",
              linewidth=1,
-             ls="--",
-             alpha=0.6,
+             ls="None",
+             alpha=0.8,
              color="black",
              capsize=5,
              markersize=2,
              label="Monthly average and SD")
 # # <--------Ploteo del moving average para 3 meses----------->
-plt.plot(range(moving_average_data.count()+2),
+plt.plot(range(len(moving_average_data)),
          list(moving_average_data),
          label="Moving average",
          linewidth=3,
-         color="grey")
+         color="#000000",
+         alpha=0.5)
 # # <-----------Ploteo de linear fit------------------>
-plt.plot([i*12 for i in range(21)], pd2,
+plt.plot((years-inputs["year initial"])*12,
+         Fit_line,
          label="Linear fit",
          color="red",
          linewidth=3)
@@ -112,4 +115,3 @@ plt.legend(ncol=3,
 # # <---------------Guardado de la grafica-------------->
 plt.savefig("{}UV_Moving_Average.png".format(inputs["path graphics"]),
             dpi=400)
-plt.show()

@@ -44,15 +44,41 @@ def format_data(data, resize):
     return data
 
 
+def plot_grid(UV_max, percentage_limit):
+    even = np.arange(0, percentage_limit+2, 2)
+    odd = even-1
+    for i in range(np.size(even)):
+        plt.plot([-4,  UV_max+1],
+                 [even[i], even[i]],
+                 color="black",
+                 ls="--",
+                 alpha=0.5)
+        plt.plot([-4, UV_max+1],
+                 [odd[i], odd[i]],
+                 color="gray",
+                 ls="--",
+                 alpha=0.3)
+
+
+def obtain_xticks(UV_values):
+    return np.append(UV_values, UV_values[-1]+1)
+
+
+def obtain_yticks(percentage_limit):
+    return np.arange(0, percentage_limit+2, 2)
+
+
 def autolabel(rects):
-    """Attach a text UV_list above each bar in *rects*, displaying its height."""
-    for rect, i in zip(rects, range(len(rects))):
+    """Attach a text UV_values above each bar in *rects*, displaying its height."""
+    for i, rect in enumerate(rects):
         height = rect.get_height()
         ax.annotate("{:.2f}".format(height),
                     xy=(rect.get_x() + rect.get_width() / 2, height),
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
-                    ha='center', va='bottom', fontsize=9)
+                    ha='center',
+                    va='bottom',
+                    fontsize=9)
 
 
 inputs = {
@@ -64,11 +90,11 @@ inputs = {
     "hour final": 16,
     "UV minium": 1,
     "UV maximum": 16,
+    "Percentage limit": 20,
 }
 UV_count = np.zeros(inputs["UV maximum"]-inputs["UV minium"])
-UV_list = np.arange(inputs["UV minium"],
-                    inputs["UV maximum"])
-X = UV_list-1
+UV_values = np.arange(inputs["UV minium"],
+                      inputs["UV maximum"])
 font_size = 13
 files = sorted(os.listdir(inputs["path data"]))
 n_total = 0
@@ -93,33 +119,32 @@ for wavelength in inputs["wavelength"]:
                     UV = int(UV-inputs["UV minium"])
                     UV_count[UV] += 1
                     n_total += 1
-Y = np.arange(0, 20+2, 2)
 UV_count = UV_count*100/n_total
 fig, ax = plt.subplots(figsize=(9, 7))
-plt.xticks(np.append(X, inputs["UV maximum"]-1)-0.5,
-           np.append(UV_list, inputs["UV maximum"]),
-           fontsize=font_size)
-plt.yticks(Y, fontsize=font_size)
 plt.ylim(0, 20)
-plt.xlim(-1, X.max()+1)
-plt.xlabel("UV Index daily maximum", fontsize=font_size)
+plt.xlim(-1, inputs["UV maximum"]+1)
+plt.xlabel("Daily maximums UV Index", fontsize=font_size)
 plt.ylabel("Frequency (%) of Days", fontsize=font_size)
 plt.title("Period 2000-2019", fontsize=font_size)
-# <--------Grafica de las grillas---------->
-# <----Numeros pares------>
-even = np.arange(2, 24+2, 2)
-# <----Numeros impares----->
-odd = np.arange(1, 24+2+1, 2)
-for i in range(np.size(even)):
-    plt.plot([-4, inputs["UV maximum"]+1], [even[i], even[i]],
-             color="black", ls="--", alpha=0.5)
-    plt.plot([-4, inputs["UV maximum"]+1], [odd[i], odd[i]],
-             color="gray", ls="--", alpha=0.3)
-rect = ax.bar(X, UV_count,
-              color="#00838a", width=1, edgecolor="black")
-autolabel(rect)
+rects = ax.bar(UV_values, UV_count,
+               color="#00838a",
+               width=1,
+               edgecolor="black")
+autolabel(rects)
+plot_grid(inputs["UV maximum"],
+          inputs["Percentage limit"])
+xticks = obtain_xticks(UV_values)
+yticks = obtain_yticks(inputs["Percentage limit"])
+plt.xticks(xticks-0.5,
+           xticks,
+           fontsize=font_size)
+plt.yticks(yticks,
+           fontsize=font_size)
 # <--------Guardado de la grafica-------------->
-plt.subplots_adjust(left=0.102, bottom=0.093, right=0.962, top=0.936)
-#plt.savefig(inputs["path graphics"]+"Histogram_UVI.png", dpi=400)
+plt.subplots_adjust(left=0.102,
+                    bottom=0.093,
+                    right=0.962,
+                    top=0.936)
+plt.savefig("{}Histogram.png".format(inputs["path graphics"]),
+            dpi=400)
 plt.show()
-plt.clf()
