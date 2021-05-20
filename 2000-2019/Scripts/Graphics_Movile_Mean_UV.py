@@ -1,9 +1,6 @@
-from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
-from os import listdir
 import pandas as pd
 import numpy as np
-import datetime
 
 
 def read_data(path, file):
@@ -33,16 +30,19 @@ def obtain_yearly_mean(data):
 
 
 inputs = {
+    "path graphics": "../Graphics/",
+    "path data": "../Archivos/",
+    "file data": "Max_Monthly_UVB.csv",
+    "Months moving Average": 3,
     "year initial": 2000,
     "year final": 2019,
-    "path data": "../Archivos/",
-    "path graphics": "../Graphics/",
-    "file data": "Max_Monthly_UVB.csv",
+
 }
 data = read_data(inputs["path data"],
                  inputs["file data"])
 # <------------Moving average------------->
-moving_average_data = obtain_moving_average_monthly(data["Max"], 3)
+moving_average_data = obtain_moving_average_monthly(data["Max"],
+                                                    inputs["Months moving Average"])
 data = cut_data(data,
                 "2000-01-01",
                 "2019-12-01",)
@@ -53,9 +53,9 @@ fit = np.polyfit(list(yearly_mean.index.year),
                  list(yearly_mean["Max"]), 1)
 
 print("Parameter\tm\tMean\tTendency")
-print("UVI:\t   \t{:.2f}\t{:.1f}\t{:.1f}".format(fit[0],
-                                                 mean_data["Max"],
-                                                 fit[0]*100/mean_data["Max"]))
+print("UVI:\t\t{:.2f}\t{:.1f}\t{:.1f}".format(fit[0],
+                                              mean_data["Max"],
+                                              fit[0]*100/mean_data["Max"]))
 
 fit = np.poly1d(fit)
 years = list(yearly_mean.index.year)
