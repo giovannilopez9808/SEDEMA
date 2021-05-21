@@ -77,7 +77,7 @@ inputs = {
     "path graphics": "../Graphics/",
     "product": "OMUVB",
     "skiprows": 50,
-    "UVI limit": 18,
+    "UVI limit": 20,
     "UVIcolumns": ["CSUVindex", "UVindex"],
     "file results": "UVI_",
     "day initial": "2005-01-01",
@@ -94,6 +94,10 @@ data = obtain_data_in_period(data,
 data = drop_data_useless(data,
                          inputs["UVIcolumns"],
                          inputs["UVI limit"])
+year = data[data.index.month >= 6]
+year = year[year.index.month <= 7]
+#print(year[year == year.max()])
+print(year)
 for uvicolumn in inputs["UVIcolumns"]:
     print("Creando archivo {}".format(uvicolumn))
     data_UVI = data[uvicolumn]

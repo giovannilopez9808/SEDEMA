@@ -107,9 +107,9 @@ for wavelength in inputs["wavelength"]:
             print("Analizando archivo {}".format(file))
             data = read_data(inputs["path data"],
                              file)
-            # data = clean_data(data,
-            #                   inputs["hour initial"],
-            #                   inputs["hour final"])
+            data = clean_data(data,
+                              inputs["hour initial"],
+                              inputs["hour final"])
             data = obtain_daily_maximum_per_stations(data)
             data = format_data(data,
                                resize)

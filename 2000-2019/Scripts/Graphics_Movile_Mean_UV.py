@@ -93,8 +93,8 @@ plt.plot(range(len(moving_average_data)),
          list(moving_average_data),
          label="Moving average",
          linewidth=3,
-         color="#000000",
-         alpha=0.5)
+         color="grey",
+         alpha=0.75)
 # # <-----------Ploteo de linear fit------------------>
 plt.plot((years-inputs["year initial"])*12,
          Fit_line,
@@ -115,3 +115,4 @@ plt.legend(ncol=3,
 # # <---------------Guardado de la grafica-------------->
 plt.savefig("{}UV_Moving_Average.png".format(inputs["path graphics"]),
             dpi=400)
+plt.show()
