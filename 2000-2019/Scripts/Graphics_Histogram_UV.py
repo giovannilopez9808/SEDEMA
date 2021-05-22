@@ -87,7 +87,7 @@ inputs = {
     "wavelength": {  # "UVA": 10,
         "UVB": 0.0583, },
     "hour initial": 11,
-    "hour final": 16,
+    "hour final": 15,
     "UV minium": 1,
     "UV maximum": 16,
     "Percentage limit": 20,
@@ -147,4 +147,4 @@ plt.subplots_adjust(left=0.102,
                     top=0.936)
 plt.savefig("{}Histogram.png".format(inputs["path graphics"]),
             dpi=400)
-plt.show()
+# plt.show()
