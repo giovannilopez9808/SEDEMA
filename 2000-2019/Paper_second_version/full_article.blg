@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: full_article.aux
+The style file: elsarticle-num-names.bst
+Database file #1: bibliography/biblio_url.bib
+Warning--to sort, need author or key in rama
+Warning--to sort, need author or key in ambiente
+Warning--to sort, need author or key in atmosfrico
+Warning--to sort, need author or key in dcio
+Warning--to sort, need author or key in 2017
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--empty journal in Gao_2020
+Warning--empty journal in Ma_2020
+Warning--empty journal in Bauwens_2020
+Warning--missing institution in who2002
+Warning--missing institution in SEDEMA2018a
+You've used 58 entries,
+            2918 wiz_defined-function locations,
+            1054 strings with 22018 characters,
+and the built_in function-call counts, 50559 in all, are:
+= -- 3477
+> -- 3141
+< -- 9
++ -- 1177
+- -- 1119
+* -- 6750
+:= -- 7278
+add.period$ -- 115
+call.type$ -- 58
+change.case$ -- 663
+chr.to.int$ -- 58
+cite$ -- 78
+duplicate$ -- 3210
+empty$ -- 2988
+format.name$ -- 1284
+if$ -- 9042
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 761
+newline$ -- 288
+num.names$ -- 212
+pop$ -- 1139
+preamble$ -- 1
+purify$ -- 663
+quote$ -- 0
+skip$ -- 627
+stack$ -- 0
+substring$ -- 1937
+swap$ -- 2899
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 522
+warning$ -- 10
+while$ -- 245
+width$ -- 0
+write$ -- 804
+(There were 10 warnings)

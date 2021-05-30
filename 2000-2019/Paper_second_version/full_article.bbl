@@ -1,0 +1,651 @@
+\begin{thebibliography}{58}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Taylor et~al.(1988)Taylor, West, Rosenthal, Mu{\~{n}}oz, Newland,
+  Abbey, and Emmett}]{Taylor_1988}
+\bibinfo{author}{H.~R. Taylor}, \bibinfo{author}{S.~K. West},
+  \bibinfo{author}{F.~S. Rosenthal}, \bibinfo{author}{B.~Mu{\~{n}}oz},
+  \bibinfo{author}{H.~S. Newland}, \bibinfo{author}{H.~Abbey},
+  \bibinfo{author}{E.~A. Emmett},
+\newblock \bibinfo{title}{{Effect of Ultraviolet Radiation on Cataract
+  Formation}},
+\newblock \bibinfo{journal}{New England Journal of Medicine}
+  \bibinfo{volume}{319} (\bibinfo{year}{1988}) \bibinfo{pages}{1429--1433}.
+  \URLprefix \url{https://doi.org/10.1056%2Fnejm198812013192201}.
+%Type = Article
+\bibitem[{Varotsos and Feretis(1997)}]{Varotsos_1997}
+\bibinfo{author}{C.~Varotsos}, \bibinfo{author}{E.~Feretis},
+\newblock \bibinfo{title}{{Health effects on human eye resulting from the
+  increased ambient solar ultraviolet radiation}},
+\newblock \bibinfo{journal}{Toxicological {\&} Environmental Chemistry}
+  \bibinfo{volume}{61} (\bibinfo{year}{1997}) \bibinfo{pages}{43--68}.
+  \URLprefix \url{https://doi.org/10.1080%2F02772249709358473}.
+%Type = Article
+\bibitem[{Lucas et~al.(2019)Lucas, Yazar, Young, Norval, de~Gruijl, Takizawa,
+  Rhodes, Sinclair, and Neale}]{Lucas_2019}
+\bibinfo{author}{R.~M. Lucas}, \bibinfo{author}{S.~Yazar},
+  \bibinfo{author}{A.~R. Young}, \bibinfo{author}{M.~Norval},
+  \bibinfo{author}{F.~R. de~Gruijl}, \bibinfo{author}{Y.~Takizawa},
+  \bibinfo{author}{L.~E. Rhodes}, \bibinfo{author}{C.~A. Sinclair},
+  \bibinfo{author}{R.~E. Neale},
+\newblock \bibinfo{title}{{Human health in relation to exposure to solar
+  ultraviolet radiation under changing stratospheric ozone and climate}},
+\newblock \bibinfo{journal}{Photochemical {\&} Photobiological Sciences}
+  \bibinfo{volume}{18} (\bibinfo{year}{2019}) \bibinfo{pages}{641--680}.
+  \URLprefix \url{https://doi.org/10.1039%2Fc8pp90060d}.
+%Type = Incollection
+\bibitem[{Leighton(1961)}]{LEIGHTON_1961}
+\bibinfo{author}{P.~A. Leighton},
+\newblock \bibinfo{title}{{Physical Chemistry}},
+\newblock in: \bibinfo{booktitle}{Photochemistry of Air Pollution},
+  \bibinfo{publisher}{Elsevier}, \bibinfo{year}{1961}, pp.
+  \bibinfo{pages}{v--vi}. \URLprefix
+  \url{https://doi.org/10.1016%2Fb978-0-12-442250-6.50004-3}.
+%Type = Article
+\bibitem[{Seinfeld et~al.(1998)Seinfeld, Pandis, and Noone}]{Seinfeld_1998}
+\bibinfo{author}{J.~H. Seinfeld}, \bibinfo{author}{S.~N. Pandis},
+  \bibinfo{author}{K.~Noone},
+\newblock \bibinfo{title}{{Atmospheric Chemistry and Physics: From Air
+  Pollution to Climate Change}},
+\newblock \bibinfo{journal}{Physics Today} \bibinfo{volume}{51}
+  (\bibinfo{year}{1998}) \bibinfo{pages}{88--90}. \URLprefix
+  \url{https://doi.org/10.1063%2F1.882420}.
+%Type = Incollection
+\bibitem[{Finlayson-Pitts and Pitts(2000)}]{Finlayson_Pitts_2000}
+\bibinfo{author}{B.~J. Finlayson-Pitts}, \bibinfo{author}{J.~N. Pitts},
+\newblock \bibinfo{title}{{Theory, Experiments, and Applications}},
+\newblock in: \bibinfo{booktitle}{Chemistry of the Upper and Lower Atmosphere},
+  \bibinfo{publisher}{Elsevier}, \bibinfo{year}{2000}, pp.
+  \bibinfo{pages}{xvii--xviii}. \URLprefix
+  \url{https://doi.org/10.1016%2Fb978-012257060-5%2F50000-9}.
+%Type = Article
+\bibitem[{Liu et~al.(1991)Liu, McKeen, and Madronich}]{Liu_1991}
+\bibinfo{author}{S.~C. Liu}, \bibinfo{author}{S.~A. McKeen},
+  \bibinfo{author}{S.~Madronich},
+\newblock \bibinfo{title}{{Effect of anthropogenic aerosols on biologically
+  active ultraviolet radiation}},
+\newblock \bibinfo{journal}{Geophysical Research Letters} \bibinfo{volume}{18}
+  (\bibinfo{year}{1991}) \bibinfo{pages}{2265--2268}. \URLprefix
+  \url{https://doi.org/10.1029%2F91gl02773}.
+%Type = Article
+\bibitem[{Sabziparvar et~al.(1998)Sabziparvar, Forster, and
+  Shine}]{Sabziparvar_1998}
+\bibinfo{author}{A.~A. Sabziparvar}, \bibinfo{author}{P.~M.~F. Forster},
+  \bibinfo{author}{K.~P. Shine},
+\newblock \bibinfo{title}{{Changes in ultraviolet radiation due to
+  stratospheric and tropospheric ozone changes since preindustrial times}},
+\newblock \bibinfo{journal}{Journal of Geophysical Research: Atmospheres}
+  \bibinfo{volume}{103} (\bibinfo{year}{1998}) \bibinfo{pages}{26107--26113}.
+  \URLprefix \url{https://doi.org/10.1029%2F98jd02277}.
+%Type = Article
+\bibitem[{Madronich et~al.(2011)Madronich, Wagner, and Groth}]{Madronich_2011}
+\bibinfo{author}{S.~Madronich}, \bibinfo{author}{M.~Wagner},
+  \bibinfo{author}{P.~Groth},
+\newblock \bibinfo{title}{{Influence of Tropospheric Ozone Control on Exposure
+  to Ultraviolet Radiation at the Surface}},
+\newblock \bibinfo{journal}{Environmental Science {\&} Technology}
+  \bibinfo{volume}{45} (\bibinfo{year}{2011}) \bibinfo{pages}{6919--6923}.
+  \URLprefix \url{https://doi.org/10.1021%2Fes200701q}.
+%Type = Article
+\bibitem[{McKenzie et~al.(2008)McKenzie, Weinreis, Johnston, Liley, Shiona,
+  Kotkamp, Smale, Takegawa, and Kondo}]{McKenzie_2008}
+\bibinfo{author}{R.~L. McKenzie}, \bibinfo{author}{C.~Weinreis},
+  \bibinfo{author}{P.~V. Johnston}, \bibinfo{author}{B.~Liley},
+  \bibinfo{author}{H.~Shiona}, \bibinfo{author}{M.~Kotkamp},
+  \bibinfo{author}{D.~Smale}, \bibinfo{author}{N.~Takegawa},
+  \bibinfo{author}{Y.~Kondo},
+\newblock \bibinfo{title}{{Effects of urban pollution on UV spectral
+  irradiances}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{8} (\bibinfo{year}{2008}) \bibinfo{pages}{5683--5697}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-8-5683-2008}.
+%Type = Article
+\bibitem[{Panicker et~al.(2009)Panicker, Pandithurai, Takamura, and
+  Pinker}]{Panicker_2009}
+\bibinfo{author}{A.~S. Panicker}, \bibinfo{author}{G.~Pandithurai},
+  \bibinfo{author}{T.~Takamura}, \bibinfo{author}{R.~T. Pinker},
+\newblock \bibinfo{title}{{Aerosol effects in the {UV}-B spectral region over
+  Pune an urban site in India}},
+\newblock \bibinfo{journal}{Geophysical Research Letters} \bibinfo{volume}{36}
+  (\bibinfo{year}{2009}). \URLprefix
+  \url{https://doi.org/10.1029%2F2009gl037632}.
+%Type = Article
+\bibitem[{Palancar et~al.(2013)Palancar, Lefer, Hall, Shaw, Corr, Herndon,
+  Slusser, and Madronich}]{Palancar_2013}
+\bibinfo{author}{G.~G. Palancar}, \bibinfo{author}{B.~L. Lefer},
+  \bibinfo{author}{S.~R. Hall}, \bibinfo{author}{W.~J. Shaw},
+  \bibinfo{author}{C.~A. Corr}, \bibinfo{author}{S.~C. Herndon},
+  \bibinfo{author}{J.~R. Slusser}, \bibinfo{author}{S.~Madronich},
+\newblock \bibinfo{title}{{Effect of aerosols and NO$_{2}$ concentration on
+  ultraviolet actinic flux near Mexico City during MILAGRO: measurements and
+  model calculations}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{13} (\bibinfo{year}{2013}) \bibinfo{pages}{1011--1022}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-13-1011-2013}.
+%Type = Article
+\bibitem[{Bais et~al.(2015)Bais, McKenzie, Bernhard, Aucamp, Ilyas, Madronich,
+  and Tourpali}]{Bais_2015}
+\bibinfo{author}{A.~F. Bais}, \bibinfo{author}{R.~L. McKenzie},
+  \bibinfo{author}{G.~Bernhard}, \bibinfo{author}{P.~J. Aucamp},
+  \bibinfo{author}{M.~Ilyas}, \bibinfo{author}{S.~Madronich},
+  \bibinfo{author}{K.~Tourpali},
+\newblock \bibinfo{title}{{Ozone depletion and climate change: impacts on {UV}
+  radiation}},
+\newblock \bibinfo{journal}{Photochemical {\&} Photobiological Sciences}
+  \bibinfo{volume}{14} (\bibinfo{year}{2015}) \bibinfo{pages}{19--52}.
+  \URLprefix \url{https://doi.org/10.1039%2Fc4pp90032d}.
+%Type = Article
+\bibitem[{Hollaway et~al.(2019)Hollaway, Wild, Yang, Sun, Xu, Xie, Whalley,
+  Slater, Heard, and Liu}]{Hollaway_2019}
+\bibinfo{author}{M.~Hollaway}, \bibinfo{author}{O.~Wild},
+  \bibinfo{author}{T.~Yang}, \bibinfo{author}{Y.~Sun}, \bibinfo{author}{W.~Xu},
+  \bibinfo{author}{C.~Xie}, \bibinfo{author}{L.~Whalley},
+  \bibinfo{author}{E.~Slater}, \bibinfo{author}{D.~Heard},
+  \bibinfo{author}{D.~Liu},
+\newblock \bibinfo{title}{{Photochemical impacts of haze pollution in an urban
+  environment}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{19} (\bibinfo{year}{2019}) \bibinfo{pages}{9699--9714}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-19-9699-2019}.
+%Type = Article
+\bibitem[{Li et~al.(2018)Li, Jacob, Liao, Shen, Zhang, and Bates}]{Li_2018}
+\bibinfo{author}{K.~Li}, \bibinfo{author}{D.~J. Jacob},
+  \bibinfo{author}{H.~Liao}, \bibinfo{author}{L.~Shen},
+  \bibinfo{author}{Q.~Zhang}, \bibinfo{author}{K.~H. Bates},
+\newblock \bibinfo{title}{{Anthropogenic drivers of 2013{\textendash}2017
+  trends in summer surface ozone in China}},
+\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences}
+  \bibinfo{volume}{116} (\bibinfo{year}{2018}) \bibinfo{pages}{422--427}.
+  \URLprefix \url{https://doi.org/10.1073%2Fpnas.1812168116}.
+%Type = Article
+\bibitem[{Wang et~al.(2020)Wang, Gao, Wang, Song, Gong, Ji, Wang, Liu, Tang,
+  Huo, Tian, Li, Li, Yang, Chu, Petäjä, Kerminen, He, Hao, Kulmala, Wang, and
+  Zhang}]{Wang_2020}
+\bibinfo{author}{Y.~Wang}, \bibinfo{author}{W.~Gao}, \bibinfo{author}{S.~Wang},
+  \bibinfo{author}{T.~Song}, \bibinfo{author}{Z.~Gong},
+  \bibinfo{author}{D.~Ji}, \bibinfo{author}{L.~Wang}, \bibinfo{author}{Z.~Liu},
+  \bibinfo{author}{G.~Tang}, \bibinfo{author}{Y.~Huo},
+  \bibinfo{author}{S.~Tian}, \bibinfo{author}{J.~Li}, \bibinfo{author}{M.~Li},
+  \bibinfo{author}{Y.~Yang}, \bibinfo{author}{B.~Chu},
+  \bibinfo{author}{T.~Petäjä}, \bibinfo{author}{V.-M. Kerminen},
+  \bibinfo{author}{H.~He}, \bibinfo{author}{J.~Hao},
+  \bibinfo{author}{M.~Kulmala}, \bibinfo{author}{Y.~Wang},
+  \bibinfo{author}{Y.~Zhang},
+\newblock \bibinfo{title}{{Contrasting trends of {PM}2.5 and surface-ozone
+  concentrations in China from 2013 to 2017}},
+\newblock \bibinfo{journal}{National Science Review} \bibinfo{volume}{7}
+  (\bibinfo{year}{2020}) \bibinfo{pages}{1331--1339}. \URLprefix
+  \url{https://doi.org/10.1093%2Fnsr%2Fnwaa032}.
+%Type = Article
+\bibitem[{Wang et~al.(2019)Wang, Li, Shao, Hu, Zeng, Wu, and Tan}]{Wang_2019}
+\bibinfo{author}{W.~Wang}, \bibinfo{author}{X.~Li}, \bibinfo{author}{M.~Shao},
+  \bibinfo{author}{M.~Hu}, \bibinfo{author}{L.~Zeng}, \bibinfo{author}{Y.~Wu},
+  \bibinfo{author}{T.~Tan},
+\newblock \bibinfo{title}{{The impact of aerosols on photolysis frequencies and
+  ozone production in Beijing during the 4-year period 2012{\textendash}2015}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{19} (\bibinfo{year}{2019}) \bibinfo{pages}{9413--9429}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-19-9413-2019}.
+%Type = Article
+\bibitem[{Gao et~al.(2020)Gao, Li, Zhu, Hu, Wang, and Bao}]{Gao_2020}
+\bibinfo{author}{J.~Gao}, \bibinfo{author}{Y.~Li}, \bibinfo{author}{B.~Zhu},
+  \bibinfo{author}{B.~Hu}, \bibinfo{author}{L.~Wang}, \bibinfo{author}{F.~Bao},
+\newblock \bibinfo{title}{{What have we missed when studying the impact of
+  aerosols on surface ozone via changing photolysis rates?}}
+  (\bibinfo{year}{2020}). \URLprefix
+  \url{https://doi.org/10.5194%2Facp-2020-140}.
+%Type = Article
+\bibitem[{Ma et~al.(2020)Ma, Huang, Zhao, Liu, Zhao, Xing, and Xiao}]{Ma_2020}
+\bibinfo{author}{X.~Ma}, \bibinfo{author}{J.~Huang}, \bibinfo{author}{T.~Zhao},
+  \bibinfo{author}{C.~Liu}, \bibinfo{author}{K.~Zhao},
+  \bibinfo{author}{J.~Xing}, \bibinfo{author}{W.~Xiao},
+\newblock \bibinfo{title}{{Rapid increase in summer surface ozone over the
+  North China Plain during 2013{\textendash}2019: a side effect of particulate
+  matters reduction control?}}  (\bibinfo{year}{2020}). \URLprefix
+  \url{https://doi.org/10.5194%2Facp-2020-385}.
+%Type = Article
+\bibitem[{Bauwens et~al.(2020)Bauwens, Compernolle, Stavrakou, Müller, Gent,
+  Eskes, Levelt, A, Veefkind, Vlietinck, Yu, and Zehner}]{Bauwens_2020}
+\bibinfo{author}{M.~Bauwens}, \bibinfo{author}{S.~Compernolle},
+  \bibinfo{author}{T.~Stavrakou}, \bibinfo{author}{J.-F. Müller},
+  \bibinfo{author}{J.~Gent}, \bibinfo{author}{H.~Eskes}, \bibinfo{author}{P.~F.
+  Levelt}, \bibinfo{author}{R.~A}, \bibinfo{author}{J.~P. Veefkind},
+  \bibinfo{author}{J.~Vlietinck}, \bibinfo{author}{H.~Yu},
+  \bibinfo{author}{C.~Zehner},
+\newblock \bibinfo{title}{{Impact of coronavirus outbreak on NO2 pollution
+  assessed using TROPOMI and OMI observations}} \bibinfo{volume}{47}
+  (\bibinfo{year}{2020}). \URLprefix
+  \url{https://doi.org/10.1029%2F2020gl087978}.
+%Type = Article
+\bibitem[{Venter et~al.(2020)Venter, Aunan, Chowdhury, and
+  Lelieveld}]{Venter_2020}
+\bibinfo{author}{Z.~S. Venter}, \bibinfo{author}{K.~Aunan},
+  \bibinfo{author}{S.~Chowdhury}, \bibinfo{author}{J.~Lelieveld},
+\newblock \bibinfo{title}{{{COVID}-19 lockdowns cause global air pollution
+  declines}},
+\newblock \bibinfo{journal}{Proceedings of the National Academy of Sciences}
+  \bibinfo{volume}{117} (\bibinfo{year}{2020}) \bibinfo{pages}{18984--18990}.
+  \URLprefix \url{https://doi.org/10.1073%2Fpnas.2006853117}.
+%Type = Article
+\bibitem[{Shi and Brasseur(2020)}]{Shi_2020}
+\bibinfo{author}{X.~Shi}, \bibinfo{author}{G.~P. Brasseur},
+\newblock \bibinfo{title}{{The Response in Air Quality to the Reduction of
+  Chinese Economic Activities During the {COVID}-19 Outbreak}},
+\newblock \bibinfo{journal}{Geophysical Research Letters} \bibinfo{volume}{47}
+  (\bibinfo{year}{2020}). \URLprefix
+  \url{https://doi.org/10.1029%2F2020gl088070}.
+%Type = Article
+\bibitem[{Le et~al.(2020)Le, Wang, Liu, Yang, Yung, Li, and Seinfeld}]{Le_2020}
+\bibinfo{author}{T.~Le}, \bibinfo{author}{Y.~Wang}, \bibinfo{author}{L.~Liu},
+  \bibinfo{author}{J.~Yang}, \bibinfo{author}{Y.~L. Yung},
+  \bibinfo{author}{G.~Li}, \bibinfo{author}{J.~H. Seinfeld},
+\newblock \bibinfo{title}{{Unexpected air pollution with marked emission
+  reductions during the {COVID}-19 outbreak in China}},
+\newblock \bibinfo{journal}{Science} \bibinfo{volume}{369}
+  (\bibinfo{year}{2020}) \bibinfo{pages}{702--706}. \URLprefix
+  \url{https://doi.org/10.1126%2Fscience.abb7431}.
+%Type = Manual
+\bibitem[{ram(nd)}]{rama}
+\bibinfo{title}{{Red Automática de Monitoreo Atmosférico (RAMA)}},
+  \bibinfo{year}{n.d}. \URLprefix
+  \url{http://www.aire.cdmx.gob.mx/descargas/datos/excel/RAMAxls.pdf},
+  \bibinfo{note}{accessed on Sat, December 05, 2020}.
+%Type = Article
+\bibitem[{Doran et~al.(1998)Doran, Abbott, Archuleta, Bian, Chow, Coulter,
+  de~Wekker, Edgerton, Elliott, Fernandez, Fast, Hubbe, King, Langley, Leach,
+  Lee, Martin, Martinez, Martinez, Mercado, Mora, Mulhearn, Pena, Petty, Porch,
+  Russell, Salas, Shannon, Shaw, Sosa, Tellier, Templeman, Watson, White,
+  Whiteman, and Wolfe}]{Doran_1998}
+\bibinfo{author}{J.~C. Doran}, \bibinfo{author}{S.~Abbott},
+  \bibinfo{author}{J.~Archuleta}, \bibinfo{author}{X.~Bian},
+  \bibinfo{author}{J.~Chow}, \bibinfo{author}{R.~L. Coulter},
+  \bibinfo{author}{S.~F.~J. de~Wekker}, \bibinfo{author}{S.~Edgerton},
+  \bibinfo{author}{S.~Elliott}, \bibinfo{author}{A.~Fernandez},
+  \bibinfo{author}{J.~D. Fast}, \bibinfo{author}{J.~M. Hubbe},
+  \bibinfo{author}{C.~King}, \bibinfo{author}{D.~Langley},
+  \bibinfo{author}{J.~Leach}, \bibinfo{author}{J.~T. Lee},
+  \bibinfo{author}{T.~J. Martin}, \bibinfo{author}{D.~Martinez},
+  \bibinfo{author}{J.~L. Martinez}, \bibinfo{author}{G.~Mercado},
+  \bibinfo{author}{V.~Mora}, \bibinfo{author}{M.~Mulhearn},
+  \bibinfo{author}{J.~L. Pena}, \bibinfo{author}{R.~Petty},
+  \bibinfo{author}{W.~Porch}, \bibinfo{author}{C.~Russell},
+  \bibinfo{author}{R.~Salas}, \bibinfo{author}{J.~D. Shannon},
+  \bibinfo{author}{W.~J. Shaw}, \bibinfo{author}{G.~Sosa},
+  \bibinfo{author}{L.~Tellier}, \bibinfo{author}{B.~Templeman},
+  \bibinfo{author}{J.~G. Watson}, \bibinfo{author}{R.~White},
+  \bibinfo{author}{C.~D. Whiteman}, \bibinfo{author}{D.~Wolfe},
+\newblock \bibinfo{title}{{The IMADA-AVER Boundary Layer Experiment in the
+  Mexico City Area}},
+\newblock \bibinfo{journal}{Bulletin of the American Meteorological Society}
+  \bibinfo{volume}{79} (\bibinfo{year}{1998}) \bibinfo{pages}{2497--2508}.
+  \URLprefix
+  \url{https://doi.org/10.1175/1520-0477(1998)079<2497:TIABLE>2.0.CO;2}.
+  \href{http://arxiv.org/abs/https://journals.ametsoc.org/bams/article-pdf/79/11/2497/3731139/1520-0477(1998)079\_2497\_tiable\_2\_0\_co\_2.pdf}{{\tt
+  arXiv:https://journals.ametsoc.org/bams/article-pdf/79/11/2497/3731139/1520-0477(1998)079\_2497\_tiable\_2\_0\_co\_2.pdf}}.
+%Type = Article
+\bibitem[{Molina et~al.(2007)Molina, Kolb, de~Foy, Lamb, Brune, Jimenez,
+  Ramos-Villegas, Sarmiento, Paramo-Figueroa, Cardenas, Gutierrez-Avedoy, and
+  Molina}]{Molina_2007}
+\bibinfo{author}{L.~T. Molina}, \bibinfo{author}{C.~E. Kolb},
+  \bibinfo{author}{B.~de~Foy}, \bibinfo{author}{B.~K. Lamb},
+  \bibinfo{author}{W.~H. Brune}, \bibinfo{author}{J.~L. Jimenez},
+  \bibinfo{author}{R.~Ramos-Villegas}, \bibinfo{author}{J.~Sarmiento},
+  \bibinfo{author}{V.~H. Paramo-Figueroa}, \bibinfo{author}{B.~Cardenas},
+  \bibinfo{author}{V.~Gutierrez-Avedoy}, \bibinfo{author}{M.~J. Molina},
+\newblock \bibinfo{title}{{Air quality in North America{\textquotesingle}s most
+  populous city {\textendash} overview of the {MCMA}-2003 campaign}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{7} (\bibinfo{year}{2007}) \bibinfo{pages}{2447--2473}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-7-2447-2007}.
+%Type = Article
+\bibitem[{Molina et~al.(2010)Molina, Madronich, Gaffney, Apel, de~Foy, Fast,
+  Ferrare, Herndon, Jimenez, Lamb, Osornio-Vargas, Russell, Schauer, Stevens,
+  Volkamer, and Zavala}]{Molina_2010}
+\bibinfo{author}{L.~T. Molina}, \bibinfo{author}{S.~Madronich},
+  \bibinfo{author}{J.~S. Gaffney}, \bibinfo{author}{E.~Apel},
+  \bibinfo{author}{B.~de~Foy}, \bibinfo{author}{J.~Fast},
+  \bibinfo{author}{R.~Ferrare}, \bibinfo{author}{S.~Herndon},
+  \bibinfo{author}{J.~L. Jimenez}, \bibinfo{author}{B.~Lamb},
+  \bibinfo{author}{A.~R. Osornio-Vargas}, \bibinfo{author}{P.~Russell},
+  \bibinfo{author}{J.~J. Schauer}, \bibinfo{author}{P.~S. Stevens},
+  \bibinfo{author}{R.~Volkamer}, \bibinfo{author}{M.~Zavala},
+\newblock \bibinfo{title}{{An overview of the {MILAGRO} 2006 Campaign: Mexico
+  City emissions and their transport and transformation}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{10} (\bibinfo{year}{2010}) \bibinfo{pages}{8697--8760}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-10-8697-2010}.
+%Type = Article
+\bibitem[{Jazcilevich et~al.(2005)Jazcilevich, Garc{\'{\i}}a, and
+  Caetano}]{Jazcilevich_2005}
+\bibinfo{author}{A.~D. Jazcilevich}, \bibinfo{author}{A.~R. Garc{\'{\i}}a},
+  \bibinfo{author}{E.~Caetano},
+\newblock \bibinfo{title}{{Locally induced surface air confluence by complex
+  terrain and its effects on air pollution in the valley of Mexico}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{39}
+  (\bibinfo{year}{2005}) \bibinfo{pages}{5481--5489}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.atmosenv.2005.05.046}.
+%Type = Article
+\bibitem[{Tie et~al.(2007)Tie, Madronich, Li, Ying, Zhang, Garcia, Lee-Taylor,
+  and Liu}]{Tie_2007}
+\bibinfo{author}{X.~Tie}, \bibinfo{author}{S.~Madronich},
+  \bibinfo{author}{G.~Li}, \bibinfo{author}{Z.~Ying},
+  \bibinfo{author}{R.~Zhang}, \bibinfo{author}{A.~R. Garcia},
+  \bibinfo{author}{J.~Lee-Taylor}, \bibinfo{author}{Y.~Liu},
+\newblock \bibinfo{title}{{Characterizations of chemical oxidants in Mexico
+  City: A regional chemical dynamical model ({WRF}-Chem) study}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{41}
+  (\bibinfo{year}{2007}) \bibinfo{pages}{1989--2008}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.atmosenv.2006.10.053}.
+%Type = Article
+\bibitem[{Zhang et~al.(2009)Zhang, Dubey, Olsen, Zheng, and Zhang}]{Zhang_2009}
+\bibinfo{author}{Y.~Zhang}, \bibinfo{author}{M.~K. Dubey},
+  \bibinfo{author}{S.~C. Olsen}, \bibinfo{author}{J.~Zheng},
+  \bibinfo{author}{R.~Zhang},
+\newblock \bibinfo{title}{{Comparisons of {WRF}/Chem simulations in Mexico City
+  with ground-based {RAMA} measurements during the 2006-{MILAGRO}}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{9} (\bibinfo{year}{2009}) \bibinfo{pages}{3777--3798}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-9-3777-2009}.
+%Type = Article
+\bibitem[{Zavala et~al.(2020)Zavala, Brune, Velasco, Retama, Cruz-Alavez, and
+  Molina}]{Zavala_2020}
+\bibinfo{author}{M.~Zavala}, \bibinfo{author}{W.~H. Brune},
+  \bibinfo{author}{E.~Velasco}, \bibinfo{author}{A.~Retama},
+  \bibinfo{author}{L.~A. Cruz-Alavez}, \bibinfo{author}{L.~T. Molina},
+\newblock \bibinfo{title}{{Changes in ozone production and {VOC} reactivity in
+  the atmosphere of the Mexico City Metropolitan Area}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{238}
+  (\bibinfo{year}{2020}) \bibinfo{pages}{117747}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.atmosenv.2020.117747}.
+%Type = Manual
+\bibitem[{amb(nd)}]{ambiente}
+\bibinfo{title}{{Secretaría del Medio Ambiente (SEDEMA)}},
+  \bibinfo{year}{n.d}. \URLprefix \url{https://www.sedema.cdmx.gob.mx},
+  \bibinfo{note}{accessed on Wed, December 02, 2020}.
+%Type = Techreport
+\bibitem[{WHO et~al.(2002)WHO, WMO, UNEP, and ICNIRP}]{who2002}
+\bibinfo{author}{WHO}, \bibinfo{author}{WMO}, \bibinfo{author}{UNEP},
+  \bibinfo{author}{ICNIRP}, \bibinfo{title}{{Global solar UV index : a
+  practical guide}}, \bibinfo{type}{Technical Report}, \bibinfo{year}{2002}.
+%Type = Article
+\bibitem[{Webb et~al.(2011)Webb, Slaper, Koepke, and Schmalwieser}]{Webb_2011}
+\bibinfo{author}{A.~R. Webb}, \bibinfo{author}{H.~Slaper},
+  \bibinfo{author}{P.~Koepke}, \bibinfo{author}{A.~W. Schmalwieser},
+\newblock \bibinfo{title}{{Know Your Standard: Clarifying the {CIE} Erythema
+  Action Spectrum}},
+\newblock \bibinfo{journal}{Photochemistry and Photobiology}
+  \bibinfo{volume}{87} (\bibinfo{year}{2011}) \bibinfo{pages}{483--486}.
+  \URLprefix \url{https://doi.org/10.1111%2Fj.1751-1097.2010.00871.x}.
+%Type = Article
+\bibitem[{Whiteman et~al.(2000)Whiteman, Zhong, Bian, Fast, and
+  Doran}]{Whiteman_2000}
+\bibinfo{author}{C.~D. Whiteman}, \bibinfo{author}{S.~Zhong},
+  \bibinfo{author}{X.~Bian}, \bibinfo{author}{J.~D. Fast},
+  \bibinfo{author}{J.~C. Doran},
+\newblock \bibinfo{title}{{Boundary layer evolution and regional-scale diurnal
+  circulations over the and Mexican plateau}},
+\newblock \bibinfo{journal}{Journal of Geophysical Research: Atmospheres}
+  \bibinfo{volume}{105} (\bibinfo{year}{2000}) \bibinfo{pages}{10081--10102}.
+  \URLprefix \url{https://doi.org/10.1029%2F2000jd900039}.
+%Type = Article
+\bibitem[{Fast et~al.(2007)Fast, de~Foy, Rosas, Caetano, Carmichael, Emmons,
+  McKenna, Mena, Skamarock, Tie, Coulter, Barnard, Wiedinmyer, and
+  Madronich}]{Fast_2007}
+\bibinfo{author}{J.~D. Fast}, \bibinfo{author}{B.~de~Foy},
+  \bibinfo{author}{F.~A. Rosas}, \bibinfo{author}{E.~Caetano},
+  \bibinfo{author}{G.~Carmichael}, \bibinfo{author}{L.~Emmons},
+  \bibinfo{author}{D.~McKenna}, \bibinfo{author}{M.~Mena},
+  \bibinfo{author}{W.~Skamarock}, \bibinfo{author}{X.~Tie},
+  \bibinfo{author}{R.~L. Coulter}, \bibinfo{author}{J.~C. Barnard},
+  \bibinfo{author}{C.~Wiedinmyer}, \bibinfo{author}{S.~Madronich},
+\newblock \bibinfo{title}{{A meteorological overview of the {MILAGRO} field
+  campaigns}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{7} (\bibinfo{year}{2007}) \bibinfo{pages}{2233--2257}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-7-2233-2007}.
+%Type = Article
+\bibitem[{Carre{\'{o}}n-Sierra et~al.(2015)Carre{\'{o}}n-Sierra, Salcido,
+  Castro, and Celada-Murillo}]{Carre_n_Sierra_2015}
+\bibinfo{author}{S.~Carre{\'{o}}n-Sierra}, \bibinfo{author}{A.~Salcido},
+  \bibinfo{author}{T.~Castro}, \bibinfo{author}{A.-T. Celada-Murillo},
+\newblock \bibinfo{title}{{Cluster Analysis of the Wind Events and Seasonal
+  Wind Circulation Patterns in the Mexico City Region}},
+\newblock \bibinfo{journal}{Atmosphere} \bibinfo{volume}{6}
+  (\bibinfo{year}{2015}) \bibinfo{pages}{1006--1031}. \URLprefix
+  \url{https://doi.org/10.3390%2Fatmos6081006}.
+%Type = Manual
+\bibitem[{atm(nd)}]{atmosfrico}
+\bibinfo{title}{{Sistema de Monitoreo Atmosférico (SIMAT)}},
+  \bibinfo{year}{n.d}. \URLprefix \url{www.aire.cdmx.gob.mx/default.php},
+  \bibinfo{note}{accessed on Wed, December 02, 2020}.
+%Type = Article
+\bibitem[{Holben et~al.(1998)Holben, Eck, Slutsker, Tanr{\'{e}}, Buis, Setzer,
+  Vermote, Reagan, Kaufman, Nakajima, Lavenu, Jankowiak, and
+  Smirnov}]{Holben_1998}
+\bibinfo{author}{B.~Holben}, \bibinfo{author}{T.~Eck},
+  \bibinfo{author}{I.~Slutsker}, \bibinfo{author}{D.~Tanr{\'{e}}},
+  \bibinfo{author}{J.~Buis}, \bibinfo{author}{A.~Setzer},
+  \bibinfo{author}{E.~Vermote}, \bibinfo{author}{J.~Reagan},
+  \bibinfo{author}{Y.~Kaufman}, \bibinfo{author}{T.~Nakajima},
+  \bibinfo{author}{F.~Lavenu}, \bibinfo{author}{I.~Jankowiak},
+  \bibinfo{author}{A.~Smirnov},
+\newblock \bibinfo{title}{{{AERONET}{\textemdash}A Federated Instrument Network
+  and Data Archive for Aerosol Characterization}},
+\newblock \bibinfo{journal}{Remote Sensing of Environment} \bibinfo{volume}{66}
+  (\bibinfo{year}{1998}) \bibinfo{pages}{1--16}. \URLprefix
+  \url{https://doi.org/10.1016%2Fs0034-4257%2898%2900031-5}.
+%Type = Article
+\bibitem[{Carabali et~al.(2017)Carabali, Est{\'{e}}vez,
+  Vald{\'{e}}s-Barr{\'{o}}n, Bonifaz-Alfonzo, Riveros-Rosas, Velasco-Herrera,
+  and V{\'{a}}zquez-G{\'{a}}lvez}]{Carabali_2017}
+\bibinfo{author}{G.~Carabali}, \bibinfo{author}{H.~R. Est{\'{e}}vez},
+  \bibinfo{author}{M.~Vald{\'{e}}s-Barr{\'{o}}n},
+  \bibinfo{author}{R.~Bonifaz-Alfonzo}, \bibinfo{author}{D.~Riveros-Rosas},
+  \bibinfo{author}{V.~M. Velasco-Herrera}, \bibinfo{author}{F.~A.
+  V{\'{a}}zquez-G{\'{a}}lvez},
+\newblock \bibinfo{title}{{Aerosol climatology over the Mexico City basin:
+  Characterization of optical properties}},
+\newblock \bibinfo{journal}{Atmospheric Research} \bibinfo{volume}{194}
+  (\bibinfo{year}{2017}) \bibinfo{pages}{190--201}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.atmosres.2017.04.035}.
+%Type = Manual
+\bibitem[{dci(nd)}]{dcio}
+\bibinfo{title}{{NASA EOS/Aura Validation Data Center (AVDC) - Correlative
+  data, Field of View Predictions, Data Subsets, GEOMS, DCIO}},
+  \bibinfo{year}{n.d}. \URLprefix
+  \url{https://avdc.gsfc.nasa.gov/pub/most_popular/overpass/OMI/},
+  \bibinfo{note}{accessed on Wed, December 02, 2020}.
+%Type = Article
+\bibitem[{Corr et~al.(2009)Corr, Krotkov, Madronich, Slusser, Holben, Gao,
+  Flynn, Lefer, and Kreidenweis}]{Corr_2009}
+\bibinfo{author}{C.~A. Corr}, \bibinfo{author}{N.~Krotkov},
+  \bibinfo{author}{S.~Madronich}, \bibinfo{author}{J.~R. Slusser},
+  \bibinfo{author}{B.~Holben}, \bibinfo{author}{W.~Gao},
+  \bibinfo{author}{J.~Flynn}, \bibinfo{author}{B.~Lefer},
+  \bibinfo{author}{S.~M. Kreidenweis},
+\newblock \bibinfo{title}{{Retrieval of aerosol single scattering albedo at
+  ultraviolet wavelengths at the T1 site during {MILAGRO}}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{9} (\bibinfo{year}{2009}) \bibinfo{pages}{5813--5827}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-9-5813-2009}.
+%Type = Article
+\bibitem[{Castro et~al.(2001)Castro, Madronich, Rivale, Muhlia, and
+  Mar}]{Castro_2001}
+\bibinfo{author}{T.~Castro}, \bibinfo{author}{S.~Madronich},
+  \bibinfo{author}{S.~Rivale}, \bibinfo{author}{A.~Muhlia},
+  \bibinfo{author}{B.~Mar},
+\newblock \bibinfo{title}{{The influence of aerosols on photochemical smog in
+  Mexico City}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{35}
+  (\bibinfo{year}{2001}) \bibinfo{pages}{1765--1772}. \URLprefix
+  \url{https://doi.org/10.1016%2Fs1352-2310%2800%2900449-0}.
+%Type = Techreport
+\bibitem[{SEDEMA(2018)}]{SEDEMA2018a}
+\bibinfo{author}{SEDEMA}, \bibinfo{title}{{Calidad del aire en la Ciudad de
+  México, Informe 2017}}, \bibinfo{type}{Technical Report},
+  \bibinfo{year}{2018}.
+%Type = Article
+\bibitem[{Retama et~al.(2015)Retama, Baumgardner, Raga, McMeeking, and
+  Walker}]{Retama_2015}
+\bibinfo{author}{A.~Retama}, \bibinfo{author}{D.~Baumgardner},
+  \bibinfo{author}{G.~B. Raga}, \bibinfo{author}{G.~R. McMeeking},
+  \bibinfo{author}{J.~W. Walker},
+\newblock \bibinfo{title}{{Seasonal and diurnal trends in black carbon
+  properties and co-pollutants in Mexico City}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{15} (\bibinfo{year}{2015}) \bibinfo{pages}{9693--9709}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-15-9693-2015}.
+%Type = Article
+\bibitem[{Cabrera et~al.(2012)Cabrera, Ipi{\~{n}}a, Damiani, Cordero, and
+  Piacentini}]{Cabrera_2012}
+\bibinfo{author}{S.~Cabrera}, \bibinfo{author}{A.~Ipi{\~{n}}a},
+  \bibinfo{author}{A.~Damiani}, \bibinfo{author}{R.~R. Cordero},
+  \bibinfo{author}{R.~D. Piacentini},
+\newblock \bibinfo{title}{{{UV} index values and trends in Santiago Chile
+  (33.5{\textdegree}S) based on ground and satellite data}},
+\newblock \bibinfo{journal}{Journal of Photochemistry and Photobiology B:
+  Biology} \bibinfo{volume}{115} (\bibinfo{year}{2012})
+  \bibinfo{pages}{73--84}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.jphotobiol.2012.06.013}.
+%Type = Article
+\bibitem[{Arola et~al.(2009)Arola, Kazadzis, Lindfors, Krotkov, Kujanpää,
+  Tamminen, Bais, di~Sarra, Villaplana, Brogniez, Siani, Janouch, Weihs, Webb,
+  Koskela, Kouremeti, Meloni, Buchard, Auriol, Ialongo, Staneck, Simic,
+  Smedley, and Kinne}]{Arola_2009}
+\bibinfo{author}{A.~Arola}, \bibinfo{author}{S.~Kazadzis},
+  \bibinfo{author}{A.~Lindfors}, \bibinfo{author}{N.~Krotkov},
+  \bibinfo{author}{J.~Kujanpää}, \bibinfo{author}{J.~Tamminen},
+  \bibinfo{author}{A.~Bais}, \bibinfo{author}{A.~di~Sarra},
+  \bibinfo{author}{J.~M. Villaplana}, \bibinfo{author}{C.~Brogniez},
+  \bibinfo{author}{A.~M. Siani}, \bibinfo{author}{M.~Janouch},
+  \bibinfo{author}{P.~Weihs}, \bibinfo{author}{A.~Webb},
+  \bibinfo{author}{T.~Koskela}, \bibinfo{author}{N.~Kouremeti},
+  \bibinfo{author}{D.~Meloni}, \bibinfo{author}{V.~Buchard},
+  \bibinfo{author}{F.~Auriol}, \bibinfo{author}{I.~Ialongo},
+  \bibinfo{author}{M.~Staneck}, \bibinfo{author}{S.~Simic},
+  \bibinfo{author}{A.~Smedley}, \bibinfo{author}{S.~Kinne},
+\newblock \bibinfo{title}{{A new approach to correct for absorbing aerosols in
+  {OMI} {UV}}},
+\newblock \bibinfo{journal}{Geophysical Research Letters} \bibinfo{volume}{36}
+  (\bibinfo{year}{2009}). \URLprefix
+  \url{https://doi.org/10.1029%2F2009gl041137}.
+%Type = Article
+\bibitem[{Parrish et~al.(2011)Parrish, Singh, Molina, and
+  Madronich}]{Parrish_2011}
+\bibinfo{author}{D.~D. Parrish}, \bibinfo{author}{H.~B. Singh},
+  \bibinfo{author}{L.~Molina}, \bibinfo{author}{S.~Madronich},
+\newblock \bibinfo{title}{{Air quality progress in North American megacities: A
+  review}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{45}
+  (\bibinfo{year}{2011}) \bibinfo{pages}{7015--7025}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.atmosenv.2011.09.039}.
+%Type = Manual
+\bibitem[{201(nd)}]{2017}
+\bibinfo{title}{{Informe anual calidad del aire 2017}}, \bibinfo{year}{n.d}.
+  \URLprefix
+  \url{http://www.aire.cdmx.gob.mx/descargas/publicaciones/flippingbook/informe_anual_calidad_aire_2017/mobile/#p=1},
+  \bibinfo{note}{accessed on Thu, December 10, 2020}.
+%Type = Article
+\bibitem[{Molina et~al.(2019)Molina, Velasco, Retama, and Zavala}]{Molina_2019}
+\bibinfo{author}{Molina}, \bibinfo{author}{Velasco}, \bibinfo{author}{Retama},
+  \bibinfo{author}{Zavala},
+\newblock \bibinfo{title}{{Experience from Integrated Air Quality Management in
+  the Mexico City Metropolitan Area and Singapore}},
+\newblock \bibinfo{journal}{Atmosphere} \bibinfo{volume}{10}
+  (\bibinfo{year}{2019}) \bibinfo{pages}{512}. \URLprefix
+  \url{https://doi.org/10.3390%2Fatmos10090512}.
+%Type = Article
+\bibitem[{Zhang et~al.(2019)Zhang, Wang, Garc{\'{\i}}a, Zeng, Dennhardt, Liu,
+  and Krotkov}]{Zhang_2019}
+\bibinfo{author}{H.~Zhang}, \bibinfo{author}{J.~Wang}, \bibinfo{author}{L.~C.
+  Garc{\'{\i}}a}, \bibinfo{author}{J.~Zeng}, \bibinfo{author}{C.~Dennhardt},
+  \bibinfo{author}{Y.~Liu}, \bibinfo{author}{N.~A. Krotkov},
+\newblock \bibinfo{title}{{Surface erythemal {UV}~irradiance in the continental
+  United States derived from ground-based and {OMI} observations: quality
+  assessment trend analysis and sampling issues}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{19} (\bibinfo{year}{2019}) \bibinfo{pages}{2165--2181}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-19-2165-2019}.
+%Type = Article
+\bibitem[{Vitt et~al.(2020)Vitt, Laschewski, Bais, Di{\'{e}}moz, Fountoulakis,
+  Siani, and Matzarakis}]{Vitt_2020}
+\bibinfo{author}{R.~Vitt}, \bibinfo{author}{G.~Laschewski},
+  \bibinfo{author}{A.~Bais}, \bibinfo{author}{H.~Di{\'{e}}moz},
+  \bibinfo{author}{I.~Fountoulakis}, \bibinfo{author}{A.-M. Siani},
+  \bibinfo{author}{A.~Matzarakis},
+\newblock \bibinfo{title}{{{UV}-Index Climatology for Europe Based on Satellite
+  Data}},
+\newblock \bibinfo{journal}{Atmosphere} \bibinfo{volume}{11}
+  (\bibinfo{year}{2020}) \bibinfo{pages}{727}. \URLprefix
+  \url{https://doi.org/10.3390%2Fatmos11070727}.
+%Type = Article
+\bibitem[{Janjai et~al.(2013)Janjai, Wisitsirikun, Buntoung, Pattarapanitchai,
+  Wattan, Masiri, and Bhattarai}]{Janjai_2013}
+\bibinfo{author}{S.~Janjai}, \bibinfo{author}{S.~Wisitsirikun},
+  \bibinfo{author}{S.~Buntoung}, \bibinfo{author}{S.~Pattarapanitchai},
+  \bibinfo{author}{R.~Wattan}, \bibinfo{author}{I.~Masiri},
+  \bibinfo{author}{B.~K. Bhattarai},
+\newblock \bibinfo{title}{{Comparison of {UV} index from Ozone Monitoring
+  Instrument ({OMI}) with multi-channel filter radiometers at four sites in the
+  tropics: effects of aerosols and clouds}},
+\newblock \bibinfo{journal}{International Journal of Climatology}
+  \bibinfo{volume}{34} (\bibinfo{year}{2013}) \bibinfo{pages}{453--461}.
+  \URLprefix \url{https://doi.org/10.1002%2Fjoc.3698}.
+%Type = Article
+\bibitem[{Laskin et~al.(2015)Laskin, Laskin, and Nizkorodov}]{Laskin_2015}
+\bibinfo{author}{A.~Laskin}, \bibinfo{author}{J.~Laskin},
+  \bibinfo{author}{S.~A. Nizkorodov},
+\newblock \bibinfo{title}{{Chemistry of Atmospheric Brown Carbon}},
+\newblock \bibinfo{journal}{Chemical Reviews} \bibinfo{volume}{115}
+  (\bibinfo{year}{2015}) \bibinfo{pages}{4335--4382}. \URLprefix
+  \url{https://doi.org/10.1021%2Fcr5006167}.
+%Type = Article
+\bibitem[{Gadhavi and Jayaraman(2010)}]{Gadhavi_2010}
+\bibinfo{author}{H.~Gadhavi}, \bibinfo{author}{A.~Jayaraman},
+\newblock \bibinfo{title}{{Absorbing aerosols: contribution of biomass burning
+  and implications for radiative forcing}},
+\newblock \bibinfo{journal}{Annales Geophysicae} \bibinfo{volume}{28}
+  (\bibinfo{year}{2010}) \bibinfo{pages}{103--111}. \URLprefix
+  \url{https://doi.org/10.5194%2Fangeo-28-103-2010}.
+%Type = Article
+\bibitem[{Rios and Raga(2019)}]{Rios_2019}
+\bibinfo{author}{B.~Rios}, \bibinfo{author}{G.~B. Raga},
+\newblock \bibinfo{title}{{Smoke emissions from agricultural fires in Mexico
+  and Central America}},
+\newblock \bibinfo{journal}{Journal of Applied Remote Sensing}
+  \bibinfo{volume}{13} (\bibinfo{year}{2019}) \bibinfo{pages}{1}. \URLprefix
+  \url{https://doi.org/10.1117%2F1.jrs.13.036509}.
+%Type = Article
+\bibitem[{Barnard et~al.(2008)Barnard, Volkamer, and Kassianov}]{Barnard_2008}
+\bibinfo{author}{J.~C. Barnard}, \bibinfo{author}{R.~Volkamer},
+  \bibinfo{author}{E.~I. Kassianov},
+\newblock \bibinfo{title}{{Estimation of the mass absorption cross section of
+  the organic carbon component of aerosols in the Mexico City Metropolitan
+  Area}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{8} (\bibinfo{year}{2008}) \bibinfo{pages}{6665--6679}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-8-6665-2008}.
+%Type = Article
+\bibitem[{Mayer et~al.(1998)Mayer, Kylling, Madronich, and
+  Seckmeyer}]{Mayer_1998}
+\bibinfo{author}{B.~Mayer}, \bibinfo{author}{A.~Kylling},
+  \bibinfo{author}{S.~Madronich}, \bibinfo{author}{G.~Seckmeyer},
+\newblock \bibinfo{title}{{Enhanced absorption of {UV} radiation due to
+  multiple scattering in clouds: Experimental evidence and theoretical
+  explanation}},
+\newblock \bibinfo{journal}{Journal of Geophysical Research: Atmospheres}
+  \bibinfo{volume}{103} (\bibinfo{year}{1998}) \bibinfo{pages}{31241--31254}.
+  \URLprefix \url{https://doi.org/10.1029%2F98jd02676}.
+
+\end{thebibliography}
