@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex full_article"] 1622369121 "full_article.aux" "full_article.bbl" "full_article" 1622371153
+["bibtex full_article"] 1622395232 "full_article.aux" "full_article.bbl" "full_article" 1622395238
   "./elsarticle-num-names.bst" 1350896869 28892 eae82b69d338854c1ef41ab05ca257bc ""
   "bibliography/biblio_url.bib" 1622369115 33598 a714faef4bd2369df090d7fb9fcf6ced ""
-  "full_article.aux" 1622371152 17753 ce7ab555b47e8db3d8353d7ec8e306a4 "pdflatex"
+  "full_article.aux" 1622395237 18650 2471109ccc87368b97a7f6495596814f "pdflatex"
   (generated)
-  "full_article.blg"
   "full_article.bbl"
-["pdflatex"] 1622371147 "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.tex" "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.pdf" "full_article" 1622371153
+  "full_article.blg"
+["pdflatex"] 1622395232 "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.tex" "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.pdf" "full_article" 1622395238
   "/etc/texmf/web2c/texmf.cnf" 1621666954 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.aux" 1622371152 17753 ce7ab555b47e8db3d8353d7ec8e306a4 ""
-  "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.tex" 1622371146 41954 798c9ec727f323289ef629f09c40e7af ""
+  "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.aux" 1622395237 18650 2471109ccc87368b97a7f6495596814f ""
+  "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.tex" 1622395225 43471 ead1153e535a028d5cd366cdf9e1dfd5 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm0800.tfm" 1136768653 1536 05df9db6aeccc4eea94fec15c9024f79 ""
@@ -161,14 +161,14 @@
   "figures/map.png" 1622358078 681102 90c53db7d43cba28c0da53debe748185 ""
   "figures/pollutants.png" 1622358078 201231 65a614a7bb1160aa2778b7efb5fe5e07 ""
   "figures/season.png" 1622358078 261404 4fcc553c250c05aba3e296bccb2268e7 ""
-  "full_article.aux" 1622371152 17753 ce7ab555b47e8db3d8353d7ec8e306a4 "pdflatex"
-  "full_article.bbl" 1622369122 36591 5d3cb42ef570ea8ba41c4bf6f5383ece "bibtex full_article"
-  "full_article.out" 1622371148 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "full_article.tex" 1622371146 41954 798c9ec727f323289ef629f09c40e7af ""
+  "full_article.aux" 1622395237 18650 2471109ccc87368b97a7f6495596814f "pdflatex"
+  "full_article.bbl" 1622395232 40735 c9c34866893dcc6991f33cfc1f2f4057 "bibtex full_article"
+  "full_article.out" 1622395233 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "full_article.tex" 1622395225 43471 ead1153e535a028d5cd366cdf9e1dfd5 ""
   (generated)
   "full_article.aux"
-  "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.pdf"
-  "full_article.log"
+  "full_article.out"
   "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.log"
   "full_article.pdf"
-  "full_article.out"
+  "full_article.log"
+  "/home/giovanni/SEDEMA/2000-2019/Paper_second_version/full_article.pdf"

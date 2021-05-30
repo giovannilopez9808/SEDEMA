@@ -1,4 +1,4 @@
-\begin{thebibliography}{58}
+\begin{thebibliography}{64}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -467,6 +467,100 @@
   \url{https://avdc.gsfc.nasa.gov/pub/most_popular/overpass/OMI/},
   \bibinfo{note}{accessed on Wed, December 02, 2020}.
 %Type = Article
+\bibitem[{Arola et~al.(2009)Arola, Kazadzis, Lindfors, Krotkov, Kujanpää,
+  Tamminen, Bais, di~Sarra, Villaplana, Brogniez, Siani, Janouch, Weihs, Webb,
+  Koskela, Kouremeti, Meloni, Buchard, Auriol, Ialongo, Staneck, Simic,
+  Smedley, and Kinne}]{Arola_2009}
+\bibinfo{author}{A.~Arola}, \bibinfo{author}{S.~Kazadzis},
+  \bibinfo{author}{A.~Lindfors}, \bibinfo{author}{N.~Krotkov},
+  \bibinfo{author}{J.~Kujanpää}, \bibinfo{author}{J.~Tamminen},
+  \bibinfo{author}{A.~Bais}, \bibinfo{author}{A.~di~Sarra},
+  \bibinfo{author}{J.~M. Villaplana}, \bibinfo{author}{C.~Brogniez},
+  \bibinfo{author}{A.~M. Siani}, \bibinfo{author}{M.~Janouch},
+  \bibinfo{author}{P.~Weihs}, \bibinfo{author}{A.~Webb},
+  \bibinfo{author}{T.~Koskela}, \bibinfo{author}{N.~Kouremeti},
+  \bibinfo{author}{D.~Meloni}, \bibinfo{author}{V.~Buchard},
+  \bibinfo{author}{F.~Auriol}, \bibinfo{author}{I.~Ialongo},
+  \bibinfo{author}{M.~Staneck}, \bibinfo{author}{S.~Simic},
+  \bibinfo{author}{A.~Smedley}, \bibinfo{author}{S.~Kinne},
+\newblock \bibinfo{title}{{A new approach to correct for absorbing aerosols in
+  {OMI} {UV}}},
+\newblock \bibinfo{journal}{Geophysical Research Letters} \bibinfo{volume}{36}
+  (\bibinfo{year}{2009}). \URLprefix
+  \url{https://doi.org/10.1029%2F2009gl041137}.
+%Type = Article
+\bibitem[{Madronich(1987)}]{Madronich_1987}
+\bibinfo{author}{S.~Madronich},
+\newblock \bibinfo{title}{{Intercomparison of {NO}2 photodissociation and U.V.
+  Radiometer Measurements}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{21}
+  (\bibinfo{year}{1987}) \bibinfo{pages}{569--578}. \URLprefix
+  \url{https://doi.org/10.1016%2F0004-6981%2887%2990039-4}.
+%Type = Article
+\bibitem[{Shaw et~al.(2007)Shaw, Pekour, Coulter, Martin, and
+  Walters}]{Shaw_2007}
+\bibinfo{author}{W.~J. Shaw}, \bibinfo{author}{M.~S. Pekour},
+  \bibinfo{author}{R.~L. Coulter}, \bibinfo{author}{T.~J. Martin},
+  \bibinfo{author}{J.~T. Walters},
+\newblock \bibinfo{title}{{The daytime mixing layer observed by radiosonde
+  profiler, and lidar during {MILAGRO}}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics Discussions}
+  \bibinfo{volume}{7} (\bibinfo{year}{2007}) \bibinfo{pages}{15025--15065}.
+  \URLprefix \url{https://doi.org/10.5194%2Facpd-7-15025-2007}.
+%Type = Article
+\bibitem[{Velasco et~al.(2008)Velasco, M{\'{a}}rquez, Bueno, Bernab{\'{e}},
+  S{\'{a}}nchez, Fentanes, Wöhrnschimmel, C{\'{a}}rdenas, Kamilla, Wakamatsu,
+  and Molina}]{Velasco_2008}
+\bibinfo{author}{E.~Velasco}, \bibinfo{author}{C.~M{\'{a}}rquez},
+  \bibinfo{author}{E.~Bueno}, \bibinfo{author}{R.~M. Bernab{\'{e}}},
+  \bibinfo{author}{A.~S{\'{a}}nchez}, \bibinfo{author}{O.~Fentanes},
+  \bibinfo{author}{H.~Wöhrnschimmel}, \bibinfo{author}{B.~C{\'{a}}rdenas},
+  \bibinfo{author}{A.~Kamilla}, \bibinfo{author}{S.~Wakamatsu},
+  \bibinfo{author}{L.~T. Molina},
+\newblock \bibinfo{title}{{Vertical distribution of ozone and {VOCs} in the low
+  boundary layer of Mexico City}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{8} (\bibinfo{year}{2008}) \bibinfo{pages}{3061--3079}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-8-3061-2008}.
+%Type = Article
+\bibitem[{Greenberg et~al.(2009)Greenberg, Guenther, and
+  Turnipseed}]{Greenberg_2009}
+\bibinfo{author}{J.~Greenberg}, \bibinfo{author}{A.~Guenther},
+  \bibinfo{author}{A.~Turnipseed},
+\newblock \bibinfo{title}{{Tethered balloon-based soundings of ozone aerosols,
+  and solar radiation near Mexico City during {MIRAGE}-{MEX}}},
+\newblock \bibinfo{journal}{Atmospheric Environment} \bibinfo{volume}{43}
+  (\bibinfo{year}{2009}) \bibinfo{pages}{2672--2677}. \URLprefix
+  \url{https://doi.org/10.1016%2Fj.atmosenv.2009.02.019}.
+%Type = Article
+\bibitem[{Rogers et~al.(2009)Rogers, Hair, Hostetler, Ferrare, Obland, Cook,
+  Harper, Burton, Shinozuka, McNaughton, Clarke, Redemann, Russell, Livingston,
+  and Kleinman}]{Rogers_2009}
+\bibinfo{author}{R.~R. Rogers}, \bibinfo{author}{J.~W. Hair},
+  \bibinfo{author}{C.~A. Hostetler}, \bibinfo{author}{R.~A. Ferrare},
+  \bibinfo{author}{M.~D. Obland}, \bibinfo{author}{A.~L. Cook},
+  \bibinfo{author}{D.~B. Harper}, \bibinfo{author}{S.~P. Burton},
+  \bibinfo{author}{Y.~Shinozuka}, \bibinfo{author}{C.~S. McNaughton},
+  \bibinfo{author}{A.~D. Clarke}, \bibinfo{author}{J.~Redemann},
+  \bibinfo{author}{P.~B. Russell}, \bibinfo{author}{J.~M. Livingston},
+  \bibinfo{author}{L.~I. Kleinman},
+\newblock \bibinfo{title}{{{NASA} {LaRC} airborne high spectral resolution
+  lidar aerosol measurements during {MILAGRO}: observations and validation}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{9} (\bibinfo{year}{2009}) \bibinfo{pages}{4811--4826}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-9-4811-2009}.
+%Type = Article
+\bibitem[{Lewandowski et~al.(2010)Lewandowski, Eichinger, Holder, Prueger,
+  Wang, and Kleinman}]{Lewandowski_2010}
+\bibinfo{author}{P.~A. Lewandowski}, \bibinfo{author}{W.~E. Eichinger},
+  \bibinfo{author}{H.~Holder}, \bibinfo{author}{J.~Prueger},
+  \bibinfo{author}{J.~Wang}, \bibinfo{author}{L.~I. Kleinman},
+\newblock \bibinfo{title}{{Vertical distribution of aerosols in the vicinity of
+  Mexico City during {MILAGRO}-2006 Campaign}},
+\newblock \bibinfo{journal}{Atmospheric Chemistry and Physics}
+  \bibinfo{volume}{10} (\bibinfo{year}{2010}) \bibinfo{pages}{1017--1030}.
+  \URLprefix \url{https://doi.org/10.5194%2Facp-10-1017-2010}.
+%Type = Article
 \bibitem[{Corr et~al.(2009)Corr, Krotkov, Madronich, Slusser, Holben, Gao,
   Flynn, Lefer, and Kreidenweis}]{Corr_2009}
 \bibinfo{author}{C.~A. Corr}, \bibinfo{author}{N.~Krotkov},
@@ -518,28 +612,6 @@
   Biology} \bibinfo{volume}{115} (\bibinfo{year}{2012})
   \bibinfo{pages}{73--84}. \URLprefix
   \url{https://doi.org/10.1016%2Fj.jphotobiol.2012.06.013}.
-%Type = Article
-\bibitem[{Arola et~al.(2009)Arola, Kazadzis, Lindfors, Krotkov, Kujanpää,
-  Tamminen, Bais, di~Sarra, Villaplana, Brogniez, Siani, Janouch, Weihs, Webb,
-  Koskela, Kouremeti, Meloni, Buchard, Auriol, Ialongo, Staneck, Simic,
-  Smedley, and Kinne}]{Arola_2009}
-\bibinfo{author}{A.~Arola}, \bibinfo{author}{S.~Kazadzis},
-  \bibinfo{author}{A.~Lindfors}, \bibinfo{author}{N.~Krotkov},
-  \bibinfo{author}{J.~Kujanpää}, \bibinfo{author}{J.~Tamminen},
-  \bibinfo{author}{A.~Bais}, \bibinfo{author}{A.~di~Sarra},
-  \bibinfo{author}{J.~M. Villaplana}, \bibinfo{author}{C.~Brogniez},
-  \bibinfo{author}{A.~M. Siani}, \bibinfo{author}{M.~Janouch},
-  \bibinfo{author}{P.~Weihs}, \bibinfo{author}{A.~Webb},
-  \bibinfo{author}{T.~Koskela}, \bibinfo{author}{N.~Kouremeti},
-  \bibinfo{author}{D.~Meloni}, \bibinfo{author}{V.~Buchard},
-  \bibinfo{author}{F.~Auriol}, \bibinfo{author}{I.~Ialongo},
-  \bibinfo{author}{M.~Staneck}, \bibinfo{author}{S.~Simic},
-  \bibinfo{author}{A.~Smedley}, \bibinfo{author}{S.~Kinne},
-\newblock \bibinfo{title}{{A new approach to correct for absorbing aerosols in
-  {OMI} {UV}}},
-\newblock \bibinfo{journal}{Geophysical Research Letters} \bibinfo{volume}{36}
-  (\bibinfo{year}{2009}). \URLprefix
-  \url{https://doi.org/10.1029%2F2009gl041137}.
 %Type = Article
 \bibitem[{Parrish et~al.(2011)Parrish, Singh, Molina, and
   Madronich}]{Parrish_2011}
