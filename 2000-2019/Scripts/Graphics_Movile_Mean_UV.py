@@ -94,7 +94,7 @@ plt.plot(range(len(moving_average_data)),
          label="Moving average",
          linewidth=3,
          color="grey",
-         alpha=0.75)
+         alpha=0.9)
 # # <-----------Ploteo de linear fit------------------>
 plt.plot((years-inputs["year initial"])*12,
          Fit_line,
