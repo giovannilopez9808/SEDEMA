@@ -1,145 +1,143 @@
-\documentclass[10pt]{article}
 
-\usepackage{fullpage}
-\usepackage{setspace}
-\usepackage{parskip}
-\usepackage{titlesec}
-\usepackage[section]{placeins}
-\usepackage{xcolor}
-\usepackage{breakcites}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a (brief) model paper using the achemso class
+%% The document class accepts keyval options, which should include
+%% the target journal and optionally the manuscript type.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[journal=jacsat,manuscript=article]{achemso}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Place any additional packages needed here.  Only include packages
+%% which are essential, to avoid problems later.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{chemformula} % Formula subscripts using \ch{}
+\usepackage[T1]{fontenc} % Use modern font encodings
 \usepackage{lineno}
-\usepackage{hyphenat}
-
-\setlength\columnsep{25pt}
-
-
-%\usepackage{numcompress}
-
-\PassOptionsToPackage{hyphens}{url}
 \usepackage[colorlinks = true,
             linkcolor = blue,
             urlcolor  = blue,
             citecolor = blue,
             anchorcolor = blue]{hyperref}
-\usepackage{etoolbox}
-\makeatletter
-% \patchcmd\@combinedblfloats{\box\@outputbox}{\unvbox\@outputbox}{}{%
-%   \errmessage{\noexpand\@combinedblfloats could not be patched}%
-% }%
-\makeatother
+\usepackage{multirow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If issues arise when submitting your manuscript, you may want to
+%% un-comment the next line.  This provides information on the
+%% version of every file you have used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\listfiles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Place any additional macros here.  Please use \newcommand* where
+%% possible, and avoid layout-changing macros (which are not used
+%% when typesetting).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*\mycommand[1]{\texttt{\emph{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta-data block
+%% ---------------
+%% Each author should be given as a separate \author command.
+%%
+%% Corresponding authors should have an e-mail given after the author
+%% name as an \email command. Phone and fax numbers can be given
+%% using \phone and \fax, respectively; this information is optional.
+%%
+%% The affiliation of authors is given after the authors; each
+%% \affiliation command applies to all preceding authors not already
+%% assigned an affiliation.
+%%
+%% The affiliation takes an option argument for the short name.  This
+%% will typically be something like "University of Somewhere".
+%%
+%% The \altaffiliation macro should be used for new address, etc.
+%% On the other hand, \alsoaffiliation is used on a per author basis
+%% when authors are associated with multiple institutions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Adriana Ipiña}
+\email{ipina@ifir-conicet.gov.ar}
+% \affiliation{corresponding author}
+\affiliation{Instituto de Física Rosario (CONICET-UNR), Rosario, Argentina}
+\alsoaffiliation{Centro de Ciencias de la Atmósfera, Universidad Nacional Autónoma de México, Mexico City, Mexico}
+
+\author{Gamaliel López-Padilla}
+\affiliation{Facultad de Ciencias Físico Matemáticas, Universidad Autónoma de Nuevo León, San Nicolás de los Garza, México}
+
+\author{Armando Retama}
+% \altaffiliation{A shared footnote}
+% \email{i.k.groupleader@unknown.uu}
+% \phone{+123 (0)123 4445556}
+% \fax{+123 (0)123 4445557}
+\affiliation{Independent researcher, Mexico City, Mexico}
+% \alsoaffiliation[Second University]
+% {Department of Chemistry, Second University, Nearby Town}
+
+\author{Rubén D. Piacentini}
+% \email{s.k.laborator@bigpharma.co}
+\affiliation{Instituto de Física Rosario (CONICET-UNR), Rosario, Argentina}
+
+\author{Sasha Madronich}
+\affiliation{National Center for Atmospheric Research, Boulder, Colorado, USA}
+% \alsoaffiliation[Second University]
+% {Department of Chemistry, Second University, Nearby Town}
 
 
-\usepackage[super]{natbib}
 
-
-
-
-\renewenvironment{abstract}
-  {{\bfseries\noindent{\abstractname}\par\nobreak}\footnotesize}
-  {\bigskip}
-
-\titlespacing{\section}{0pt}{*3}{*1}
-\titlespacing{\subsection}{0pt}{*2}{*0.5}
-\titlespacing{\subsubsection}{0pt}{*1.5}{0pt}
-
-
-\usepackage{authblk}
-
-
-\usepackage{graphicx}
-\usepackage[space]{grffile}
-\usepackage{latexsym}
-\usepackage{textcomp}
-\usepackage{longtable}
-\usepackage{tabulary}
-\usepackage{booktabs,array,multirow}
-\usepackage{amsfonts,amsmath,amssymb}
-\providecommand\citet{\cite}
-\providecommand\citep{\cite}
-\providecommand\citealt{\cite}
-% You can conditionalize code for latexml or normal latex using this.
-\newif\iflatexml\latexmlfalse
-\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}%
-
-\AtBeginDocument{\DeclareGraphicsExtensions{.pdf,.PDF,.eps,.EPS,.png,.PNG,.tif,.TIF,.jpg,.JPG,.jpeg,.JPEG}}
-
-\usepackage[utf8]{inputenc}
-\usepackage[ngerman,greek,english]{babel}
-
-
-
-\usepackage{float}
-
-
-
-
-
-
-% Edit this header.tex file to include frontmatter definitions and global macros
-
-% Add here any LaTeX packages you would like to load in all document blocks
-% \usepackage{xspace}
-
-% Add here any LaTeX macros you would like to load in all document blocks
-% \def\example{This is an example macro.}
-
-% -----
-
-\iflatexml
-% Add here any LaTeXML-specific commands
-
-% -----
-
-\else
-% Add here any export style-specific LaTeX commands. These will only be loaded upon document export. 
-% \paperfield{Subject domain of my document}
-% \keywords{keyword1, keyword2}
-% \corraddress{Author One PhD, Department, Institution, City, State or Province, Postal Code, Country}
-% \fundinginfo{Funder One, Funder One Department, Grant/Award Number: 123456.}
-\fi
-
-
-\begin{document}
-
-\title{The Ultraviolet Environment of a Tropical Megacity in Transition: Mexico
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The document title should be given as usual. Some journals require
+%% a running title from the author: this should be supplied as an
+%% optional argument to \title.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[The Ultraviolet Environment]
+  {The Ultraviolet Environment of a Tropical Megacity in Transition: Mexico
   City 2000-2019}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Some journals require a list of abbreviations or keywords to be
+%% supplied. These should be set up here, and will be printed after
+%% the title and author information, if needed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abbreviations{IR,NMR,UV}
+\keywords{Ultraviolet radiation, UV~Index, Megacities, Air pollution,
+Urban photochemistry}
 
-\author[1,2]{Adriana Ipiña\thanks{corresponding author}}
-\author[3]{Gamaliel López-Padilla}
-\author[4]{Armando Retama}
-\author[1]{Rubén D. Piacentini}
-\author[5]{Sasha Madronich}
-
-\affil[1]{Instituto de Física Rosario (CONICET-UNR), Rosario, Argentina}
-\affil[2]{Centro de Ciencias de la Atmósfera, Universidad Nacional Autónoma de México, Mexico City, Mexico}
-\affil[3]{Facultad de Ciencias Físico Matemáticas, Universidad Autónoma de Nuevo León, San Nicolás de los Garza, México}
-\affil[4]{Independent researcher, Mexico City, Mexico}
-\affil[5]{National Center for Atmospheric Research, Boulder, Colorado, USA}
-
-
-\vspace{-1em}
-
-
-
-\date{}
-
-
-\begingroup
-\let\center\flushleft
-\let\endcenter\endflushleft
-\maketitle
-\endgroup
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The manuscript does not need to include \maketitle, which is
+%% executed automatically.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
 \linenumbers
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The "tocentry" environment can be used to create an entry for the
+%% graphical table of contents. It is given here as some journals
+%% require that it is printed as part of the abstract page. It will
+%% be automatically moved as appropriate.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tocentry}
 
+  Some journals require a graphical entry for the Table of Contents.
+  This should be laid out ``print ready'' so that the sizing of the
+  text is correct.
 
-\doublespacing
+  Inside the \texttt{tocentry} environment, the font used is Helvetica
+  8\,pt, as required by \emph{Journal of the American Chemical
+    Society}.
 
+  The surrounding frame is 9\,cm by 3.5\,cm, which is the maximum
+  permitted for  \emph{Journal of the American Chemical Society}
+  graphical table of content entries. The box will not resize if the
+  content is too big: instead it will overflow the edge of the box.
 
-\selectlanguage{english}
+  This box and the associated title will always be printed on a
+  separate page at the end of the document.
+
+\end{tocentry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The abstract environment will automatically gobble the contents
+%% if an abstract is not used by the target journal.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
   Tropical regions experience naturally high levels of UV radiation, but
   urban pollution can reduce these levels substantially. We analyzed 20
@@ -156,32 +154,25 @@
   decreasing order of importance. Such large changes in UV radiation
   between 2000 and 2019 have important implications ranging from human
   health (skin cancer and cataract induction) to air pollution control
-  (photochemical smog formation).%
-\end{abstract}%
+  (photochemical smog formation).
+\end{abstract}
 
 
 
-\sloppy
-
-
-Keywords: Ultraviolet radiation, UV~Index, Megacities, Air pollution,
-Urban photochemistry.
-
-Synopsis: Improvements in Mexico City's air quality during 2000-2019
-were accompanied by increases in UV radiation, augmenting human exposure
-and photochemical smog formation.
-
-\section*{Introduction}
-
- {\label{123750}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start the main part of the manuscript here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
 
 Ultraviolet (UV) radiation is an important component of the urban
 environment, affecting human populations directly through UV exposure of
-skin and eyes \cite{Taylor_1988,Varotsos_1997,Lucas_2019} and less directly (but with great
+skin and eyes~\citep{Taylor_1988,Varotsos_1997,Lucas_2019}
+and less directly (but with great
 impact) by driving the formation of photochemical smog, including
 tropospheric ozone and other oxidants, as well as secondary aerosols
-containing nitrates, sulfates, and organics.\cite{LEIGHTON_1961,Seinfeld_1998,Finlayson_Pitts_2000} These
-pollutants, along with others of primary origin commonly found in urban
+containing nitrates, sulfates, and
+organics.\citep{LEIGHTON_1961,Seinfeld_1998,Finlayson_Pitts_2000}
+These pollutants, along with others of primary origin commonly found in urban
 atmospheres (e.g., black carbon, sulfur dioxide), can in turn scatter
 and/or absorb UV radiation, alter its vertical distribution, and so
 modify the photochemical rate of their own formation. Such feedback
@@ -191,16 +182,19 @@ boundary layer.
 
 The question of how air pollution alters the urban UV environment
 (and~\emph{vice versa}) is not new, but studies have relied mostly on
-numerical models,\cite{Liu_1991,Sabziparvar_1998,Madronich_2011} with relatively fewer available
-observations (e.g.,\emph{McKenzie et al.}\cite{McKenzie_2008}; \emph{Panicker et al.}\cite{Panicker_2009}; \emph{Palancar et al}\cite{Palancar_2013};
-reviewed by Bais et al.\cite{Bais_2015}). Increases in UV have been
+numerical models \cite{Liu_1991,Sabziparvar_1998,Madronich_2011},
+with relatively fewer available observations (e.g.,
+\citet{McKenzie_2008}, \citet{Panicker_2009}, \citet{Palancar_2013},
+reviewed by \citet{Bais_2015}). Increases in UV have been
 estimated in association with decadal emission reductions, e.g. in
-China,\cite{Hollaway_2019,Li_2018,Wang_2020} and that have led to less-than-expected
+China,\citep{Hollaway_2019,Li_2018,Wang_2020}
+and that have led to less-than-expected
 reductions in photochemical smog, in part due to stronger UV
-photochemistry.\cite{Wang_2019,Gao_2020,Ma_2020} Emission reductions have also occurred
-globally during the 2020 COVID-19 pandemic,\cite{Bauwens_2020,Venter_2020} but
-ground-level ozone in some polluted areas has actually
-increased,\cite{Shi_2020,Le_2020} due at least in part to the increased UV
+photochemistry.\citep{Wang_2019,Gao_2020,Ma_2020}
+Emission reductions have also occurred
+globally during the 2020 COVID-19 pandemic,\citep{Bauwens_2020,Venter_2020}
+but ground-level ozone in some polluted areas has actually
+increased,\citep{Shi_2020,Le_2020} due at least in part to the increased UV
 radiation. Unfortunately, the observational data base of relevant UV
 radiation remains rather sparse to evaluate such model-derived
 hypotheses.~~
@@ -216,17 +210,21 @@ high elevation of 2240 m above sea level, and a transition toward newer
 and cleaner technologies, leading to gradual improvements in air
 quality. (3) Air quality within MCMA has undergone extensive scrutiny,
 with a well-established monitoring network since
-1986,\cite{rama} numerous intensive field campaigns to study the
+1986,\cite{RAMA}
+numerous intensive field campaigns to study the
 meteorology, emissions, and photochemistry of smog
-formation,\cite{Doran_1998,Molina_2007,Molina_2010} and numerical modeling incorporating the
-evolving knowledge.\cite{Jazcilevich_2005,Tie_2007,Zhang_2009,Zavala_2020} This extensive body of knowledge
+formation,\citep{Doran_1998,Molina_2007,Molina_2010}
+and numerical modeling incorporating the
+evolving knowledge.\citep{Jazcilevich_2005,Tie_2007,Zhang_2009,Zavala_2020}
+This extensive body of knowledge
 provides the foundation for understanding our study.
 
 Here, we analyze two decades of continuous measurements of the UV Index
 at multiple locations within the MCMA, collected by the Secretariat of
-the Environment (Secretar\selectlanguage{ngerman}ía del Medio Ambiente, SEDEMA) of the Mexico
+the Environment (Secretaría del Medio Ambiente,
+SEDEMA)\footnote{\url{https://www.sedema.cdmx.gob.mx/}} of the Mexico
 City government as part of an intensive monitoring network over the
-MCMA.\cite{ambiente} The UV Index is defined as:
+MCMA. The UV Index is defined as:
 
 \begin{equation}
   \label{eq:UVI}
@@ -236,7 +234,8 @@ MCMA.\cite{ambiente} The UV Index is defined as:
 where~\(E(\lambda,t)\)\emph{~} is the solar spectral irradiance in
 units of W ·m\textsuperscript{-2} ·nm\textsuperscript{-1}
 and~\(S_{er}\left(\lambda\right)\) is the erythemal sensitivity of human
-skin.\cite{who2002,Webb_2011} Multiplication by 40 was chosen historically to
+skin.\citep{who2002,Webb_2011}
+Multiplication by 40 was chosen historically to
 express the UVI in small integer numbers, but is otherwise
 scientifically arbitrary.
 
@@ -247,7 +246,7 @@ of using the UVI as (one) metric of UV radiation is that it is being
 increasingly observed or calculated and disseminated, enabling more
 objective comparisons among seasons and locations. The UVI observations
 from Mexico City, considered here, are an important element of this
-global picture. ~
+global picture.
 
 While the UVI at the surface cannot be translated directly into
 photolysis frequencies for various photo-labile molecules, the spectral
@@ -259,20 +258,21 @@ pollutant. With these considerations and a few other caveats, UVI trends
 examined here can also be used to infer accompanying trends in
 photolysis frequencies and influences on photochemical smog formation.
 
-\section*{Methods}
 
- {\label{770133}}
 
-\subsection*{Ground-based measurements}
 
-{\label{220276}}
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Ground-based measurements}
 
 The Mexico City Metropolitan Area is located at 19.4°N, 99.1°W, 2240
 meters above sea level (asl), surrounded by mountain ridges exceeding
 5000 m asl, with complex topography and thermal inversions that inhibit
-winds and favor intense air pollution.\cite{Whiteman_2000,Fast_2007,Carre_n_Sierra_2015} Air quality
+winds and favor intense air pollution.\citep{Whiteman_2000,Fast_2007,Carre_n_Sierra_2015}
+Air quality
 monitoring and surface meteorological measurements in the MCMA are
-conducted~continuously by the Automated Atmospheric Monitoring Network
+conducted continuously by the Automated Atmospheric Monitoring Network
 (RAMA, by its Spanish acronym) of the Atmospheric Monitoring System
 (SIMAT, by its Spanish acronym) of the Mexico City government. Since the
 year 2000, UV radiometers (model 501-A, Solar Light Company Inc.,
@@ -292,7 +292,7 @@ irradiances, which are then multiplied by 40 (see
 Eq.~{\ref{eq:UVI}}) to give UV Indices.
 Table~{\ref{table:stations}} describes the location of
 the stations where UV Index has been measured.
-Figure~{\ref{977905}} shows how the radiometers of the
+Figure~{\ref{fig:map}} shows how the radiometers of the
 SIMAT have been distributed over MCMA, prioritizing the sites with more
 density of population. Near real-time data for each station are
 available on the SIMAT official
@@ -300,29 +300,36 @@ website~\url{http://www.aire.cdmx.gob.mx/default.php}. Daily maximum
 values (\(UVI_{\max}\)) were extracted~from each of the stations
 around solar noon from the time interval from 11:00 h-15:00 h CST
 (Central Standard Time). This database~with 7305 continuous days of
-measurements during the period 2000-2019 was analyzed. ~\selectlanguage{english}
+measurements during the period 2000-2019 was analyzed.
+
 \begin{table}[H]
   \centering
   \begin{tabular}{ccccc}
     \hline
-    Station & Environment     & Lat (\selectlanguage{ngerman}°N) & Lon (\selectlanguage{ngerman}°W) & El (masl) \\ \hline
-    CHO     & semi-urban zone & 19.27                            & 99.89                            & 2253      \\
-    CUT     & ecological park & 19.72                            & 99.20                            & 2263      \\
-    FAC     & urban           & 19.48                            & 99.24                            & 2299      \\
-    HAN     & urban           & 19.42                            & 99.08                            & 2235      \\
-    LAA     & urban           & 19.48                            & 99.15                            & 2255      \\
-    MER     & downtown        & 19.42                            & 99.12                            & 2245      \\
-    MON     & rural           & 19.46                            & 98.90                            & 2252      \\
-    MPA     & rural           & 19.18                            & 98.99                            & 2594      \\
-    PED     & residential     & 19.33                            & 99.20                            & 2326      \\
-    SAG     & urban           & 19.53                            & 99.03                            & 2241      \\
-    SFE     & residential     & 19.36                            & 99.26                            & 2599      \\
-    TLA     & urban           & 19.53                            & 99.20                            & 2311      \\
-    UNAM    & University city & 19.33                            & 99.18                            & 2294      \\\hline
+    Station & Environment     & Lat (ºN) & Lon (ºW) & El (masl) \\ \hline
+    CHO     & semi-urban zone & 19.27    & 99.89    & 2253      \\
+    CUT     & ecological park & 19.72    & 99.20    & 2263      \\
+    FAC     & urban           & 19.48    & 99.24    & 2299      \\
+    HAN     & urban           & 19.42    & 99.08    & 2235      \\
+    LAA     & urban           & 19.48    & 99.15    & 2255      \\
+    MER     & downtown        & 19.42    & 99.12    & 2245      \\
+    MON     & rural           & 19.46    & 98.90    & 2252      \\
+    MPA     & rural           & 19.18    & 98.99    & 2594      \\
+    PED     & residential     & 19.33    & 99.20    & 2326      \\
+    SAG     & urban           & 19.53    & 99.03    & 2241      \\
+    SFE     & residential     & 19.36    & 99.26    & 2599      \\
+    TLA     & urban           & 19.53    & 99.20    & 2311      \\
+    UNAM    & University city & 19.33    & 99.18    & 2294      \\\hline
   \end{tabular}
-  \caption{\selectlanguage{ngerman}{{{SIMAT stations, environmental descriptors and geographical positions. Abbreviations names: Chalco (CHA), Cuautitlán (CUT), FES Acatlán (FAC), Hangares (HAN), Laboratorio de Análisis Ambiental (LAA), Merced (MER), Montecillo (MON), Milpa Alta (MPA), Pedregal (PED), San Agustín (SAG), Santa Fe (SFE), National Autonomous University of Mexico (UNAM) and Tlalnepantla (TLA). }}}}
+  \caption{{{{SIMAT stations, environmental descriptors and geographical
+                positions. Abbreviations names: Chalco (CHA), Cuautitlán (CUT), FES Acatlán
+                (FAC), Hangares (HAN), Laboratorio de Análisis Ambiental (LAA), Merced
+                (MER), Montecillo (MON), Milpa Alta (MPA), Pedregal (PED), San Agustín
+                (SAG), Santa Fe (SFE), National Autonomous University of Mexico (UNAM) and
+                Tlalnepantla (TLA). }}}}
   \label{table:stations}
-\end{table}\selectlanguage{ngerman}\selectlanguage{english}
+\end{table}
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.70\columnwidth]{figures/map}
@@ -334,7 +341,7 @@ measurements during the period 2000-2019 was analyzed. ~\selectlanguage{english}
           AERONET site. The location~of Mexico City and the acronyms of the UV and
           AERONET site are shown at the upper and lower frames at the right
           respectively.
-            {\label{977905}}%
+            {\label{fig:map}}%
         }}
   \end{center}
 \end{figure}
@@ -343,8 +350,8 @@ With the aim to explore the relationship between UVI and air pollutants
 levels, the hourly averages for ozone (O\textsubscript{3}), carbon
 monoxide (CO), nitrogen dioxide (NO\textsubscript{2}), sulfur
 dioxide~(SO\textsubscript{2}) and particle matter with diameter
-sizes~\(\le\) 10 ~\selectlanguage{greek}µ\selectlanguage{english}m (PM\textsubscript{10}), were downloaded
-from the SIMAT\cite{atmosfrico}. For purposes of assessing the
+sizes~\(\le\) 10 ~$\mu$m (PM\textsubscript{10}), were downloaded
+from the SIMAT.\cite{atmosfrico} For purposes of assessing the
 influence on the UV Index at solar noon, only values obtained between
 11h and 15h CST were considered for the trends analysis. Pollutant
 measurements are conducted by the SIMAT using regulatory-grade
@@ -358,33 +365,33 @@ Tapered Element Oscillating Microbalance (TEOM 1400AB or TEOM 1405 DF,
 Thermo Scientific) monitors. Gaseous pollutant levels are reported in
 ppb concentration units for O\textsubscript{3}, SO\textsubscript{2} and
 NO\textsubscript{2}, and in ppm for CO. Particulate matter mass
-concentration is reported in \selectlanguage{greek}µ\selectlanguage{english}g m\textsuperscript{-3} at local
+concentration is reported in $\mu$g m\textsuperscript{-3} at local
 conditions for temperature and pressure.
 
 Aerosol optical depth at 340 nm was obtained from the Institute of
 Geophysics of the National Autonomous University of Mexico (UNAM);
-measurements were conducted with a CIMEL sun photometer model CE-318 of
-the AErosol RObotic NETwork (AERONET\cite{Holben_1998}). The data
+measurements were conducted with a CIMEL sun photometer model CE-318,
+which is an automatic sun-sky-scanning spectral radiometer of
+the AErosol RObotic NETwork (AERONET~\citep{Holben_1998}). The data
 Product Level 2.0 and 1.5 (only in 2019) were selected, and annual
 averages AOD\textsubscript{340} were calculated from continuous
 measurements during at least 7 months. A previous study of the AOD
 behavior from 2000 to 2014 demonstrated that the gaps of data did not
 significantly change the trends over the analyzed
-period.\cite{Carabali_2017} From 2014 to 2019 there was only 8\% of the
+period.\citep{Carabali_2017} From 2014 to 2019 there was only 8\% of the
 missing data, when the instrument was sent for calibration in 2018.
 
-\subsection*{Satellite data}
 
-{\label{800866}}
+\subsection{Satellite data}
 
 Estimates of the UV Index from satellite-based measurements of clouds
 and O\textsubscript{3} were used for comparing to the ground-based
 measurements. These data were provided by the Ozone Monitoring
-Instrument (OMI)~on board of AURA-NASA satellite.\cite{dcio} OMI
+Instrument (OMI)~on board of AURA-NASA satellite.\citep{dcio} OMI
 was created in cooperation between the Netherlands Agency for Aerospace
 Programmes (NIVR), the Finnish Meteorological Institute (FMI) and NASA.
 OMI (hereafter OMI-Aura/NIVR-FMI-NASA) performs observations over a
-geographical dimension of 13 \selectlanguage{ngerman}× 24km\textsuperscript{2} at nadir. For
+geographical dimension of 13$\times$24km\textsuperscript{2} at nadir. For
 Mexico City, the satellite overpass time is between 19:00h - 21:00h UTC
 and data are specific for the coordinates and elevation of Mexico City.
 Measurements of the ozone profile and cloud cover are used via a
@@ -392,16 +399,21 @@ radiative transfer model to estimate the UVI at the ground. The OMI web
 site reports UVI values for both the overpass time, and corrected to
 local solar noon.
 
-While the early OMI estimates of the UVI did not consider aerosols in the boundary layer, Arola et al.\cite{Arola_2009} suggested correcting the clean-skies UV index with a reduction factor based on a monthly global climatology of BL aerosols. For Mexico City a reduction of about 8\% is applied, starting ca. 2013, to the OMI UVI data.
+While the early OMI estimates of the UVI did not consider aerosols in
+the boundary layer, \citet{Arola_2009} suggested correcting
+the clean-skies UV index with a reduction factor based on a monthly
+global climatology of BL aerosols. For Mexico City a reduction of about
+8\% is applied, starting ca. 2013, to the OMI UVI data.
 
-\subsection*{TUV model}
+
+\subsection{TUV model}
 
 Calculations of the UV Index were also made with the Tropospheric
-Ultraviolet Visible (TUV v5.3) model.\cite{Madronich_1987} The
-model~atmosphere was represented by 80 vertical layers, each 1 km thick,
+Ultraviolet Visible (TUV v5.3) model.\citep{Madronich_1987} The
+model atmosphere was represented by 80 vertical layers, each 1 km thick,
 starting at the 2.24 km asl elevation of MCMA, and for which the first
 three km constitute the atmospheric boundary layer
-(BL).\cite{Shaw_2007} The ozone profile above the BL is from the US
+(BL).\citep{Shaw_2007} The ozone profile above the BL is from the US
 Standard Atmosphere, but rescaled to a value of 259.6 DU. Totals
 including the BL contributions (of 13.7 DU in the year 2000 and 9.8 DU
 in 2019, see below) were 273.1 DU in 2000 and 269.2 DU. The
@@ -412,17 +424,17 @@ values used here.
 Pollutants within the BL (including O\textsubscript{3}) are assumed to
 be well mixed, in agreement with observations from the MILAGRO field
 campaign that showed the disappearance of vertical gradients in the
-profiles of gases \cite{Velasco_2008,Greenberg_2009} and aerosols\cite{Rogers_2009,Lewandowski_2010} by
-late morning. The UV-absorbing gases considered here are
-O\textsubscript{3}, NO\textsubscript{2}, and SO\textsubscript{2},
-specified in ppb.
+profiles of gases \citep{Velasco_2008,Greenberg_2009} and aerosols
+\citep{Rogers_2009,Lewandowski_2010} by late morning. The UV-absorbing gases
+considered here are O\textsubscript{3}, NO\textsubscript{2},
+and SO\textsubscript{2}, specified in ppb.
 
 BL aerosols are modeled by prescribing the AOD at 340 nm (from AERONET
 observations), scaled to other wavelengths inversely with wavelength
 (Angstrom coefficient = 1.0), asymmetry factor of 0.7, and a single
 scattering albedo of 0.85 at UV wavelengths, following the
-determinations made in Mexico City by Corr et al.\cite{Corr_2009} and
-Palancar et al.\cite{Palancar_2013}.
+determinations made in Mexico City by \citet{Corr_2009} and
+\citet{Palancar_2013}.
 
 Above the atmospheric boundary layer, the model was taken to be free of
 aerosols, NO\textsubscript{2}, or SO\textsubscript{2}. In one
@@ -437,7 +449,11 @@ photolysis frequencies.
 Radiative transfer calculations were carried out with the
 pseudo-spherical 4-stream option, at 1 nm steps between 280 and 400 nm.
 
-\section*{Results and Discussion}\label{results-and-discussion}
+
+
+
+\section{Results and Discussion}
+\label{results-and-discussion}
 
 Figure~{\ref{628947}} shows the diurnal variation of
 the UVI for several specific cloud-free days, for different seasons and
@@ -447,15 +463,15 @@ According to the comparison of measurements minute by minute, the dates
 with prolonged fluctuations along the day were discarded. However,
 during the rainy period (from June to October) at least a brief clouds
 presence is common, as shown at CHO station around noon in 13 June
-2017\emph{.~}Peak values range from 8 during autumn/winter to above 12
+2017. Peak values range from 8 during autumn/winter to above 12
 in spring/summer, in correspondence to the respective December and June
 solstices. Although the stations are all within a 25 km radius,
 substantial differences among them are notable. Survey of the locations
 revealed that shadowing from nearby structures is not an issue. The good
 agreement in the morning, followed by more divergence in the afternoon,
 is consistent with the development of photo-chemical pollution hotspots
-during the day. Previous studies~(e.g., Castro et
-al.\cite{Castro_2001} and Palancar et al.\cite{Palancar_2013}) have shown
+during the day. Previous studies (e.g., \citet{Castro_2001} and
+\citet{Palancar_2013}) have shown
 that surface UV radiation in Mexico City is attenuated significantly by
 aerosols. The measurements shown in Fig.~{\ref{628947}}
 are consistent with this increasing pollution during the course of the
@@ -468,8 +484,9 @@ stations. The SFE station is displaced to the west from the majority of
 the other stations, and remains in the outskirts. This site is also
 approximately 300 m higher than Mexico City downtown, so that the
 cleaner atmosphere results from both vertical and horizontal variations
-in pollution levels.\cite{SEDEMA2018a} It is indeed expected to have
-higher values of the UVI, in agreement with the observations.\selectlanguage{english}
+in pollution levels.\citep{SEDEMA2018a} It is indeed expected to have
+higher values of the UVI, in agreement with the observations.
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.70\columnwidth]{figures/season}
@@ -492,7 +509,8 @@ UV attenuation by pollutants could also be amplified under such
 conditions, due to longer photon path lengths at low sun and within
 clouds. The extreme sparsity of high UVI values remains surprising, and
 may be an indication of the rarity of extremely unpolluted days within
-the city.\selectlanguage{english}
+the city.
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.49\columnwidth]{figures/Histogram}
@@ -515,7 +533,7 @@ flattened in the range 10-11. The rather low monthly UV Index values,
 mainly could be a consequence of the presence of clouds in the rainy
 season. However, urban aerosol pollution sources, biomass burning for
 agriculture and wood cooking also contribute to poor air quality between
-March-May\cite{Retama_2015}.~\emph{~}Using the
+March-May~\citep{Retama_2015}. Using the
 maximum~\(UVI_{\max}\) from all of stations every day (one daily
 point), the monthly averages (\(\overline{UVI}_m\)) were calculated along
 the period 2000-2019. Long term trends in~\(\overline{UVI}_m\) are shown
@@ -523,7 +541,7 @@ in Figure~{\ref{185758}}. A clear~upward trend is seen,
 with a slope for the linear fit of 0.9\%/year or +1.5 UVI units over the
 two decades.
 
-\par\null\selectlanguage{english}
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.70\columnwidth]{figures/Boxplotcos}
@@ -536,11 +554,12 @@ two decades.
             {\label{310112}}%
         }}
   \end{center}
-\end{figure}\selectlanguage{english}
+\end{figure}
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.70\columnwidth]{figures/UV_Moving_Average}
-    \caption{{Moving average function (gray curve) quarterly applied to monthly
+    \caption{{Moving average function (light gray curve) quarterly applied to monthly
           average UV Index, standard deviation of all data within a given month
           (black dots and dash line) and linear fit (red line).
             {\label{185758}}%
@@ -557,15 +576,15 @@ see Fig.~{\ref{310112}}). We hypothesize that this
 large difference between satellite-based estimation and ground-based
 observation of the UV index is due to the intense air pollution of
 Mexico City.~A rather similar behavior was detected in Santiago city,
-Chile.\cite{Cabrera_2012}
+Chile.\citep{Cabrera_2012}
 
 Close inspection of Figure~{\ref{485116}} shows that
 the maximum values, those from June and July of each year, show a slight
-but systematic decrease starting ca. 2013. As mentioned in section
- {\ref{770133}}, this is due to the post-processing of
-OMI UVI data to account for absorption by BL aerosols (Arola et
-al.)\cite{Arola_2009}, using a climatological reduction of about 8\%
-for Mexico City. ~\selectlanguage{english}
+but systematic decrease starting ca. 2013. As mentioned in
+section Methods, this is due to the post-processing of
+OMI UVI data to account for absorption by BL aerosols\citep{Arola_2009},
+using a climatological reduction of about 8\% for Mexico City.
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.70\columnwidth]{figures/CSUVindex}
@@ -576,10 +595,8 @@ for Mexico City. ~\selectlanguage{english}
   \end{center}
 \end{figure}
 
-\subsection*{Effect of pollutants on UV
-  radiation}
 
-{\label{884442}}
+\subsection{Effect of pollutants on UV radiation}
 
 Trends and averages in aerosol optical depth AOD\textsubscript{340} and
 criteria pollutants PM\textsubscript{10}, CO, NO\textsubscript{2},
@@ -588,8 +605,10 @@ stations over 2000-2019, are shown in
 Figure~{\ref{829996}} and summarized in
 Table~{\ref{table:uvindex}} together with
 the~\(UVI_{\max}\). Similar trends in pollutants have been noted
-before\cite{Parrish_2011,2017,Molina_2019} and reflect the long-term success of
-emission reduction policies and programs.\selectlanguage{english}
+before\citep{Parrish_2011,aire_cmdx_2017,Molina_2019}
+and reflect the long-term success of
+emission reduction policies and programs.
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.63\columnwidth]{figures/pollutants}
@@ -601,7 +620,8 @@ emission reduction policies and programs.\selectlanguage{english}
     {\label{829996}}%
     }}
   \end{center}
-\end{figure}\selectlanguage{english}
+\end{figure}
+
 \begin{table}[H]
   \centering
   \begin{tabular}{cccc} \hline
@@ -615,14 +635,17 @@ emission reduction policies and programs.\selectlanguage{english}
     SO\textsubscript{2}    & -0.76                              & 8.4               & -9.1              \\
     \hline
   \end{tabular}
-  \caption{{{{UV Index and criteria pollutants: slope for the period 2000-2019, averages in units of $\mu g/m^3$(PM$_{10}$), ppm (CO), ppb (SO$_2$, NO$_2$ and O$_3$), dimensionless (UV Index and AOD$_{340}$) and annual percentage change (\%/year).}}}}
+  \caption{{{{UV Index and criteria pollutants: slope for the period 2000-2019,
+                averages in units of $\mu g/m^3$(PM$_{10}$), ppm (CO), ppb
+                (SO$_2$, NO$_2$ and O$_3$), dimensionless (UV Index and AOD$_{340}$) and
+                annual percentage change (\%/year).}}}}
   \label{table:uvindex}
 \end{table}
 
 The observed changes in the concentrations of these air pollutants have
 significant implications for surface UV radiation, as can be
 demonstrated with the TUV radiative transfer model.
-Table~{\ref{table:TUVmodel}}~summarizes UVI values for
+Table~{\ref{table:TUVmodel}} summarizes UVI values for
 the June-July time period, estimated by the three methods: OMI
 satellite-derived UVI, RAMA ground-based observations, and TUV modeling
 using air pollution estimates. Two groups of values can be readily
@@ -634,7 +657,8 @@ pollutants as input, which are in good agreement for both 2018/19 and
 estimate that included the climatological aerosol correction (15.3),
 observed RAMA values were lower by 35\% in 2000 and by 20\% in 2019.
 Similarly, TUV values were 35\% lower in 2000 and 22\% lower in 2019
-relative to the TUV values of 15.6 for a pristine atmosphere.\selectlanguage{english}
+relative to the TUV values of 15.6 for a pristine atmosphere.
+
 \begin{table}[H]
   \centering
   \begin{tabular}{lc}
@@ -651,7 +675,12 @@ relative to the TUV values of 15.6 for a pristine atmosphere.\selectlanguage{eng
     \begin{tabular}[c]{@{}l@{}}TUV 2019:\\ AOD 0.5, O\textsubscript{3} 50 ppb, NO\textsubscript{2} 20 ppb, SO\textsubscript{2} 1 ppb\end{tabular}                                         & 12.1              \\ \hline
     \begin{tabular}[c]{@{}l@{}}TUV 2000:\\ AOD 0.7, O\textsubscript{3} 70 ppb, NO\textsubscript{2} 40 ppb, SO\textsubscript{2} 20 ppb\end{tabular}                                         & 10.2              \\ \hline
   \end{tabular}
-  \caption{{UV Index estimates for June-July.TUV model calculation illustrating the effect of pollutants on the UV Index in Mexico City. The contribution of each pollutant is evaluated by subtraction from the full mixture, rather than individual additions to clean air, to represent more faithfully the interaction between scattering and absorption, e.g. scattering-induced changes in photon path lengths through absorbing gases.}}
+  \caption{{UV Index estimates for June-July.TUV model calculation illustrating
+        the effect of pollutants on the UV Index in Mexico City. The contribution
+        of each pollutant is evaluated by subtraction from the full mixture, rather
+        than individual additions to clean air, to represent more faithfully the
+        interaction between scattering and absorption, e.g. scattering-induced changes
+        in photon path lengths through absorbing gases.}}
   \label{table:TUVmodel}
 \end{table}
 
@@ -668,34 +697,33 @@ UVI reductions due to pollutants, shown in Table
 the observed UVI reductions, that a compelling case can be made for a
 dominant role of air pollutants in the long-term UVI trends.
 
-Table \ref{table:year2000-2019} shows the
+Table~{\ref{table:year2000-2019}} shows the
 contributions to UVI reductions from individual pollutants. Aerosols are
 seen to be the major factor in both time periods, followed by
 O\textsubscript{3}, NO\textsubscript{2}, and SO\textsubscript{2}. The
 2000-2019 UVI increase is seen to result in comparable proportions from
 fewer aerosols, less SO\textsubscript{2}, and the combined reductions in
-O\textsubscript{3} and NO\textsubscript{2}.\selectlanguage{english}
+O\textsubscript{3} and NO\textsubscript{2}.
 
 Comparable UV reductions, of 30-40\% due to aerosols, were reported by
-Panicker et al.\cite{Panicker_2009} over Pune, India from April 2004 to
+\citet{Panicker_2009} over Pune, India from April 2004 to
 March 2005, with sensitivity coefficients (i.e. change in UVI per unit
-change in AOD) similar to those found here in
-Table \ref{table:TUVmodel}.
+change in AOD) similar to those found here in Table~\ref{table:TUVmodel}.
 
 Comparisons of OMI with ground-based UV measurements have been reviewed
-recently by Zhang et al.~\cite{Zhang_2019} and Vitt et
-al.~\cite{Vitt_2020}. OMI-derived UV generally overestimates
+recently by \citet{Zhang_2019} and \citet{Vitt_2020}.
+OMI-derived UV generally overestimates
 ground-level measurements by 1-10\% in relatively clean conditions (e.g.
 rural U.S), by 10-30\% in Southern Europe and by 40\% or more in
-Santiago, Chile\cite{Cabrera_2012} and Thailand\cite{Janjai_2013}. The
+Santiago, Chile\citep{Cabrera_2012} and Thailand\citep{Janjai_2013}. The
 overestimations appear related in large part to incomplete accounting of
 UV absorption by BL aerosol, although other factors such as the
 correction to solar noon may also introduce some
-bias.\cite{Zhang_2019} Over Europe, ground-based UVI observations for
+bias.\citep{Zhang_2019} Over Europe, ground-based UVI observations for
 several decades are systematically lower than those estimated from
 satellites even after consideration of climatological aerosol
 distributions, showing the importance of local pollution not resolved
-from space.\cite{Vitt_2020} However, difference between
+from space.\citep{Vitt_2020} However, difference between
 satellite-derived and ground-based UVI was less than 1.0 UVI units in
 over 90\% of the cases, in contrast to the difference of 3-5 units found
 for Mexico City (Table~{\ref{461017}}).
@@ -713,7 +741,9 @@ pollutants leads to a strong decrease toward the surface, with notably
 more severe reductions in 2000 compared to 2019.~While the specific
 values shown in the figure are only illustrative for typical conditions,
 routine daily air quality modeling should carefully account for the long
-term variations in these photolysis coefficients.\selectlanguage{english}
+term variations in these photolysis coefficients.
+
+
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.70\columnwidth]{figures/jvals}
@@ -728,12 +758,12 @@ term variations in these photolysis coefficients.\selectlanguage{english}
 
 An issue that is beginning to gain relevance in radiative balance models
 is the influence of a group of organic compounds capable of strongly
-absorbing in the UV region (brown carbon).\cite{Laskin_2015} Some of
+absorbing in the UV region (brown carbon).\citep{Laskin_2015} Some of
 these compounds are related with emissions from local and regional
-wildfires.\cite{Gadhavi_2010} Mexico City is frequently exposed to
+wildfires.\citep{Gadhavi_2010} Mexico City is frequently exposed to
 regional fire smoke transport during the dry part of the year (November
-to May)\cite{Rios_2019}, that sporadically modify the optical
-properties of the aerosols.\cite{Barnard_2008} This could partly explain
+to May)\citep{Rios_2019}, that sporadically modify the optical
+properties of the aerosols.\citep{Barnard_2008} This could partly explain
 the relatively minor reductions in PM\textsubscript{10} (see
 Fig.~{\ref{829996}}), compared to the larger reductions
 of CO, NO\textsubscript{2}, and O\textsubscript{3} that are more
@@ -762,6 +792,7 @@ observed pollutants. Long term improvements in air quality, over two
 decades, are accompanied by statistically significant increases in the
 observed UVI, again in good agreement with the model-predicted changes.
 
+
 \begin{table}[H]
   \centering
   \begin{tabular}{lccccc}
@@ -773,7 +804,9 @@ observed UVI, again in good agreement with the model-predicted changes.
     NO\textsubscript{2} ppb                        & 40                            & -0.9                          & 20          & -0.5  & 0.4 \\
     SO\textsubscript{2} ppb                        & 30                            & -0.8                          & 1           & -0.04 & 0.8 \\ \hline
   \end{tabular}
-  \caption{{(a) Values used one at the time, with the others held at zero. (b) UVI deviation from the zero-pollution value of 16.1 (from Table \ref{table:TUVmodel}). (c) 2019-2000 UVI change due to changes in each pollutant.}}
+  \caption{{(a) Values used one at the time, with the others held at zero.
+        (b) UVI deviation from the zero-pollution value of 16.1 (from Table
+        \ref{table:TUVmodel}). (c) 2019-2000 UVI change due to changes in each pollutant.}}
   \label{table:year2000-2019}
 \end{table}
 
@@ -798,24 +831,61 @@ radiation that reaches the surface.
 A limitation of the present work is our focus on daily maximum values,
 which largely exclude cloud cover. Absorption within clouds can be
 enhanced by the long path lengths of multiply scattered photons (e.g.,
-Mayer et al.\cite{Mayer_1998}), so that accurate quantification of UV
+\citet{Mayer_1998}), so that accurate quantification of UV
 effects of clouds in polluted environments remains a significant
-challenge and interesting opportunity for future work.~
+challenge and interesting opportunity for future work.
 
-\section*{Acknowledgements}\label{acknowledgements}
 
-We wish to acknowledge the staff of SIMAT, from the Secretariat of
-Environment, for the data and the continuous assistance during the
-realization of this project. Adriana Ipi\selectlanguage{ngerman}ña would like to extend her
-thanks to Dirección General de Personal Académico, Universidad
-Nacional Autónoma~de México (DGAPA-UNAM) for the postdoctoral fellowship
-at Centro de Ciencias~de la Atmósfera of the UNAM.~Rubén D Piacentini
-wishes to thank CONICET and National University of Rosario, Argentina,
-for their partial support to the present work.~The National Center for
-Atmospheric Research is sponsored by the National Science Foundation.
 
-\selectlanguage{english}
-\bibliographystyle{elsarticle-num-names}
-\bibliography{bibliography/biblio_url}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The "Acknowledgement" section can be given in all manuscript
+%% classes.  This should be given within the "acknowledgement"
+%% environment, which will make the correct section or running title.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{acknowledgement}
+  We wish to acknowledge the staff of SIMAT, from the Secretariat of
+  Environment, for the data and the continuous assistance during the
+  realization of this project. Adriana Ipiña would like to extend her
+  thanks to Dirección General de Personal Académico, Universidad
+  Nacional Autónoma de México (DGAPA-UNAM) for the postdoctoral fellowship
+  at Centro de Ciencias de la Atmósfera of the UNAM. Rubén D Piacentini
+  wishes to thank CONICET and National University of Rosario, Argentina,
+  for their partial support to the present work. The National Center for
+  Atmospheric Research is sponsored by the National Science Foundation.
+\end{acknowledgement}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% The same is true for Supporting Information, which should use the
+% %% suppinfo environment.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{suppinfo}
+
+% A listing of the contents of each file supplied as Supporting Information
+% should be included. For instructions on what should be included in the
+% Supporting Information as well as how to prepare this material for
+% publications, refer to the journal's Instructions for Authors.
+
+% The following files are available free of charge.
+% \begin{itemize}
+%   \item Filename: brief description
+%   \item Filename: brief description
+% \end{itemize}
+
+% \end{suppinfo}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The appropriate \bibliography command should be placed here.
+%% Notice that the class file automatically sets \bibliographystyle
+%% and also names the section correctly.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{bibliography/bibliodoi}
+
 \end{document}
-
