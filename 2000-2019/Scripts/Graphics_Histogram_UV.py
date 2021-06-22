@@ -78,12 +78,14 @@ def autolabel(rects):
                     textcoords="offset points",
                     ha='center',
                     va='bottom',
-                    fontsize=9)
+                    fontsize=10)
 
 
-inputs = {
+parameters = {
     "path data": "../Archivos/SEDEMA_Data/Radiation/",
     "path graphics": "../Graphics/",
+    "graphics name": "Histogram",
+    "font size": 15,
     "wavelength": {  # "UVA": 10,
         "UVB": 0.0583, },
     "hour initial": 11,
@@ -92,59 +94,62 @@ inputs = {
     "UV maximum": 16,
     "Percentage limit": 20,
 }
-UV_count = np.zeros(inputs["UV maximum"]-inputs["UV minium"])
-UV_values = np.arange(inputs["UV minium"],
-                      inputs["UV maximum"])
-font_size = 13
-files = sorted(os.listdir(inputs["path data"]))
+UV_count = np.zeros(parameters["UV maximum"]-parameters["UV minium"])
+UV_values = np.arange(parameters["UV minium"],
+                      parameters["UV maximum"])
+files = sorted(os.listdir(parameters["path data"]))
 n_total = 0
-for wavelength in inputs["wavelength"]:
-    resize = inputs["wavelength"][wavelength]
+for wavelength in parameters["wavelength"]:
+    resize = parameters["wavelength"][wavelength]
     files_type = select_files(files,
                               wavelength)
     for file in files_type:
         if not "2020" in file:
             print("Analizando archivo {}".format(file))
-            data = read_data(inputs["path data"],
+            data = read_data(parameters["path data"],
                              file)
             data = clean_data(data,
-                              inputs["hour initial"],
-                              inputs["hour final"])
+                              parameters["hour initial"],
+                              parameters["hour final"])
             data = obtain_daily_maximum_per_stations(data)
             data = format_data(data,
                                resize)
             for index in data.index:
                 UV = data["value"][index]
-                if inputs["UV maximum"] >= UV >= inputs["UV minium"]:
-                    UV = int(UV-inputs["UV minium"])
+                if parameters["UV maximum"] >= UV >= parameters["UV minium"]:
+                    UV = int(UV-parameters["UV minium"])
                     UV_count[UV] += 1
                     n_total += 1
 UV_count = UV_count*100/n_total
 fig, ax = plt.subplots(figsize=(9, 7))
 plt.ylim(0, 20)
-plt.xlim(-1, inputs["UV maximum"]+1)
-plt.xlabel("Daily maximums UV Index", fontsize=font_size)
-plt.ylabel("Frequency (%) of Days", fontsize=font_size)
-plt.title("Period 2000-2019", fontsize=font_size)
+plt.xlim(-1, parameters["UV maximum"]+1)
+plt.xlabel("Daily maximums UV Index",
+           fontsize=parameters["font size"])
+plt.ylabel("Frequency (%) of Days",
+           fontsize=parameters["font size"])
+plt.title("Period 2000-2019",
+          fontsize=parameters["font size"])
 rects = ax.bar(UV_values, UV_count,
                color="#00838a",
                width=1,
                edgecolor="black")
 autolabel(rects)
-plot_grid(inputs["UV maximum"],
-          inputs["Percentage limit"])
+plot_grid(parameters["UV maximum"],
+          parameters["Percentage limit"])
 xticks = obtain_xticks(UV_values)
-yticks = obtain_yticks(inputs["Percentage limit"])
+yticks = obtain_yticks(parameters["Percentage limit"])
 plt.xticks(xticks-0.5,
            xticks,
-           fontsize=font_size)
+           fontsize=parameters["font size"])
 plt.yticks(yticks,
-           fontsize=font_size)
+           fontsize=parameters["font size"])
 # <--------Guardado de la grafica-------------->
 plt.subplots_adjust(left=0.102,
                     bottom=0.093,
                     right=0.962,
                     top=0.936)
-plt.savefig("{}Histogram.png".format(inputs["path graphics"]),
+plt.savefig("{}{}.png".format(parameters["path graphics"],
+                              parameters["graphics name"]),
             dpi=400)
 # plt.show()
