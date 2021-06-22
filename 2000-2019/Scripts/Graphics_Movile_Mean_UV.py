@@ -78,6 +78,7 @@ parameters = {
     "path data": "../Data/",
     "file data": "Max_Monthly_UVB.csv",
     "file moving average": "Moving_average_UVI",
+    "file Max Monthly UVI": "Max_Monthly_UVI",
     "file Fit UVI": "Fit_UVI",
     "Months moving Average": 3,
     "year initial": 2000,
@@ -162,6 +163,10 @@ plt.legend(ncol=3,
 plt.savefig("{}{}.png".format(parameters["path graphics"],
                               parameters["graphics name"]),
             dpi=400)
+# Write Max Monthly UVI
+data.to_csv("{}{}.csv".format(parameters["path data"],
+                              parameters["file Max Monthly UVI"]),
+            float_format="%.4f")
 # Write Moving average results
 moving_average_data.to_csv("{}{}.csv".format(parameters["path data"],
                                              parameters["file moving average"]),
