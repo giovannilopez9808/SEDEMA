@@ -12,7 +12,7 @@ inputs = {
                    "NO2",
                    "PM10",
                    "SO2"],
-    "path data": "../Archivos/SEDEMA_Data/Pollutants/",
+    "path data": "../Data/SEDEMA_Data/Pollutants/",
     "path stations": "../Stations/",
     "file": "CDMX.csv"
 }
@@ -44,10 +44,10 @@ for file in files:
                         info[loc_parameter, conseday,
                              year, 0] += float(data)
                         info[loc_parameter, conseday, year, 1] += 1
-# <---------------------------------Escritura de los archivos---------------------------------->
-print("Calculando promedios y escribiendo archivos")
+# <---------------------------------Escritura de los Data---------------------------------->
+print("Calculando promedios y escribiendo Data")
 for parameter, n in zip(inputs["pollutants"], range(n_param)):
-    file = open("../Archivos/"+parameter+"_"+inputs["file"], "w")
+    file = open("../Data/"+parameter+"_"+inputs["file"], "w")
     file.write("Date")
     for year in range(20):
         file.write(",{}".format(year+2000))

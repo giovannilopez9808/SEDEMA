@@ -6,16 +6,16 @@ import os
 
 def select_files(files=[], type_name=""):
     """
-    Selecciona el nombre de los archivos
+    Selecciona el nombre de los Data
     dependiendo la información que contienen.
     -----------------------------------------------------
     Input:
     type_name : String con el posible valor de UVA o UVB
-    files     : Lista con los nombres de los archivos por
+    files     : Lista con los nombres de los Data por
                 filrar
     -----------------------------------------------------
     Return 
-    files_type: Lista con los nombres de los archivos que
+    files_type: Lista con los nombres de los Data que
                 contienen type_name en sus nombres
     ------------------------------------------------------
     """
@@ -185,7 +185,7 @@ def autolabel(rects):
 
 
 parameters = {
-    "path data": "../Archivos/SEDEMA_Data/Radiation/",
+    "path data": "../Data/SEDEMA_Data/Radiation/",
     "path graphics": "../Graphics/",
     "graphics name": "Histogram",
     "font size": 15,

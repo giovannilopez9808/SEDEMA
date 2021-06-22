@@ -55,8 +55,8 @@ def format_results(data, resize):
 
 
 inputs = {
-    "path data": "../Archivos/SEDEMA_Data/Radiation/",
-    "path results": "../Archivos/",
+    "path data": "../Data/SEDEMA_Data/Radiation/",
+    "path results": "../Data/",
     "wavelength": {"UVA": 10,
                    "UVB": 0.0583, },
     "hour initial": 11,

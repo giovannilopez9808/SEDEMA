@@ -3,46 +3,90 @@ import pandas as pd
 import numpy as np
 
 
-def read_data(path, file):
-    # <-------------Lectura de los datos------------------>
+def read_data(path="", file=""):
+    """
+    Lectura de los datos
+    --------------------------------------------
+    Inputs:
+    path    : Direccion donde se localizan los datos
+    file    : Nombre del archivo donde se localizan los datos
+    --------------------------------------------
+    Return
+    data    : Dataframe con el indice estandarizado en fechas
+              y las columnas de los datos en IUV
+    """
+    # Lectura de los datos
     data = pd.read_csv("{}{}".format(path,
                                      file),
                        index_col=0)
-    # <---------Erythemal a UVI-------------->
+    # Erythemal a UVI
     data["Max"] = data["Max"]*40
     data["std"] = data["std"]*40
     data.index = pd.to_datetime(data.index)
     return data
 
 
-def obtain_moving_average_monthly(data, month):
+def obtain_moving_average_monthly(data=pd.DataFrame(), month=3):
+    """
+    Obtiene el moving average a partir de un dataframe
+    --------------------------------------------
+    Inputs:
+    data    : Dataframe que contiene los datos
+    month   : Numero en el cual se realizara el moving
+              average
+    --------------------------------------------
+    Return:
+    Dataframe con el moving average
+    """
     return data.rolling(window=month).mean()
 
 
-def cut_data(data, date_i, date_f):
+def cut_data(data=pd.DataFrame(), date_i="2000-12-31", date_f="2020-12-31"):
+    """
+    Limpíeza de loss datos a seleccionando una fecha inicial
+    y fecha final
+    -----------------------------------------------------
+    Inputs:
+    data    : Dataframe que contiene los datos sin filtrar por horas
+    hour_i  : Fecha inicial donde se realizara el filtro de datos
+    hour_f  : Fecha final donde se realizara el filtro de datos
+    -----------------------------------------------------
+    Return:
+    data    : Dataframe con los datos filtrados
+    """
     data = data[data.index >= date_i]
     data = data[data.index <= date_f]
     return data
 
 
-def obtain_yearly_mean(data):
+def obtain_yearly_mean(data=pd.DataFrame()):
+    """
+    Promedio anual a partir de un dataframe
+    -----------------------------------------------------
+    Inputs: 
+    data    : Dataframe que contiene los datos
+    -----------------------------------------------------
+    Return 
+    Dataframe con el promedio anual
+    """
     return data.resample("Y").mean()
 
 
-inputs = {
+parameters = {
     "path graphics": "../Graphics/",
-    "path data": "../Archivos/",
+    "graphics name": "UV_Moving_Average2",
+    "path data": "../Data/",
     "file data": "Max_Monthly_UVB.csv",
     "Months moving Average": 3,
     "year initial": 2000,
     "year final": 2019,
 
 }
-data = read_data(inputs["path data"],
-                 inputs["file data"])
+data = read_data(parameters["path data"],
+                 parameters["file data"])
 # <------------Moving average------------->
 moving_average_data = obtain_moving_average_monthly(data["Max"],
-                                                    inputs["Months moving Average"])
+                                                    parameters["Months moving Average"])
 data = cut_data(data,
                 "2000-01-01",
                 "2019-12-01",)
@@ -63,7 +107,7 @@ years.append(2020)
 years = np.array(years)
 Fit_line = fit(years)
 # <-------Inicio de la grafica UVyearlyError-------->
-plt.xticks((years-inputs["year initial"])*12,
+plt.xticks((years-parameters["year initial"])*12,
            years,
            rotation=60,
            fontsize=12)
@@ -73,10 +117,11 @@ plt.title("Period 2000-2019",
 plt.ylabel("UV Index",
            fontsize="large")
 plt.xlim(0,
-         (inputs["year final"]-inputs["year initial"]+1)*12)
+         (parameters["year final"]-parameters["year initial"]+1)*12)
 plt.ylim(0,
          16)
-# # <------------Barras de error--------------->
+# Barras de error
+print(data)
 plt.errorbar(range(len(data["Max"])),
              list(data["Max"]),
              yerr=data["std"],
@@ -88,18 +133,19 @@ plt.errorbar(range(len(data["Max"])),
              capsize=5,
              markersize=2,
              label="Monthly average and SD")
-# # <--------Ploteo del moving average para 3 meses----------->
+# Ploteo del moving average para 3 meses
+print(moving_average_data)
 plt.plot(range(len(moving_average_data)),
          list(moving_average_data),
          label="Moving average",
          linewidth=3,
-         color="grey",
-         alpha=0.9)
-# # <-----------Ploteo de linear fit------------------>
-plt.plot((years-inputs["year initial"])*12,
+         color="#118ab2",
+         alpha=0.75)
+# Ploteo de linear fit
+plt.plot((years-parameters["year initial"])*12,
          Fit_line,
          label="Linear fit",
-         color="red",
+         color="#d00000",
          linewidth=3)
 plt.subplots_adjust(top=0.922,
                     bottom=0.147,
@@ -112,7 +158,7 @@ plt.legend(ncol=3,
            mode="expand",
            frameon=False,
            fontsize="small")
-# # <---------------Guardado de la grafica-------------->
-plt.savefig("{}UV_Moving_Average.png".format(inputs["path graphics"]),
+# Guardado de la grafica
+plt.savefig("{}{}.png".format(parameters["path graphics"],
+                              parameters["graphics name"]),
             dpi=400)
-plt.show()

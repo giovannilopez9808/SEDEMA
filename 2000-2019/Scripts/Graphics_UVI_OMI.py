@@ -19,7 +19,7 @@ numyear = ["2005",
            "",
            "2019"]
 inputs = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "path graphics": "../Graphics/",
     "column": "CSUVindex",
     "year initial": 2005,

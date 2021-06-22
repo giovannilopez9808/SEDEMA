@@ -62,7 +62,7 @@ inputs = {
     },
 }
 parameters = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "file data": "CDMX.csv",
     "path graphics": "../Graphics/",
     "linewidth": 4,

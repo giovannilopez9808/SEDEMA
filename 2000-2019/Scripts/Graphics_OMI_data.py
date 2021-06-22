@@ -72,7 +72,7 @@ def obtain_xticks(date_initial, date_final):
 
 
 inputs = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "file data": "Data_OMI_",
     "path graphics": "../Graphics/",
     "product": "OMUVB",

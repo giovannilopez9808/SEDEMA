@@ -15,7 +15,7 @@ def date_format(data):
 
 
 inputs = {
-    "path data": "../Archivos/SEDEMA_Data/",
+    "path data": "../Data/SEDEMA_Data/",
     "folders": ["Radiation"],
     "data type": {
         "Pollutants": {

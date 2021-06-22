@@ -29,7 +29,7 @@ colors = {
 }
 for month in range(1, 13):
     inputs = {
-        "path data": "../Archivos/SEDEMA_Data/Radiation/",
+        "path data": "../Data/SEDEMA_Data/Radiation/",
         "path stations": "../Stations/",
         "path graphics": "../Graphics/Daily_maximum/",
         "radiation": "UVB",
