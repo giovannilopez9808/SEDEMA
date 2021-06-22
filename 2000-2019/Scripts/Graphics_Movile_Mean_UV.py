@@ -77,6 +77,8 @@ parameters = {
     "graphics name": "UV_Moving_Average2",
     "path data": "../Data/",
     "file data": "Max_Monthly_UVB.csv",
+    "file moving average": "Moving_average_UVI",
+    "file Fit UVI": "Fit_UVI",
     "Months moving Average": 3,
     "year initial": 2000,
     "year final": 2019,
@@ -121,7 +123,6 @@ plt.xlim(0,
 plt.ylim(0,
          16)
 # Barras de error
-print(data)
 plt.errorbar(range(len(data["Max"])),
              list(data["Max"]),
              yerr=data["std"],
@@ -134,7 +135,6 @@ plt.errorbar(range(len(data["Max"])),
              markersize=2,
              label="Monthly average and SD")
 # Ploteo del moving average para 3 meses
-print(moving_average_data)
 plt.plot(range(len(moving_average_data)),
          list(moving_average_data),
          label="Moving average",
@@ -162,3 +162,16 @@ plt.legend(ncol=3,
 plt.savefig("{}{}.png".format(parameters["path graphics"],
                               parameters["graphics name"]),
             dpi=400)
+# Write Moving average results
+moving_average_data.to_csv("{}{}.csv".format(parameters["path data"],
+                                             parameters["file moving average"]),
+                           float_format="%.4f")
+# Write Fit Results
+file_fit = open("{}{}.csv".format(parameters["path data"],
+                                  parameters["file Fit UVI"]),
+                "w")
+file_fit.write("Years,Fit\n")
+for year, fit in zip(years, Fit_line):
+    file_fit.write("{},{:.4f}\n".format(year,
+                                        fit))
+file_fit.close()
