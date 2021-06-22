@@ -48,7 +48,7 @@ def obtain_monthly_std(data):
 def format_results(data, resize):
     data = data*resize
     data = data.round({
-        "value": 2,
+        "value": 4,
         "std": 4,
     })
     return data
@@ -80,6 +80,10 @@ for wavelength in inputs["wavelength"]:
                           inputs["hour initial"],
                           inputs["hour final"])
         daily_max = obtain_daily_max(data)
+        if "2015" in file:
+            for date in daily_max.index:
+                print("{}\t{:.4f}".format(date,
+                                          daily_max["value"][date]*resize*40))
         monthly_results = obtain_monthly_mean(daily_max)
         monthly_results["std"] = obtain_monthly_std(daily_max)
         monthly_results = format_results(monthly_results,
