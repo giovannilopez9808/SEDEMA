@@ -25,15 +25,17 @@ class data_boxes:
 
 
 class plot_boxes:
-    def __init__(self, data=pd.DataFrame(), length=0.25):
+    def __init__(self, data=pd.DataFrame(), length=0.25, path="", filename=""):
         self.data = data
         self.length = length
-        self.obtain_measures_of_central_tendency()
+        self.obtain_measures_of_central_tendency(path, filename)
         self.plot()
 
-    def obtain_measures_of_central_tendency(self):
+    def obtain_measures_of_central_tendency(self, path="", filename=""):
         self.central_data = self.data.describe()
         self.central_data = self.central_data.transpose()
+        self.central_data.to_csv("{}{}".format(path,
+                                               filename))
         print(self.central_data)
 
     def plot(self):
@@ -153,9 +155,12 @@ def month_name_spanish_to_english(month=""):
 parameters = {
     "path data": "../Data/",
     "file data": "Max_Monthly_UVB.csv",
+    "file tendency": "Central_tendency_monthly_data.csv",
 }
 data = read_data(parameters["path data"],
                  parameters["file data"])
 data_box = data_boxes()
 data_box.fill_data(data)
-boxes = plot_boxes(data_box.data_per_month)
+boxes = plot_boxes(data=data_box.data_per_month,
+                   path=parameters["path data"],
+                   filename=parameters["file tendency"])
