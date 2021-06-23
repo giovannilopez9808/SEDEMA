@@ -166,7 +166,7 @@ plt.savefig("{}{}.png".format(parameters["path graphics"],
 # Write Max Monthly UVI
 data.to_csv("{}{}.csv".format(parameters["path data"],
                               parameters["file Max Monthly UVI"]),
-            float_format="%.1f")
+            float_format="%.2f")
 # Write Moving average results
 moving_average_data.to_csv("{}{}.csv".format(parameters["path data"],
                                              parameters["file moving average"]),
