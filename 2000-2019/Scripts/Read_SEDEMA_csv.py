@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 inputs = {
-    "path data": "../Archivos/SEDEMA_Data/Radiation/",
+    "path data": "../Data/SEDEMA_Data/Radiation/",
     "path stations": "../Stations/",
     "Wave": {
         "UVA": {
@@ -19,7 +19,7 @@ inputs = {
     }
 }
 files = sorted(os.listdir(inputs["path data"]))
-# <--------------Ciclo para analizar todos los archivos----------->
+# <--------------Ciclo para analizar todos los Data----------->
 for file in files:
     print("Analizando archivo {}".format(file))
     lon, year = file.split("_")

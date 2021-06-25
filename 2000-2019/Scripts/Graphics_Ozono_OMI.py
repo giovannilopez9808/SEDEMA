@@ -68,7 +68,7 @@ def obtain_month_days():
 
 
 inputs = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "file data": "O3_OMI.csv",
     "path graphics": "../Graphics/",
     "graphic name": "O3",

@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import datetime
 inputs = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "file data": "Cloud_factor.csv",
     "year initial": 2005,
     "year final": 2019,

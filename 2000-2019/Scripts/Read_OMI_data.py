@@ -31,7 +31,7 @@ def drop_data_useless(data, columns, limit):
 
 
 inputs = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "file data": "Data_OMI_",
     "product": "OMUVB",
     "skiprows": 50,

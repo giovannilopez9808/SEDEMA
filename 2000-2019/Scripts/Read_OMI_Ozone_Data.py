@@ -57,7 +57,7 @@ def create_data_matrix(index, header):
 
 
 inputs = {
-    "path data": "../Archivos/",
+    "path data": "../Data/",
     "file data": "Data_OMI_",
     "product": "OMTO3",
     "skiprows": 27,

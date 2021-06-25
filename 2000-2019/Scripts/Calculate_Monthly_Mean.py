@@ -48,15 +48,15 @@ def obtain_monthly_std(data):
 def format_results(data, resize):
     data = data*resize
     data = data.round({
-        "value": 2,
+        "value": 4,
         "std": 4,
     })
     return data
 
 
 inputs = {
-    "path data": "../Archivos/SEDEMA_Data/Radiation/",
-    "path results": "../Archivos/",
+    "path data": "../Data/SEDEMA_Data/Radiation/",
+    "path results": "../Data/",
     "wavelength": {"UVA": 10,
                    "UVB": 0.0583, },
     "hour initial": 11,

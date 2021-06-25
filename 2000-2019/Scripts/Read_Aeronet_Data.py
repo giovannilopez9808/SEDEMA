@@ -61,9 +61,9 @@ def write_results(year, data):
 
 
 inputs = {
-    "path data": "../Archivos/AERONET/",
+    "path data": "../Data/AERONET/",
     "columns": ["Date(dd:mm:yyyy)", "AOD_340nm"],
-    "path results": "../Archivos/",
+    "path results": "../Data/",
     "file results": "AOD_CDMX.csv",
     "year initial": 2000,
     "year final": 2019
@@ -78,7 +78,7 @@ for file in files:
     year, _ = file.split(".")
     # Obtiene el numero de dias en el año
     days = obtain_days_of_the_year(int(year))
-    # Lectura de los archivos de AERONET
+    # Lectura de los Data de AERONET
     data = pd.read_csv(inputs["path data"]+file,
                        skiprows=6)
     # Se eliminan columnas innecesarias y valores donde no exista medición
