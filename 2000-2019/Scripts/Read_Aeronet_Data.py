@@ -88,5 +88,6 @@ for file in files:
     daily_mean = obtain_daily_mean(data)
     daily_mean.index = daily_mean.index.astype(str).str[5:10]
     results[year] = daily_mean["AOD_340nm"]
-results.to_csv(inputs["path results"] +
-               inputs["file results"], float_format="%.3f")
+results.to_csv("{}{}".format(inputs["path results"],
+                             inputs["file results"]),
+               float_format="%.3f")

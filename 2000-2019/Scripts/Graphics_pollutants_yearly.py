@@ -11,7 +11,7 @@ def obtain_mean_and_std(data):
     return x, mean_clean, mean, std
 
 
-inputs = {
+parameters = {
     "CO": {
         "tick": "CO",
         "color": "purple",
@@ -88,16 +88,18 @@ ax2 = ax1.twinx()
 ax5 = ax4.twinx()
 axs = np.array([ax2, ax1, ax3, ax4, ax5, ax3])
 print("Pollutant\t  m\tMean\t  e\t b")
-for input, ax in zip(inputs, axs):
+for parameter, ax in zip(parameters, axs):
     # Parametros para la grafica dependiendo del compuesto
-    tick = inputs[input]["tick"]
-    color = inputs[input]["color"]
-    title = inputs[input]["title"]
-    lim_inf = inputs[input]["lim inf"]
-    lim_sup = inputs[input]["lim sup"]
-    delta = inputs[input]["delta"]
+    tick = parameters[parameter]["tick"]
+    color = parameters[parameter]["color"]
+    title = parameters[parameter]["title"]
+    lim_inf = parameters[parameter]["lim inf"]
+    lim_sup = parameters[parameter]["lim sup"]
+    delta = parameters[parameter]["delta"]
     # Direccion del archivo de datos
-    file = parameters["path data"]+input+"_"+parameters["file data"]
+    file = "{}{}_{}".format(parameters["path data"],
+                            parameter,
+                            parameters["file data"])
     # Lectura de datos
     data = pd.read_csv(file,
                        index_col=0)
@@ -105,8 +107,11 @@ for input, ax in zip(inputs, axs):
     fit = np.polyfit(x, list(mean_clean), 1)
     prom = round(np.mean(mean), 3)
     # Impresión de los dattos
-    print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t{:.2f}".format(
-        input, fit[0], prom, fit[0]*100/prom,  fit[1]))
+    print("{}\t\t {:.2f}\t {:.1f}\t {:.1f}\t{:.2f}".format(parameter,
+                                                           fit[0],
+                                                           prom,
+                                                           fit[0]*100/prom,
+                                                           fit[1]))
     ax.plot(list(mean_clean.index.astype(int)-2000), list(mean_clean),
             ls="-",
             label=tick,
