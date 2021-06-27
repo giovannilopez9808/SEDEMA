@@ -34,16 +34,23 @@ class plot_boxes:
     def obtain_measures_of_central_tendency(self, path="", filename=""):
         self.central_data = self.data.describe()
         self.central_data = self.central_data.transpose()
+        self.central_data["10%"] = self.data.quantile(q=0.1)
+        self.central_data["90%"] = self.data.quantile(q=0.9)
+        print(self.central_data)
+        self.central_data["10%"] = self.central_data["mean"] - \
+            self.central_data["10%"]
+        self.central_data["90%"] = self.central_data["90%"] - \
+            self.central_data["mean"]
         self.central_data.to_csv("{}{}".format(path,
                                                filename))
-        print(self.central_data)
 
     def plot(self):
         plt.ylim(0, 14)
-        plt.yticks([i for i in range(0, 16, 2)])
+        plt.yticks([i for i in range(0, 15, 1)])
         plt.errorbar(self.central_data.index,
                      self.central_data["mean"],
-                     self.central_data["std"],
+                     [list(self.central_data["10%"]),
+                      list(self.central_data["90%"])],
                      fmt='o',
                      capsize=10)
         self.plot_points(self.central_data.index,
