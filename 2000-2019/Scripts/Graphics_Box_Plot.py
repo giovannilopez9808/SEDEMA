@@ -161,6 +161,11 @@ data = read_data(parameters["path data"],
                  parameters["file data"])
 data_box = data_boxes()
 data_box.fill_data(data)
-boxes = plot_boxes(data=data_box.data_per_month,
-                   path=parameters["path data"],
-                   filename=parameters["file tendency"])
+print(data_box.data_per_month.to_csv("data.csv",
+                                     float_format="%.3f"))
+# plt.boxplot(data_box.data_per_month.dropna())
+# plt.ylim(0, 15)
+# plt.show()
+# boxes = plot_boxes(data=data_box.data_per_month,
+#                    path=parameters["path data"],
+#                    filename=parameters["file tendency"])
