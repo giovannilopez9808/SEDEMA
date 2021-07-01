@@ -9,12 +9,12 @@ def select_files(files=[], type_name=""):
     Selecciona el nombre de los Data
     dependiendo la información que contienen.
     -----------------------------------------------------
-    Input:
+    #### Input:
     type_name : String con el posible valor de UVA o UVB
     files     : Lista con los nombres de los Data por
                 filrar
     -----------------------------------------------------
-    Return 
+    #### Return 
     files_type: Lista con los nombres de los Data que
                 contienen type_name en sus nombres
     ------------------------------------------------------
@@ -30,11 +30,11 @@ def read_data(path="", name=""):
     """
     Lectura estandarizada de los datos
     -----------------------------------------------------
-    Inputs:
+    #### Inputs:
     path    : Localizacion de los datos
     name    : nombre del archivo con los datos
     -----------------------------------------------------
-    Return:
+    #### Return:
     data    : datos contenidos en name con el indice
               estandarizado en fechas
     -----------------------------------------------------
@@ -46,15 +46,15 @@ def read_data(path="", name=""):
     return data
 
 
-def format_date_data(data=pd.DataFrame()):
+def format_date_data(data=pd.DataFrame([])):
     """
     Formateo y eliminación de columnas innecesarias de los
     datos
     -----------------------------------------------------
-    Inputs:
+    #### Inputs:
     data    : DataFrame con los datos a formatear
     -----------------------------------------------------
-    Return:
+    #### Return:
     data    : Dataframe con las columnas parameter y unit 
               eliminadas y como indice de las fechas
               estandarizadas
@@ -66,17 +66,17 @@ def format_date_data(data=pd.DataFrame()):
     return data
 
 
-def clean_data(data=pd.DataFrame(), hour_i=0, hour_f=24):
+def clean_data(data=pd.DataFrame([]), hour_i=0, hour_f=24):
     """
     Limpíeza de loss datos a seleccionando una hora inicial
     y hora final
     -----------------------------------------------------
-    Inputs:
+    #### Inputs:
     data    : Dataframe que contiene los datos sin filtrar por horas
     hour_i  : Hora inicial donde se realizara el filtro de datos
     hour_f  : Hora final donde se realizara el filtro de datos
     -----------------------------------------------------
-    Return:
+    #### Return:
     data    : Dataframe con los datos filtrados
     """
     data = data[data.index.hour >= hour_i]
@@ -84,33 +84,33 @@ def clean_data(data=pd.DataFrame(), hour_i=0, hour_f=24):
     return data
 
 
-def obtain_daily_maximum_per_stations(data=pd.DataFrame()):
+def obtain_daily_maximum_per_stations(data=pd.DataFrame([])):
     """
     Obtiene el maximo diario de cada estacion a partir de 
     un dataframe
     -----------------------------------------------------
-    Inputs:
+    #### Inputs:
     data    : Dataframe con los datos de cada estacion en
               columna cve_station
     -----------------------------------------------------
-    return:
+    #### return:
     Dataframe con doble indice, fecha y estación, para cada fecha
     y estación existirá un máximo
     """
     return data.groupby("cve_station").resample("D").max()
 
 
-def format_data(data=pd.Dataframe(), resize=1):
+def format_data(data=pd.DataFrame(), resize=1):
     """
     Escalamiento de los datos de irradiancia solar eritemica
     a indice UV
     -----------------------------------------------------
-    Inputs:
+    #### Inputs:
     data    : Dataframe con los datos en la columna value
     resize  : Escalamiento de los datos de la SEDEMA
               (unit to eritemica)
     -----------------------------------------------------
-    Return: 
+    #### Return: 
     data    : Dataframe con los datos en IUV en la columna value
     """
     data["value"] = data["value"]*40*resize
